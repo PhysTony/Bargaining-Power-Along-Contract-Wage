@@ -1,0 +1,3251 @@
+---
+# Metadatos --------------------------
+title: "Bargaining Drift in Professional Baseball: The Dynamics of
+Player Compensation and Performance"
+subtitle: "Data processing"
+date: today
+date-format: medium
+author: "AHM"
+abstract: "This paper examines how bargaining power evolves in professional baseball by introducing the concept of bargaining drift, the marginal effect of key factors on negotiation outcomes across the salary distribution. Using player data from Major League Baseball (MLB), we estimate quantile regressions to analyze how recent performance (WAR), contract duration, and team changes influence salaries at different quantiles. We interpret quantile-specific coefficients as estimates of the bargaining drift parameter, reflecting how each variable contributes to the shifts in the bargaining position of a player. The results show that for lower-paid players, recent performance and mobility have limited effects on bargaining power, while longer contracts reduce their ability to renegotiate. These dynamics suggest that structural frictions and contract rigidities disproportionately affect players at the bottom of the salary hierarchy. We distinguish between hitters and fielders and account for free agency status, identifying differences in how bargaining power accumulates. The findings support a dynamic view of salary negotiations, where contract length and institutional constraints shape negotiation trajectories more than performance alone. Our results offer empirical support for dynamic bargaining models and contribute to research on wage determination, mobility, and inequality in sports and performance-based labor markets."
+abstract-title: "Abstract"                   # -> Solo en HTML
+thanks: "..." # -> Solo PDF
+lang: en
+
+# Tablas de contenidos ---------------
+toc: true                # Genera una tabla de contenidos automática
+toc-title: "Content"  # Título personalizado para la tabla de contenidos
+number-sections: true    # Numera las secciones del documento automáticamente (#, ##, ...)
+number-depth: 3          # Sección hasta la que se enumera (1 = #)
+toc-depth: 2             # Nivel de profundidad mostrado en la tabla de contenidos, hasta qué sección se incluye en la toc
+toc-location: left       # Posición de la tabla de contenidos en HTML (right, left, body)
+toc-expand: true         # Expande todos los niveles en la tabla de contenidos, toc (solo en HTML)
+smooth-scroll: true      # Activa un efecto de desplazamiento animado al hacer clic en enlaces internos (como índices o títulos). (solo en HTML)
+lof: true                # Genera lista de figuras (solo en PDF)
+lot: true                # Genera lista de tablas (solo en PDF)
+
+# Fuentes ----------------------------
+# Fuentes de texto: https://tug.org/FontCatalogue/
+mainfont: Verdana       # Fuente base del documento
+monofont: Calibri       # Fuente de los bloques del código
+mathfont: Arial         # Fuente de las ecuaciones
+fontfamily: baskervald  # Familia tipográfica alternativa a la mainfont en caso de no cargar esta última (solo en PDF)
+fontsize: 12pt          # Tamaño base de la fuente del documento
+
+# Colores ---------------------------
+linkcolor: orange       # Color para enlaces internos (ej: referencias cruzadas)
+filecolor: blue         # Color para nombres de archivos o elementos de sistema (solo en PDF)
+citecolor: green        # Color para citas bibliográficas (solo en PDF)
+urlcolor: cyan          # Color para URLs externas (solo en PDF)
+toccolor: purple        # Color para la tabla de contenidos (solo en PDF)
+
+# Diseño de página -------------------
+geometry:                 # Configuración de márgenes del documento (requiere LaTeX para PDF)
+  #- margin = 1in         # Margen global (comentado, se usan valores personalizados)
+  - top = 24.5mm          # Margen superior (24.5 mm ≈ 0.96 pulgadas)
+  - bottom = 24.5mm       # Margen inferior 
+  - left = 24.5mm         # Margen izquierdo
+  - right = 24.5mm        # Margen derecho (nota: en libros, el derecho puede ser mayor)
+linestretch: 1.0          # Espaciado entre líneas (1.0 = sencillo, 1.5 = interlineado 1.5)
+indent: falase            # Sangría automática en párrafos (típicamente 1.5em en LaTeX)
+classoption: [onecolumn]  # Diseño de una columna (alternativa: 'twocolumn' para 2 columnas)
+papersize: a4             # Tamaño del papel (alternativas: 'letter', 'legal', 'a5')
+
+# Opciones execute -------------------
+execute:
+  warning: false      # Suprime la visualización de advertencias (warnings) en el documento final
+  error: true         # Muestra errores de ejecución en el documento (útil para depuración)
+  #eval: true         # Permite la ejecución de código (si es false, el código no se ejecuta)
+  #output: true       # Muestra los resultados/output del código en el documento
+  #include: true      # Incluye el código fuente en el documento final
+  #cache: false       # Desactiva el caché para la ejecución de código (siempre re-ejecuta)
+
+# Código (formatos) -------------------
+code-fold: true                   # Permite plegar/desplegar bloques de código (solo en HTML)
+code-overflow: wrap               # Ajusta el texto largo al ancho del bloque (solo en HTML)
+code-copy: true                   # Muestra botón para copiar código (solo en HTML)
+code-link: true                   # Genera enlaces permanentes a la documentación de las funciones usadas en el bloque  (solo en HTML)
+code-tools: true                  # Incluir opciones extra para mostrar el código fuente o imprimirlo en otros formatos (solo en HTML)
+code-line-numbers: true           # Muestra números de línea en bloques de código (funciona en HTML/PDF)
+code-block-border-left: true      # Añade borde izquierdo a bloques de código (solo en HTML)
+code-block-bg: "#6a5acd"          # Color de fondo para bloques de código (solo en HTML)
+code-summary: "Mostrar código"    # Texto para botón de plegado (solo en HTML)
+highlight-style: dracula          # Estilo de resaltado de sintaxis
+
+
+# Figuras y tablas --------------------
+fig-pos: "tb"               # Posición preferida de figuras en LaTeX (t=top, b=bottom, h=here 'considerando los demás elementos', H=here 'forzando su posición ignorando los demás elementos') (solo en PDF)
+fig-format: jpeg            # Formato de exportación para figuras (ej: jpeg, png, svg)
+fig-align: center           # Alineación de figuras (center|left|right)
+fig-cap-location: bottom    # Posición del pie de figura (top|bottom)
+tbl-cap-location: top       # Posición del título de tablas (top|bottom) (valor por defecto)
+fig-responsive: true        # Hace las figuras responsivas (ajustan tamaño automáticamente) (solo en HTML)
+
+# Referencias  ------------------------
+biblio-title: "Bibliografía"   # Título personalizado para la sección de referencias
+link-citations: true           # Convierte las citas en enlaces clicables (funciona en HTML/PDF)
+link-bibliography: true        # Convierte los ítems bibliográficos en enlaces (funciona en HTML/PDF)
+#bibliography: references.bib   # Archivo que contiene las referencias bibliográficas
+
+crossref:
+  fig-title: "Figurita"            # Título personalizado para las leyendas de figuras (default: "Figura")
+  fig-prefix: "Fig."               # Prefijo usado en referencias cruzadas a figuras
+  fig-labels: roman                # Tipo de numeración para figuras
+  lof-title: "Lista de figuritas"  # Título personalizado para el listado de figuras (solo en PDF, requiere lof: true)
+  eq-prefix: "Eq."                 # Prefijo para referencias a ecuaciones
+  sec-prefix: "Sec."               # Prefijo para referencias a secciones
+  tbl-prefix: "Tablita"            # Título personalizado para leyendas de tablas
+
+# Formato  ----------------------------
+# Opciones de formato: https://texblog.org/2013/02/13/latex-documentclass-options-illustrated/
+prefer-html: true          # Forces HTML as default output format when multiple formats are specified
+editor: visual             # Preferred editor for document development (doesn't affect compilation)
+
+# PDF Output Configuration (LaTeX-based) -----------
+format:
+  pdf: 
+    documentclass: scrartcl
+    classoption:
+      - DIV=11
+      - numbers=noendperiod
+    papersize: letter
+    header-includes: |
+      \usepackage{microtype}
+      \usepackage{hyphenat}
+      \usepackage{fvextra}
+      \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines, breakanywhere, commandchars=\\\{\}}
+      \fvset{fontsize=\small}
+      % Configuración CRUCIAL para el output de chunks
+      \renewenvironment{Shaded}{\begin{snugshade}\footnotesize\fvset{breaklines=true, breakanywhere=true}}{\end{snugshade}}
+      % Asegura que los entornos de código y output usen la misma configuración
+      \fvset{breaklines=true, breakanywhere=true}
+    code-block-extra:
+      break-lines: true
+      break-anywhere: true
+      fontsize: \small
+    geometry:
+      - margin=1in
+      - left=2cm
+      - right=2cm
+    execute:
+      echo: true
+      eval: true
+      freeze: auto
+    html-to-pdf:
+      screenshot: false
+      
+  html: 
+    theme: lux
+    mermaid:
+      theme: dark
+    title-block-banner: '#D50032'      # Color de fondo del banner de título (azul marino oscuro) en formato HEX
+    title-block-banner-color: '#002D72'# Color del texto en el banner de título (verde-azul claro/agua) en formato HEX       # Uses Bootswatch Lux theme (clean, elegant design) (solo HTML)
+    format-links: true                 # Converts URLs to styled buttons (solo HTML)
+    execute:
+      echo: true                       # Shows code execution messages in HTML output
+    fig-height: 6                      # Default figure height in inches (solo HTML)
+    fig-width: 8                       # Default figure width in inches (solo HTML)
+    citations-hover: true              # Enables citation preview tooltips on hover (solo HTML)
+
+  docx: default            # Uses standard Word template (customize with reference-doc)
+---
+
+```{r setup, include=FALSE}
+# Configuración global de opciones
+knitr::opts_chunk$set(
+  echo = TRUE,            # Muestra el código en el documento (TRUE) o lo oculta (FALSE)
+  warning = FALSE,        # Desactiva la impresión de warnings
+  message = FALSE         # Desactiva la impresión de mensajes adicionales
+)
+# Evitar la notación científica en toda la sesión de R
+options(scipen = 999)
+
+# Borrar variables y gráficos
+rm(list = ls())
+graphics.off()
+gc()
+
+# Cargar las librerías
+if (!require("pacman")) install.packages("pacman")
+
+# Cargar todas las librerías con p_load
+pacman::p_load(
+  janitor, readxl, readr, tidyverse, ggplot2, ggrepel, purrr, 
+  stringi, sp, geosphere, sf, leaflet, writexl, data.table, 
+  stringr, rnaturalearth, rnaturalearthdata, viridis, fastDummies, 
+  plm, sandwich, lmtest, haven, foreign, stargazer, openxlsx, 
+  quantreg, DT, scales, dplyr, tidyr, fs
+)
+
+# Ruta absoluta al directorio donde se encuentra la carpeta del proyecto
+# 1. Obtener la carpeta de usuario
+path <- path_home()   # p.ej. C:\Users\username
+ 
+# 2. Construir la ruta base al proyecto
+data_path = (
+    path
+    / "OneDrive - Comisión Federal de Competencia Económica"
+    / "Documentos"
+    / "R scripts"
+    / "Sport-Article---Bargaining-Power"
+)
+# 3. Definir subcarpetas de datos
+input_data = data_path / "Input-data"
+output_path = data_path / "Output-data"
+
+# Importar funciones propias para la exploración de datos
+function_path <- paste(data_path,"Functions/functions_etl.R",sep = "/")
+source(function_path)
+
+# Borrar ruta de las funciones
+rm(function_path)
+```
+
+# Introduction {#sec-intro}
+
+This study covers both database processing and the relevant statistical estimates,
+
+::: callout-note
+This section details computations executed in R version 4.4.1 (2024-06-14) under Windows. The following R packages were loaded during implementation: janitor, readxl, readr, tidyverse, ggplot2, ggrepel, purrr, dplyr, tidyr, stringi, sp, geosphere, sf, leaflet, writexl, data.table, stringr, rnaturalearth, rnaturalearthdata, viridis, fastDummies, plm, sandwich, lmtest, haven, foreign, stargazer, openxlsx, quantreg y DT.
+:::
+
+# Functions
+
+## NA per column
+
+This function shows in a dataframe the number of **NA** registers per column. Aditionally, the parameter `only_with_na` makes possible the option to show only columns with **NA**.
+
+```{r}
+function_na_count <- function(df, only_with_na = TRUE) {
+  
+  resultado <- df %>%
+    reframe(
+      across(
+        everything(),
+        ~ sum(is.na(.))
+      )
+    ) %>%
+    pivot_longer(
+      everything(),
+      names_to = "Column",
+      values_to = "NA count"
+    )
+  
+  if (only_with_na) {
+    resultado <- resultado %>%
+      filter(
+        `NA count` > 0
+      )
+  }
+  
+  return(resultado %>% arrange(desc(`NA count`)))
+}
+```
+
+# Procesamiento de datos {#sec-etl}
+
+El proceso que ETL
+
+```{mermaid}
+flowchart TB
+
+  %% Level: 1
+  CPIE[(CPI)]:::database --> |Deflacted|TP([Team panel]) & FAP([Free Agent panel])
+  
+  TRE[(Team Revenues)]:::database --> TP([Team panel])
+  TNAE[(Team Names)]:::database --> TP([Team panel])
+  TSE[(Team Statistics)]:::database --> TP([Team panel])
+  
+  FAE[(Free Agents)]:::database --> HFAD([FA hitters panel]) & FFAD([FA fielders panel])
+  
+  HE[(Hitters)]:::database --> HFAD([Hitters FA data])
+  FE[(Fielders)]:::database --> FFAD([Fielders FA data])
+  
+  %% Level 2:
+  HFAD & TP --> HP([Hitters panel])
+  FFAD & TP --> FP([Fielders panel])
+  
+  %% Estilos de líneas
+  linkStyle default stroke:red, stroke-width:5px
+  %% Estilos de nodos
+  classDef database color:#FFFFFF, fill:#3A6EA5, stroke:#1E3F66, stroke-width:2px
+  classDef deflacted-text fill:transparent, stroke:transparent, color:#FF5733, font-size:14px, font-style:italic, font-weight:bold
+```
+
+## Índice de precios al consumidor {#sec-etl_ipc}
+
+The dependent variable in this study, as well as other explanatory variables, are constructed from monetary data such as free agents' salaries, team profits, etc. Therefore, since we're working with panel data, we need to remove the inflation effect from these data, i.e., deflate them. Given that these monetary amounts come from U.S. Major League Baseball (MLB), we use annually averaged Consumer Price Indices (CPI). The data comes from the [U.S. Bureau of Labor Statistics website](https://data.bls.gov/pdq/SurveyOutputServlet "CPI").
+
+The following code imports the xlsx electronic file containing the CPI panel, named **SeriesReport-20260418010329_fdc64e.xlsx**, located in the **Raw Data** directory. Additionally, it changes the original column names as follows:
+
+-   Year to year.
+
+-   Annual to cpi_annual.
+
+```{r cpi-panel-importation}
+file_cpi <- file.path(input_data, "SeriesReport-20260418010329_fdc64e.xlsx")
+
+cpi_panel <- read_excel(
+  path = file_cpi,
+  skip = 11
+) %>%
+  select(
+    year = Year,
+    cpi_annual = Annual
+  )
+
+rm(ruta_cpi)
+
+if (knitr::is_html_output()) {
+  DT::datatable(cpi_panel)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(cpi_panel, 10))
+}
+```
+
+Using the annual average CPI values, we calculate the deflation factor or deflator for year $t$, where the base year is 2023, as $FD_{t} = CPI_{t}/ CPI_{2023}$, where:
+
+-   $FD_{j}$: Deflation factor in period $j$
+
+-   $CPI_{j}$: Consumer Price Index in period $j$
+
+```{r cpi-last-year}
+cpi_last_year <- max(cpi_panel$year, na.rm = TRUE) # 2023
+
+cpi_last_value <-  cpi_panel %>%
+  filter(year == cpi_last_year) %>%
+  pull(cpi_annual)
+
+# Deflactator con respecto al año 2023
+cpi_panel <- cpi_panel %>%
+  mutate(
+    year = as.character(year),
+    deflation_factor = cpi_last_value/cpi_annual
+  )
+
+rm(cpi_last_year,cpi_last_value)
+
+if (knitr::is_html_output()) {
+  DT::datatable(cpi_panel)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(cpi_panel, 10))
+}
+```
+
+## Team-level data {#sec-etl_team}
+
+This section will process different data tables related to *MLB* teams. However, team names are not standardized, so we import a table containing the association between team names and their official acronyms - the latter being the standardized identifier.
+
+To build this database, we used [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Baseball/Team_abbreviations "Team abbreviations") as reference. The CSV file is named **team_abreviation.csv** and is located in the [**Raw Data/Teams**]{.files-text} directory. The file is imported and column names are converted to lowercase format.
+
+```{r import-team-abreviation}
+file_team_abreviations <- file.path(input_data, "Teams/team_abreviations.csv")
+
+team_abreviations <- read.csv(file_team_abreviations) %>%
+  select(
+    team = Equipo,
+    acronym = Acronimo
+  ) %>%
+  mutate(
+    across(
+      .cols = c(acronym,team),
+      .fns = ~.x %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title()
+    )
+  )
+
+colnames(team_abreviations) <- tolower(colnames(team_abreviations))
+
+rm(ruta_team_abreviations)
+```
+
+On the other hand, there are teams that changed their names between 2010 and 2025, which is reflected in the cross-sectional data for the cases of:
+
+-   *Cleveland Guardians* (previously *Cleveland Indians*)
+
+-   *Miami Marlins* (previously *Florida Marlins*)
+
+-   *Los Angeles Angels* (previously *Los Angeles Angels of Anaheim*)
+
+The information source was [Baseball-reference](https://www.baseball-reference.com/teams/), where we selected the *Teams* section to view all historical information about the teams whose names needed updating.
+
+Following this, the data was saved in an electronic *CSV* file named *team_change.csv* containing two columns:
+
+-   **team**: Previous team name
+
+-   **team_new**: Updated team name
+
+```{r import-team-change}
+# Importar tabla de abreviaciones por equipo
+file_team_change <- file.path(input_data, "Teams/team_change.csv")
+
+team_change <- read.csv(file_team_change) %>%
+  # Homogeneizar formato de las columnas del nombre de los equípos y acrónimos
+  mutate(
+    across(
+      .cols = c(team_old, team_new),
+      .fns = ~.x %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title()
+    )
+  )
+
+# Cambiar formato de  nombres de columnas por minúsculas
+colnames(team_change) <- tolower(colnames(team_change))
+
+rm(ruta_team_change)
+
+if (knitr::is_html_output()) {
+  DT::datatable(team_change)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(team_change, 10))
+}
+```
+
+Additionally, we created a function to update outdated team names across all tables (not just the team panel). The function is named *update_team_names* and works as follows:
+
+```{r update-team-names}
+update_team_names <- function(df, team_name = "team_old") {
+  if (team_name != "team_old") {
+    df <- df %>% 
+      rename(team_old = !!sym(team_name))
+  }
+  
+  df <- df %>%
+    left_join(team_change, by = "team_old") %>%
+    mutate(
+      team_old = ifelse(!is.na(team_new), team_new, team_old)
+    ) %>%
+    select(-team_new)
+  
+  if (team_name != "team_old") {
+    df <- df %>% 
+      rename(!!sym(team_name) := team_old)
+  }
+  
+  return(df)
+}
+```
+
+### Annual Games Played Analysis
+
+This article explores the hypothesis that a free agent's previous team affiliation influences their bargaining power. Specifically, players from World Series-winning teams in period *t* are expected to have greater negotiation leverage when signing with new teams in period *t+1* compared to players from underperforming teams. We built a comprehensive database containing team performance metrics from **2010-2025**, including:
+
+**Core Statistics:** - Total games played (accumulated) - Win-loss records - Win ratio (games won / total games) - Division titles won - World Series championships - Hall of Fame players - Offensive metrics (e.g., *home runs*)
+
+**Data Sources:** 1. Primary source: [Baseball Reference](https://www.baseball-reference.com/) 2. Historical snapshots: [Wayback Machine](https://web.archive.org/) archives
+
+```{r import_team_games}
+team_games_list <- list()
+
+for (year in 2010:2025){
+  file_team_games <- file.path(input_data, "Teams/team_games.xlsx")
+  df <- read_excel(
+    file_team_games,
+    sheet = as.character(year)
+  )
+
+  colnames(df) <- colnames(df) %>%
+    str_replace_all(" ", "_") %>% 
+    tolower()
+
+  df <- df %>%
+  select(
+    -from,-to,
+    -players,
+    -rk
+  ) %>%
+  rename(
+    team = franchise,
+    hof = `hof#`,
+    games_over_500 = `g>.500`
+  ) %>%
+  mutate(
+    year = as.character(year),
+    team = team %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title(),
+    across(
+      !all_of(c("team", "year")),
+      as.numeric
+    )
+  )
+  
+  team_games_list[[year]] <- df
+}
+
+team_games_panel <- bind_rows(team_games_list)
+
+rm(team_games_list,df,team_revenue_path,year)
+```
+
+Se actualiza el nombre de aquellos equipos que cambiaron a lo largo del periodo de interés.
+
+```{r}
+team_games_panel <- team_games_panel %>%
+  update_team_names(team_name = "team")
+```
+
+The team sports panel currently contains *cumulative lifetime statistics* rather than annual performance metrics. To align with other variables in our analysis, we'll transform these into annual figures by calculating the difference between each year's value (period *t*) and its preceding year (period *t-1*).
+
+Additionally, since these metrics reflect *whole-team performance* rather than individual player statistics, we'll implement a labeling system. All team-level variables will be identified with a *"team\_"* prefix after annualization, maintained through a dedicated list of relevant sports metrics.
+
+```{r team_statistics}
+team_statistics_cum <- c("g", "w", "l", "divs", "playoffs","games_over_500", "pnnts", "ws", "hof", "r", "ab", "h", "hr", "ra")
+team_statistics_prom <- c("w-l%","ba", "era")
+
+team_games_panel <- team_games_panel %>%
+  arrange(team, year) %>% 
+  group_by(team) %>%
+  mutate(
+    across(
+      .cols = all_of(team_statistics_cum),
+      .fns = ~.x - dplyr::lag(.x),
+      .names = "team_{col}"
+    )
+  ) %>%
+  ungroup() %>%
+  group_by(team,year) %>%
+  mutate(
+    across(
+      .cols = all_of(team_statistics_prom),
+      .fns = ~mean(.x, na.rm = T),
+      .names = "team_{col}"
+    )
+  ) %>%
+  ungroup() %>%
+  select(
+    -all_of(team_statistics_cum),-all_of(team_statistics_prom)
+  ) %>%
+  filter(
+    year != 2010
+  ) %>%
+  mutate(
+    year = as.character(year)
+  )
+
+if (knitr::is_html_output()) {
+  DT::datatable(team_games_panel)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(team_games_panel, 10))
+}
+```
+
+Before the year 2015, all data omited two variables:
+
+-   **Playoffs** (`team_playoffs`): This shows either the farthest each team went into the postseason;or how many postseason appearances in team history. Solo indica si el equipo jugó playoffs.
+
+-   **Division series** (`team_divs`): The number of times the team won their division. Los equipos se dividen en dos ligas, la nacional y la americana, dodne cada una de estas se divide en tres regiones. El equipo que haya acumulado la mayor cantidad de victorias en cada región se define como el ganador de su división.
+
+`team_pnntst`: Si el equipo llegó a la final.
+
+https://es.wikipedia.org/wiki/Temporada_2011_de_las_Grandes_Ligas_de_B%C3%A9isbol
+
+```{r}
+team_playoffs_2011 <- data.frame(
+  year = "2011",
+  team_whole_name = c(
+    "New York Yankees", "Detroit Tigers", "Tampa Bay Rays", "Texas Rangers",
+    "Philadelphia Phillies", "Milwaukee Brewers", "Arizona Diamondbacks", "St Louis Cardinals"
+  ),
+  team_divs = c(
+    1,1,0,1,
+    1,1,1,0
+  ),
+  team_playoffs = 1
+)
+
+print(team_playoffs_2011)
+```
+
+https://es.wikipedia.org/wiki/Temporada_2012_de_las_Grandes_Ligas_de_B%C3%A9isbol
+
+```{r}
+team_playoffs_2012 <- data.frame(
+  year = "2012",
+  team_whole_name = c(
+    "New York Yankees", "Oakland Athletics", "Detroit Tigers", "Baltimore Orioles", "Texas Rangers",
+    "Washington Nationals", "Cincinnati Reds", "San Francisco Giants", "Atlanta Braves", "St Louis Cardinals"
+  ),
+  team_divs = c(
+    1,1,1,0,0,
+    1,1,1,0,0
+  ),
+  team_playoffs = 1
+)
+
+print(team_playoffs_2012)
+```
+
+https://es.wikipedia.org/wiki/Temporada_2013de_las_Grandes_Ligas_de_B%C3%A9isbol
+
+```{r}
+team_playoffs_2013 <- data.frame(
+  year = "2013",
+  team_whole_name = c(
+    "Boston Red Sox", "Detroit Tigers", "Oakland Athletics", "Cleveland Indians", "Tampa Bay Rays",
+    "St Louis Cardinals", "Atlanta Braves", "Los Angeles Dodgers", "Pittsburgh Pirates", "Cincinnati Reds"
+  ),
+  team_divs = c(
+    1,1,1,0,0,
+    1,1,1,0,0
+  ),
+  team_playoffs = 1
+)
+
+print(team_playoffs_2013)
+```
+
+https://es.wikipedia.org/wiki/Temporada_2014_de_las_Grandes_Ligas_de_B%C3%A9isbol
+
+```{r}
+# Crear dataframe de equipos en playoffs 2014
+team_playoffs_2014 <- data.frame(
+  year = "2014",
+  team_whole_name = c(
+    "Baltimore Orioles", "Detroit Tigers", "Los Angeles Angels", "Kansas City Royals", "Oakland Athletics",
+    "Washington Nationals", "Los Angeles Dodgers", "St Louis Cardinals", "San Francisco Giants", "Pittsburgh Pirates"
+  ),
+  team_divs = c(
+    1,1,1,0,0,
+    1,1,1,0,0
+  ),
+  team_playoffs = 1
+)
+
+print(team_playoffs_2014)
+```
+
+Se une la información
+
+```{r}
+team_playoffs <- bind_rows(
+  team_playoffs_2011,team_playoffs_2012,team_playoffs_2013,team_playoffs_2014
+)
+
+rm(team_playoffs_2011,team_playoffs_2012,team_playoffs_2013,team_playoffs_2014)
+team_playoffs
+```
+
+Por último, se revisa que todos los nombres de los equipos se encuentren en la tabla de las abrevaciones de los nombres de los equipos.
+
+```{r}
+team_playoffs %>% 
+  distinct(team_whole_name) %>% 
+  anti_join(
+    team_abreviations,
+    by = c("team_whole_name" = "team")
+  ) %>% 
+  arrange(team_whole_name)
+```
+
+Se actualiza el nombre de aquellos equipos que cambiaron a lo largo del periodo de interés.
+
+```{r}
+team_playoffs <- team_playoffs %>%
+  update_team_names(team_name = "team_whole_name")
+```
+
+Ya que se verificó que todos los nombres de los equipos se encuentren
+
+```{r}
+team_games_panel <- team_games_panel %>% 
+  arrange(team,year) %>% 
+  left_join(
+    team_playoffs %>% 
+      rename(
+        team_divs_aux = team_divs,
+        team_playoffs_aux = team_playoffs
+      ),
+    by = c("team"="team_whole_name","year")
+  ) %>% 
+  mutate(
+    team_divs = ifelse(
+      is.na(team_divs) & !is.na(team_divs_aux),
+      team_divs_aux,
+      team_divs
+    ),
+    team_playoffs = ifelse(
+      is.na(team_playoffs) & !is.na(team_playoffs_aux),
+      team_playoffs_aux,
+      team_playoffs
+    ),
+    across(
+      c(team_divs,team_playoffs),
+      ~ifelse(
+        is.na(.x),
+        0,
+        .x
+      )
+    )
+  ) %>% 
+  select(-c(team_divs_aux,team_playoffs_aux))
+```
+
+## Team Panel Integration
+
+This section consolidates all team-related information into a unified panel dataset to streamline table processing. The **`team_abbreviation`** table will serve as the central reference table. Before implementing this structure, we must ensure all team observations reflect the most current names in the *`team`* column.
+
+```{r team_years}
+team_panel <- team_games_panel %>%
+  left_join(team_abreviations, by = "team") %>%
+  select(
+    team,acronym,year,
+    everything()
+  ) 
+
+team_panel <- team_panel %>%
+  update_team_names(team_name = "team")
+
+rm(team_games_panel)
+```
+
+Rename some columns to keep consistence.
+
+```{r}
+team_panel <- team_panel %>%
+  mutate(
+    acronym = str_to_upper(acronym)
+  ) %>%
+  rename(
+    team_whole_name = team
+  )
+
+team_panel <- team_panel %>%
+  rename(
+    team = acronym
+  ) %>% 
+  clean_names()
+
+rm(team_abreviations,team_games_list,team_games_panel,team_games_scale,team_statistics)
+```
+
+We make a brief review of the missing data.
+
+```{r}
+function_na_count(team_panel,only_with_na = T)
+```
+
+We export the team panel to *csv* format for visualization tasks.
+
+```{r}
+export_team_path <- file.path(output_path, "Team/team_panel.csv")
+write.csv(team_panel, export_team_path, row.names = FALSE)
+```
+
+## Salary panel
+
+This script processes MLB salary data from 2011-2025, performing key transformations to create a standardized panel dataset. The code:
+
+1.  **Extracts** annual salary sheets from Excel files\
+2.  **Cleans** player/team names, height and weight measurements\
+3.  **Combines** all years into a unified dataset\
+4.  **Standardizes** formats for analysis readiness
+
+```{r etl-salary, echo = TRUE, results = 'hide'}
+salary_list <- list()
+
+for (year in 2011:2025) {
+  file_salary <- file.path(input_data, "Salary/salaries.xlsx")
+  
+  df <- read_excel(
+    file_salary,
+    sheet = as.character(year)
+  ) %>%
+  clean_names() %>%
+  # Quitar columnas completamente vacías
+  select(
+    player,year,
+    position_salary = pos,
+    team_salary = team,
+    average_annual_contract_value = aav,
+    years_contract = cont_yr,
+    contract_value = cont_value,
+    sign_age,weight,height
+  ) %>%
+  filter(!is.na(player)) %>%
+  mutate(
+    player = player %>%
+      stri_trans_general("Latin-ASCII") %>% 
+      str_replace_all("[^A-Za-z0-9 ]", "") %>% 
+      str_trim(side = "both") %>% 
+      str_to_title(),
+    team_salary = str_to_upper(team_salary),
+    year = as.character(year)
+  )
+  cat("Hoja leída correctamente:", year, "\n")
+  salary_list[[as.character(year)]] <- df
+}
+
+salary_panel <- bind_rows(salary_list) %>%
+  rename_with(
+    ~.x %>%
+      gsub("%", "_per", .) %>%
+      gsub(" ", "_", .)
+  ) %>%
+  mutate(
+    # Conversión de pies a metros
+    # Extraer pies y pulgadas usando expresiones regulares
+    foots = as.numeric(str_extract(height, "^\\d+")),
+    inch = as.numeric(str_extract(height, "(?<=')\\d+")),
+    # Calcular altura en metros (1 pie = 0.3048 m, 1 pulgada = 0.0254 m)
+    height = if_else(
+      !is.na(foots) & !is.na(inch),
+      foots * 0.3048 + inch * 0.0254,
+      NA_real_
+    ),
+    # Conversión de libras a kilogramos
+    weight = 0.453592 * weight
+  ) %>%
+  select(-foots, -inch) %>%
+  distinct()
+
+rm(list = c("df","salary_path","salary_list"))
+
+if (knitr::is_html_output()) {
+  DT::datatable(salary_panel)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(salary_panel, 10))
+}
+```
+
+Finally, salary is deflated using the deflation factor from the **`cpi_panel`** dataset to convert nominal values to real terms. Moreover, we build a function for calculating the real values of contractual variables by deflacting factor. As it could be appreciated along this script, it will be neccesary to adjust monetary values due to the inflation.
+
+```{r adjust-inflation-function}
+adjust_for_inflation <- function(data, columns_to_adjust) {
+  # Initial validations
+  if (!is.data.frame(data)) stop("The 'data' parameter must be a dataframe")
+  
+  # CPI data (taken as given from global environment)
+  cpi_data <- cpi_panel
+  
+  # Validate CPI data structure
+  if (!is.data.frame(cpi_data)) stop("cpi_data must be a dataframe")
+  if (!"year" %in% names(cpi_data)) stop("cpi_data must contain 'year' column")
+  if (!"deflation_factor" %in% names(cpi_data)) stop("cpi_data must contain 'deflation_factor' column")
+  
+  # Merge data with inflation factors
+  adjusted_data <- data %>%
+    left_join(cpi_data %>% select(year, deflation_factor), by = "year")
+  
+  # Verify columns to adjust exist
+  missing_cols <- setdiff(columns_to_adjust, names(adjusted_data))
+  if (length(missing_cols) > 0) {
+    stop("The following columns don't exist in the dataframe: ", 
+         paste(missing_cols, collapse = ", "))
+  }
+  
+  # Adjust each specified column (overwriting originals)
+  for (col in columns_to_adjust) {
+    adjusted_data <- adjusted_data %>%
+      mutate(!!col := .data[[col]] * deflation_factor)
+  }
+  
+  # Remove temporary deflation factor column
+  adjusted_data <- adjusted_data %>%
+    select(-deflation_factor)
+  
+  return(adjusted_data)
+}
+```
+
+Se crea un identificador de contrato determinado por la combinación única del valor del contrato, los años del contrato, el nombre del jugador, el año
+
+Adjust for inflation for monetary columns.
+
+```{r salary-inflation-adjustement}
+cols_to_adjust <- setdiff(
+  colnames(salary_panel),
+    c(
+      "player","position_salary","year","team_salary",
+      "salary_per","years_contract","fa_year",
+      "sign_age","age","weight","height"
+    )
+  )
+
+salary_panel <- adjust_for_inflation(salary_panel,cols_to_adjust)
+```
+
+To address missing or invalid height records in the player dataset, we implement a robust imputation strategy:
+
+1.  **Reference Dataset Creation**:
+    -   Filters players with valid weight/height data (`!= NA` and `!= 0`)
+    -   For each player, extracts their first recorded height as the reference value
+    -   Stores these reference heights in a lookup table
+2.  **Imputation Process**:
+    -   Merges reference heights back into the main dataset
+    -   Replaces missing (`NA`) or invalid (`0`) heights with each player's reference weight/height
+    -   Preserves originally valid weight/height measurements
+
+```{r salary-phys-imputation}
+phys_imputation <- function(data, col_name, id_col = "player") {
+  # Construir nombres de columnas temporales
+  col_sym <- sym(col_name)
+  imputed_name <- paste0("imputed_", col_name)
+  
+  # Calcular el primer valor no faltante/no cero por jugador
+  valores_imputacion <- data %>%
+    filter(!is.na(!!col_sym) & (!!col_sym) != 0) %>%
+    group_by(!!sym(id_col)) %>%
+    reframe(!!imputed_name := first(!!col_sym))
+  
+  # Unir e imputar
+  data <- data %>%
+    left_join(valores_imputacion, by = id_col) %>%
+    mutate(
+      !!col_sym := ifelse(
+        is.na(!!col_sym) | (!!col_sym) == 0,
+        !!sym(imputed_name),
+        !!col_sym
+      ),
+      !!col_sym := replace_na(!!col_sym, 0)
+    ) %>%
+    select(-all_of(imputed_name))
+  
+  # Eliminar el dataframe auxiliar del entorno
+  rm(list = imputed_name, envir = .GlobalEnv)
+  
+  return(data)
+}
+
+# Aplicar a ambas columnas
+salary_panel <- phys_imputation(salary_panel, "height")
+salary_panel <- phys_imputation(salary_panel, "weight")
+```
+
+Se muestran los agentes libres que tienen asociado más de un contrato para el mismo año.
+
+```{r}
+salary_panel %>%
+  group_by(player, year, contract_value) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  arrange(year,player)
+```
+
+#### Data correction
+
+Se eliminan aquellas observaciones donde hay duplicados y solo alguno de los valores es igual a cero. - Chirs Smith: https: //www.mlb.com/es/player/chris-smith-434672 - Luis Garcia: https: //www.mlb.com/es/player/luis-garcia-677651 - Kevin Pillar: https: //www.mlb.com/es/player/kevin-pillar-607680 - Elieser Hernandez: https://www.mlb.com/es/player/elieser-hernandez-622694
+
+```{r}
+salary_panel <- salary_panel %>%
+  filter(
+    !(player == "Chris Smith" & year == "2016" & team_salary == "TOR"),
+    !(player == "Luis Garcia" & year == "2020" & team_salary == "WSH"),
+    !(player == "Luis Garcia" & year == "2021" & team_salary == "STL")
+  ) %>%
+  mutate(
+    team_salary = if_else(
+      player == "Luis Garcia" & year == 2021 & team_salary == "WSH",
+      "HOU",
+      team_salary
+    )
+  )
+```
+
+El resto de casos donde hay duplicados corresponde a casos donde las observaciones para un mismo jugador y año solo difieren en los datos del equipo al que pertenecen. Sin embargo, en estos duplicados, el valor del contrato corresponde a un mismo valor para un mismo jugador y año, así como los demás datos numéricos.
+
+Por lo tanto, se toma el promedio de los valores numéricos, ya que no altera el resultado. Mientras que los valores en la posición y el equipo se concatenan cuando presentan valores distintos para un mismo jugador y año.
+
+```{r}
+salary_panel <- salary_panel %>%
+  group_by(player, year) %>%
+  summarise(
+    across(
+      c(contract_value,average_annual_contract_value,sign_age,years_contract,weight,height),
+      ~mean(.x, na.rm = T)
+    ),
+    position_salary = paste(unique(position_salary), collapse = "/"),
+    team_salary = paste(unique(team_salary), collapse = "/"),
+    .groups = "drop"
+  )
+```
+
+Se vuelven a revisar los duplicados.
+
+```{r}
+cat(
+  "La cantidad de contratos duplicados es:",
+  salary_panel %>%
+    group_by(player, year, contract_value) %>%
+    filter(n() > 1) %>%
+    ungroup() %>%
+    nrow()
+)
+```
+
+## Free Agents
+
+This section processes data on **free agents** - the core subjects of our research, as we aim to estimate their *bargaining power* through variables including:
+
+-   Contract salaries\
+-   Athletic performance statistics\
+-   Physical attributes\
+-   Other relevant metrics
+
+However, the current free agent tables only contain **contractual information** without performance data. This necessitates merging with additional sports performance tables later in the analysis. We process multiple *MLB* team-related datasets here, but team names lack standardization. To resolve this, we import a crosswalk table matching team names to their official abbreviations (the standardized identifiers).
+
+The raw free agent data was sourced from the *Premium* section of [Spotrac](https://www.spotrac.com). The supporting file **`team_abbreviation.csv`** (located in `Raw Data/Teams/`) provides the team name standardization.
+
+During import: 1. All column names are converted to lowercase\
+2. Team abbreviations are mapped to full names\
+3. Data types are validated for merging
+
+La columna de edad tiene errores, así como la de la posición del jugador. Por otro lado,la columna de los equipos del que proviene y al que va en el último contrato no son correctos, pero tampoco en la base de datos de los solarios.
+
+```{r etl-fa-panel}
+free_agent_list <- list()
+
+for (year in 2011:2025) {
+  print(year)
+  file_free_agent <- file.path(input_data, "Free Agents/free_agents.xlsx")
+  
+  df <- read_excel(
+    file_free_agent,
+    sheet = as.character(year)
+  ) %>%
+    rename_with(
+      ~gsub("PLAYER \\(.*\\)", "PLAYER", .),
+      starts_with("PLAYER")
+    ) %>%
+    clean_names() %>%
+    filter(!is.na(player))
+  
+  # Selección de columnas condicional según el año
+  if (year %in% c(2024, 2025)) {
+    # Para 2024 y 2025 no existen age ni yoe
+    df <- df %>%
+      select(
+        player,
+        team_from,
+        team_to,
+        position_fa = pos,
+        years_contract = yrs,
+        contract_value = value,
+        average_annual_contract_value = aav
+      ) %>%
+      mutate(
+        initial_age_fa = NA_real_,
+        initial_experience = NA_real_,
+        bats_throws = NA_character_
+      )
+  } else {
+    # Para años 2011-2023 sí existen
+    df <- df %>%
+      select(
+        player,
+        team_from,
+        team_to,
+        position_fa = pos,
+        initial_age_fa = age,
+        initial_experience = yoe,
+        bats_throws = b_t,
+        years_contract = yrs,
+        contract_value = value,
+        average_annual_contract_value = aav
+      )
+  }
+  
+  # Transformaciones comunes
+  df <- df %>%
+    mutate(
+      initial_contract_year = as.character(year),
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      across(
+        c(initial_age_fa,initial_experience,years_contract,contract_value,average_annual_contract_value),
+        ~as.numeric(.x)
+      )
+    ) %>%
+    distinct()
+  
+  free_agent_list[[year]] <- df
+}
+
+free_agent_panel <- bind_rows(free_agent_list)%>%
+  arrange(player,initial_contract_year) %>%
+  update_team_names("team_to") %>%
+  update_team_names("team_from") %>%
+  mutate(
+    team_to = str_replace(team_to, "NA", NA_character_),
+    team_from = str_replace(team_from, "NA", NA_character_)
+  )
+
+rm(df,free_agent_list)
+
+if (knitr::is_html_output()) {
+  DT::datatable(free_agent_panel)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(free_agent_panel, 10))
+}
+```
+
+The first issue to fix is observations of player whose age is belong 18 because in United States this is the minimum age to be eligible in the draft, according to an article of [ESPN](https://www.espn.com/mlb/story/_/id/43107847/baseball-2024-junior-college-eligbility-ruling-diego-pavia-mlb-draft-shake-up). For international player, the minimum age can be either 17 or 16 deppending on the case ([ESPN](https://espndeportes.espn.com/blogs/index?nombre=arturo_marcano&entryID=2142487)).
+
+```{r fa-under-eighteen}
+if (knitr::is_html_output()) {
+  DT::datatable(free_agent_panel %>% filter(age_fa < 18))
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(free_agent_panel %>% filter(age_fa < 18), 10))
+}
+```
+
+There is only one player aged below 18, but [MLB data](https://www.mlb.com/es/player/jon-rauch-400010) indicates that this free agent was born in 1978.
+
+```{r initial-age-imputation}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    initial_age_fa = ifelse(
+      player == "Jon Rauch",
+      as.numeric(initial_contract_year) - 1978,
+      initial_age_fa
+    )
+  )
+```
+
+The following displays both:\
+- Count of non-*NA* values in the table\
+- Data types for each column
+
+```{r fa-inspection}
+if (knitr::is_html_output()) {
+  DT::datatable(info_nan_types(free_agent_panel))
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(info_nan_types(free_agent_panel), 10))
+}
+```
+
+Se muestran los agentes libres que tienen asociado más de un contrato para el mismo año
+
+```{r}
+free_agent_panel %>%
+  group_by(player, initial_contract_year, contract_value) %>%
+  filter(n() > 1) %>%
+  ungroup()
+```
+
+Se eliminan aquellos duplicados donde solo alguno de los valores para el contrato es igual a cero.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  group_by(player, initial_contract_year) %>%
+  filter(
+    !(n_distinct(contract_value) > 1 & contract_value == 0)
+  ) %>%
+  ungroup()
+```
+
+Se muestran los agentes libres que tienen asociado más de un contrato para el mismo año
+
+```{r}
+free_agent_panel %>%
+  group_by(player, initial_contract_year, contract_value) %>%
+  filter(n() > 1) %>%
+  ungroup()
+```
+
+Se observa que para cada jugador en un año dado los duplicados tienen el mismo valor en el contrato, pero con valores distintos en el equipo, año y longitud del contrato. Se realiza un procedimiento análogo al realizado en la base de salarios. Sin embargo, ahora se toma el valor máximo en la columna de los años que abarca el contrato.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  group_by(player, initial_contract_year) %>%
+  reframe(
+    across(
+      c(average_annual_contract_value, contract_value, initial_age_fa, initial_experience),
+      ~ mean(.x, na.rm = TRUE)
+    ),
+    across(
+      c(position_fa, team_from, team_to, bats_throws),
+      ~ {
+        vals <- unique(.x[!is.na(.x)])
+        if (length(vals) == 0) NA_character_ else paste(vals, collapse = "/")
+      }
+    ),
+    years_contract = max(years_contract, na.rm = TRUE)
+  )
+```
+
+### Revision de contratos nulos
+
+Se une la informacion del panel de agentes libres con los datos salarios. Posterior a la union se crea una columna que indica si el agente libre se encuentra en la base de salarios para ese año dado.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  left_join(
+    salary_panel %>%
+      select(
+        player,year,
+        contract_value_salary = contract_value,
+        years_contract_salary = years_contract,
+        initial_age_salary = sign_age
+      ) %>%
+      mutate(
+        exist_salary_positive = TRUE
+      ) %>%
+      distinct(),
+    by = c("player", "initial_contract_year" = "year")
+  ) %>%
+  mutate(
+    exist_salary_positive = replace_na(
+      exist_salary_positive,
+      FALSE
+    ),
+    contrato_positivo = ifelse(
+      contract_value > 0,
+      TRUE,
+      FALSE
+    )
+  )
+```
+
+Se imputan los valores ausentes, es decir **NA**, para todos los valores.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    across(
+      c(average_annual_contract_value, contract_value),
+      ~replace_na(.x, 0)
+    )
+  )
+```
+
+Se revisan cuántos agentes libres tienen observaciones en el pánel de salarios y cuáles no.
+
+```{r}
+free_agent_panel %>%
+  count(
+    exist_salary_positive,contrato_positivo,
+    sort = T,
+    name = "Matchs"
+  )
+```
+
+Mientras que el porcentaje de valores positivos en los contratos es el siguiente.
+
+```{r}
+cat(
+  "Número de contratos con valor positivo: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        contract_value > 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+)
+```
+
+Se sustituye el valor de los contratos nulos por el valor del contrato reportado en la base de salarios cuando el valor reprotado en el pánel de salarios sea un número mayor a cero.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    contract_value = ifelse(
+      (is.na(contract_value) | contract_value == 0) & contract_value_salary > 0,
+      contract_value_salary,
+      contract_value
+    ),
+    years_contract = ifelse(
+      (is.na(years_contract) | years_contract == 0) & years_contract_salary > 0,
+      years_contract_salary,
+      years_contract
+    )
+  )
+```
+
+Se revisan cuántos agentes libres tienen observaciones en el pánel de salarios y cuáles no.
+
+```{r}
+free_agent_panel %>%
+  count(
+    exist_salary_positive,contrato_positivo,
+    sort = T,
+    name = "Matchs"
+  )
+```
+
+Mientras que el porcentaje de valores positivos en los contratos es el siguiente.
+
+```{r}
+cat(
+  "Número de contratos con valor positivo: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        contract_value > 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+)
+```
+
+Ahora, la estrategia consiste en encontrar observaciones para un año dado en el pánel de los salarios donde no se encuentre esa observación en el pánel de los agentes libres. Sin embargo, solo será válida esta imputación si las observaciones son posteriores al primer año de agencia libre del jugador que se tenga registrado en la base de datos de los agentes libres.
+
+El proceso de selección de las observaciones del pánel de salarios para acompletar el pánel de agentes libres se basa en aquellos contratos que cumplan las siguientes dos condiciones:
+
+-   El año del contrato tiene que ser posterior al primer año de agencia libre registrado para el jugador.
+-   El año de la observación no tiene que concordar con ningún año registrado en el pánel de agentes libres.
+
+Primero, se calcula el primer año de agencia libre para cada jugador
+
+```{r}
+free_agents_initial <- free_agent_panel %>%
+  group_by(player) %>%
+  mutate(
+    first_year_agency = min(initial_contract_year, na.rm = TRUE)
+  ) %>%
+  ungroup()
+```
+
+Por otro lado, se genera el conjunto de años de agencia libre por jugador, conjunto con las observaciones para excluir.
+
+```{r}
+free_years_by_player <- free_agents_initial %>%
+  distinct(player, initial_contract_year)
+```
+
+Se filtran las observaciones de salary_panel que cumplen los dos criterios anteriores.
+
+```{r}
+#    - year > first_year_agency
+#    - year no está en los años de agencia libre de ese jugador
+salary_candidates <- salary_panel %>%
+  inner_join(
+    distinct(free_agents_initial, player, first_year_agency),
+    by = "player"
+  ) %>%
+  mutate(
+    years_contract = as.numeric(years_contract),
+    years_contract = ifelse(is.na(years_contract), 0, years_contract),
+    first_year_agency = as.numeric(first_year_agency),
+    year = as.numeric(year)
+  ) %>%
+  filter(
+    year > first_year_agency + years_contract
+  ) %>%
+  mutate(
+    years_contract = as.character(years_contract),
+    first_year_agency = as.character(first_year_agency),
+    year = as.character(year)
+  ) %>%
+  anti_join(
+    free_years_by_player,
+    by = c("player", "year" = "initial_contract_year")
+  )
+```
+
+Se renombran las columnas de las observaciones obtenidas en el pánel de contratos para hacerlo comppatible con el pánel de los agentes libres.
+
+```{r}
+salary_candidates <- salary_candidates %>%
+  select(
+    player,
+    initial_contract_year = year,
+    average_annual_contract_value,
+    contract_value,
+    initial_age_fa = sign_age,
+    position_fa = position_salary,
+    team_to = team_salary
+  )
+```
+
+Ahora, se agregan estas observaciones al pánel de los agentes libres.
+
+```{r}
+free_agent_panel <- bind_rows(free_agent_panel,salary_candidates) %>%
+  arrange(player,initial_contract_year)
+```
+
+Se borran los dataframes que ya no se usarán.
+
+```{r}
+rm(free_agents_initial,free_years_by_player,salary_candidates)
+```
+
+Se quitan las observaciones que corresponden a valores no positivos en los contratos.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  filter(
+    contract_value > 0
+  )
+```
+
+Las observaciones que interesan son solo de aquellos agentes libres que tienen registrados más de dos contratos en el pánel. Esto se debe a que las varaibles del modelo se construyen a partir de dos observaciones en periodos distintos.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  group_by(player) %>%
+  filter(
+    n() > 1
+  ) %>%
+  ungroup()
+```
+
+### Años de contrato
+
+Se muestra la cantidad de registros que no cuentan con ningún valor válido para los años de contrato.
+
+```{r}
+cat(
+  "Number of observations with valid ages: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        years_contract >= 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+) 
+```
+
+Como los contratos y las observaciones son anuales, los contratos tienen que abarcar como mínimo un año.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    years_contract = ifelse(
+      years_contract == 0,
+      1,
+      years_contract
+    )
+  )
+```
+
+Para los casos donde se encuentra el valor total y promedio del contrato, se imputan los años de contrato.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    years_contract = ifelse(
+      is.na(years_contract) & average_annual_contract_value > 0,
+      round(
+        contract_value / average_annual_contract_value,
+        0
+      ),
+      years_contract
+    )
+   )
+```
+
+Se muestra la cantidad de registros que no cuentan con ningún valor válido para los años de contrato.
+
+```{r}
+cat(
+  "Number of observations with valid ages: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        years_contract >= 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+) 
+```
+
+### Valor promedio del contrato
+
+The dataset shows missing entries for average annual contract value. We can derive this metric by calculating:
+
+$$
+\text{average value} = \frac{\text{contract value}}{\text{contract years}}
+$$
+
+Se imputan los valores de manera directa por tener los años de contrato para todas las observaciones.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    average_annual_contract_value = contract_value / years_contract
+  )
+```
+
+### Age and experience
+
+#### Age
+
+Se muestra la cantidad de registros que cuentan con alguna edad registrada.
+
+```{r}
+cat(
+  "Número de contratos con valor positivo: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        initial_age_fa > 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+) 
+```
+
+Se realiza una primera imputación de acuerdo a la edad reportada en el pánel de contratos de todos los jugadores.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    initial_age_fa = ifelse(
+      (is.na(initial_age_fa) | is.nan(initial_age_fa)) & initial_age_salary > 0,
+      initial_age_salary,
+      initial_age_fa
+    )
+  )
+```
+
+La mayoría de las edades y experiencia registradas en la base no está completa o es inconsistente. Para solventar este problema se tomará la edad del primer año de observación que tenga un jugador; a partir de la edad de se año se aignará el valor correspondiente al resto de años. En caso de que el primer año de registro de agencia libre del jugador tenga asociada una edad con NA o NaN, se toma la edad del primer año que contenga algún valor válido.
+
+Si el jugador no cuenta con ningún registro de edad, se imputará de acuerdo con el valor encontrado en fuentes oficiales.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    initial_age_fa = ifelse(
+      (is.na(initial_age_fa) | is.nan(initial_age_fa)) & initial_age_salary > 0,
+      initial_age_salary,
+      initial_age_fa
+    )
+  )
+```
+
+Se muestra la cantidad de registros que cuentan con alguna edad registrada.
+
+```{r}
+cat(
+  "Número de contratos con valor positivo: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        initial_age_fa > 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+) 
+```
+
+Se revisan los jugadores que tienen NA o NaN en alguna de las observaciones para la edad.
+
+```{r}
+free_agent_panel %>%
+  group_by(player) %>%
+  filter(
+    any(is.na(initial_age_fa) | is.nan(initial_age_fa))
+  ) %>%
+  ungroup() %>%
+  select(player,initial_contract_year,initial_age_fa) %>%
+  arrange(player,initial_contract_year)
+```
+
+De manera provisional, se asigna a estos jugadores el valor 0 en las edades NA para facilitar el algoritmo que imputará adecuadamente las edades debido a que ninguna de las edades faltantes está asociada al primer año de registro de agencia libre del jugador.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    initial_age_fa = ifelse(
+      is.na(initial_age_fa) | is.nan(initial_age_fa),
+      0,
+      initial_age_fa
+    )
+  )
+```
+
+Se realiza el primer proceso de imputacion para la edad conforme al procedimiento descrito anteriormente.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  group_by(player) %>%
+  arrange(player, initial_contract_year) %>%
+  mutate(
+    initial_age_fa = first(initial_age_fa) + (as.numeric(initial_contract_year) - first(as.numeric(initial_contract_year)))
+  ) %>%
+  ungroup()
+```
+
+Se muestra la cantidad de registros que no cuentan con ninguna edad.
+
+```{r}
+cat(
+  "Número de contratos con valor positivo: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        initial_age_fa > 0
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  ),
+  "%"
+) 
+```
+
+#### Experience
+
+The `impute_experience` function handles missing (`NA`) initial experience values by: (1) assigning `0` for first contract years, (2) maintaining consistent experience for concurrent contracts within the same year, and (3) cumulatively adding prior contract durations for subsequent years - implemented through temporal sorting and iterative calculation while preserving original data structure when no NAs exist.
+
+```{r fa_imputatuon_experience_function}
+impute_experience <- function(df){
+  
+  if (any(is.na(df$initial_experience))){
+    df <- df %>%
+      arrange(initial_contract_year)
+    
+    if (nrow(df) == 1) {
+      df$initial_experience <- 0
+      return(df)
+    }
+    
+    # Asignar 0 al primer año
+    df$initial_experience[1] <- 0
+    
+    # Calcular la experiencia acumulada para los años siguientes
+    for (i in 2:nrow(df)){
+      # Si el año es el mismo que el anterior, mantener la misma experiencia inicial
+      if (df$initial_contract_year[i] == df$initial_contract_year[i - 1]) {
+        df$initial_experience[i] <- df$initial_experience[i - 1]
+      } else {
+        # Si el año es diferente, sumar la duración del contrato anterior
+        df$initial_experience[i] <- df$initial_experience[i - 1] + df$years_contract[i - 1]
+      }
+    }
+  }
+  return(df)
+}
+```
+
+We apply the `impute_experience`.
+
+```{r fa_imputatuon_experience}
+free_agent_panel <- free_agent_panel %>%
+  group_by(player) %>%
+  group_modify(~ impute_experience(.x)) %>%
+  ungroup()
+
+if (knitr::is_html_output()) {
+  DT::datatable(info_nan_types(free_agent_panel))
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(info_nan_types(free_agent_panel), 10))
+}
+```
+
+Reduce el sesgo de aquellas observaciones donde no se cuente con el valor.
+
+#### Teams imputation
+
+Se imputa los equipos de procedencia al contracto que se firma en el año de la observación.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  arrange(player,initial_contract_year) %>%
+  group_by(player) %>%
+  mutate(
+    team_from = coalesce(
+      team_from,
+      dplyr::lag(team_to)
+    )
+  ) %>%
+  ungroup()
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+free_agent_panel %>%
+  group_by(player,initial_contract_year) %>%
+  filter(
+    n() > 1
+  ) %>%
+  arrange(player,initial_contract_year)
+```
+
+# Batters data
+
+he following code processes historical MLB batter statistics, creating a unified panel dataset from 2011-2025. Key transformations include:
+
+```{r etl-hitting, echo = TRUE, results = 'hide'}
+# Inicializar lista
+hitting_list <- list()
+
+for (year in 2011:2025) {
+  # Construir nombre del archivo .txt
+  file_batting <- file.path(input_data, paste0("Hitters/batting ", year, ".txt"))
+  
+  # Leer archivo (separado por comas, manejo de NA, etc.)
+  df <- read.csv(file_batting, stringsAsFactors = FALSE) %>%
+    # Limpiar nombres (janitor)
+    clean_names() %>%
+    # Renombrar columnas que tenian el caracter "+"
+    rename(
+      ops_plus = ops_2
+    ) %>%
+    # Eliminar columnas completamente NA
+    select(where(~ !all(is.na(.)))) %>%
+    # Filtrar filas sin jugador
+    filter(!is.na(player)) %>%
+    # Transformar la columna player
+    mutate(
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      pos = pos %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_remove_all("\\*") %>%
+        str_trim(side = "both") %>%
+        str_to_upper(),
+      year = as.character(year),
+      across(
+        where(is.numeric),
+        ~replace_na(.x,0)
+      )
+    ) %>%
+    update_team_names("team")
+  
+  cat("Archivo leído correctamente:", year, "\n")
+  hitting_list[[as.character(year)]] <- df
+}
+
+# Combinar todos los años
+hitters_panel <- bind_rows(hitting_list) %>%
+  select(-c(rk,age,lg,player_additional)) %>%
+  filter(
+    g > 0
+  )
+
+# Limpiar entorno
+rm(list = c("df", "hitting_list"))
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+hitters_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  ) %>%
+  arrange(player,year,team)
+```
+
+Se agrupan las variables:
+
+```{r}
+hitter_sum_vars <- c(
+    "war", "g", "pa", "ab", "r", "h", "x2b", "x3b", "hr", "rbi", 
+    "sb", "cs", "bb", "so", "gidp", "hbp", "sh", "sf", "ibb"
+  )
+hitter_prom_vars <- c("ba", "obp", "slg", "ops", "ops_plus", "r_oba", "rbat", "tb")
+hitter_prom_vars_weighted <- paste(hitter_prom_vars, "weighted", sep = "_")
+
+hitters_panel <- hitters_panel %>%
+  mutate(
+    across(
+      .cols = all_of(hitter_prom_vars),
+      .fns = ~.x * g,
+      .names = "{.col}_weighted"
+    )
+  ) %>%
+  group_by(player,year) %>%
+  mutate(
+    total_games = sum(g, na.rm = T)
+  ) %>%
+  ungroup() %>%
+  group_by(player,year) %>%
+  reframe(
+    across(
+      all_of(hitter_sum_vars),
+      ~sum(.x, na.rm = T)
+    ),
+    across(
+      all_of(hitter_prom_vars_weighted),
+      ~sum(.x, na.rm = T) / mean(total_games, na.rm = T)
+    ),
+    team = if (any(team == "2TM", na.rm = TRUE)) "2TM" else team[which.max(g)],
+    team = if (any(team == "3TM", na.rm = TRUE)) "3TM" else team[which.max(g)],
+    team = if (any(team == "4TM", na.rm = TRUE)) "4TM" else team[which.max(g)],
+    pos = pos[which.max(g)],
+    awards = {
+      vals <- awards[!is.na(awards) & awards != ""]
+      if (length(vals) == 0) NA_character_ else paste(vals, collapse = "-")
+    }
+  ) %>%
+  rename_with(
+    ~ str_remove(.x, "_weighted$"),
+    ends_with("_weighted")
+  )
+```
+
+## Batter with multiple teams
+
+There are some player that have signed with two different team in one year. We will construct a panel data that contains the relations between the player and one team. Due to limitations of the model, we have to choose only one team. The team to select is accoding to the team where the player have the most playes gamed in the year. The reason is that the team with most games played is more representative to the variables in the model than the another team.
+
+```{r etl-hitting_ntm, echo = TRUE, results = 'hide'}
+# Inicializar lista
+hitting_ntm_list <- list()
+
+for (year in 2011:2025) {
+  # Construir nombre del archivo .txt
+  file_batting_ntm <- file.path(input_data, paste0("Hitters/batting ntm ", year, ".txt"))
+  
+  # Leer archivo (separado por comas, manejo de NA, etc.)
+  df <- read.csv(file_batting_ntm, stringsAsFactors = FALSE) %>%
+    # Limpiar nombres (janitor)
+    clean_names() %>%
+    # Transformar la columna player
+    mutate(
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      team = team %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_upper(),
+      year = as.character(year)
+    ) %>%
+    update_team_names("team")
+  
+  cat("Archivo leído correctamente:", year, "\n")
+  hitting_ntm_list[[as.character(year)]] <- df
+}
+
+# Combinar todos los años
+hitters_ntm_panel <- bind_rows(hitting_ntm_list) %>%
+  select(-c(rk,age,lg,player_additional))
+
+# Limpiar entorno
+rm(list = c("df", "hitting_ntm_list"))
+```
+
+We filter the name of the players that have two teams, that is, player with value **2TM**, **3TM** or **4TM** in team column.
+
+```{r}
+hitters_ntm_players <- hitters_ntm_panel %>%
+  filter(
+    team %in% c("2TM","3TM","4TM")
+  ) %>%
+  distinct(player,year)
+```
+
+Now, we select the player that have two different teams in one year and keep the team with most games played in the yerar.
+
+```{r}
+hitters_ntm_panel_relation <- hitters_ntm_panel %>%
+  inner_join(
+    hitters_ntm_players,
+    by = c("player","year")
+  ) %>%
+  filter(
+    !team %in% c("2TM","3TM","4TM")
+  ) %>%
+  group_by(player,year) %>%
+  reframe(
+    team = team[which.max(g)]
+  )
+```
+
+Now, we substitute the original values of **nTM** team records with the team of highest presence in these cases.
+
+```{r}
+cat(
+  "Ammount of palyers with 'nTM' team",
+  hitters_panel %>%
+    filter(
+      team  %in% c("2TM","3TM","4TM")
+    ) %>%
+    nrow()
+)
+
+hitters_panel <- hitters_panel %>%
+  left_join(
+    hitters_ntm_panel_relation %>%
+      rename(
+        team_subs = team
+      ),
+    by = c("player","year")
+  ) %>%
+  mutate(
+    team = ifelse(
+      team %in% c("2TM","3TM","4TM"),
+      team_subs,
+      team
+    )
+  ) %>%
+  select(-team_subs)
+
+cat(
+  "\n\nAmmount of palyers with 'nTM' team",
+  hitters_panel %>%
+    filter(
+      team %in% c("2TM","3TM","4TM")
+    ) %>%
+    nrow()
+)
+
+rm(hitters_ntm_panel,hitters_ntm_panel_relation,hitters_ntm_players)
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+hitters_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  ) %>%
+  arrange(player,year)
+```
+
+## Liderboard
+
+https://www.mlb.com/es/stats/batting-average/2012?position=DH
+https://baseballsavant.mlb.com/leaderboard/statcast?type=batter&year=2018&position=10&team=&min=q&sort=barrels_per_pa&sortDir=desc
+
+Se importan los datos que contienen l
+
+```{r}
+file_batting_leaderboard <- file.path(
+  input_data, 
+  "Hitters",
+  "leaderboard_dh.xlsx"
+)
+
+hitters_leaderboard <- read_xlsx(file_batting_leaderboard) %>%
+  clean_names()
+
+hitters_leaderboard
+```
+
+Se estandariza el texto
+
+```{r}
+hitters_leaderboard <- hitters_leaderboard %>%
+  mutate(
+    across(
+      c(player,team),
+      ~.x  %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title()
+    ),
+    year = as.character(year)
+  )
+
+hitters_leaderboard
+```
+
+Se crea una variable llamada `leader` que indica **1** para todos los registros.
+
+```{r}
+hitters_leaderboard <- hitters_leaderboard %>%
+  mutate(
+    leader = 1
+  )
+
+hitters_leaderboard
+```
+
+Se une la información con el panel principal.
+
+```{r}
+hitters_panel <- hitters_panel %>% 
+  left_join(
+    hitters_leaderboard %>% 
+      select(year,player,leader),
+    by = c("year","player")
+  )
+```
+
+Los **NA** en leader tienen que ser **0**.
+
+```{r}
+hitters_panel <- hitters_panel %>% 
+  mutate(
+    leader = replace_na(leader, 0)
+  )
+```
+
+
+## Awards
+
+We construct a dummy variable which indicates if the player won the MVP price.
+
+The Most Valuable Player Award (commonly known as the MVP) is an annual award given to one outstanding player in each league of Major League Baseball.
+
+```{r}
+hitters_panel <- hitters_panel %>%
+  mutate(
+    MVP_price = awards %>%
+      str_detect("MVP") %>%
+      if_else(1, 0) %>%
+      replace_na(0)
+  )
+```
+
+The Cy Young Award is an honor given annually in baseball to the best pitchers in Major League Baseball, one each for the American and National Leagues.
+
+```{r}
+hitters_panel <- hitters_panel %>%
+  mutate(
+    CYA_price = awards %>%
+      str_detect("CYA") %>%
+      if_else(1, 0) %>%
+      replace_na(0)
+  )
+```
+
+The Cy Young Award is an honor given annually in baseball to the best pitchers in Major League Baseball, one each for the American and National Leagues.
+
+```{r}
+hitters_panel <- hitters_panel %>%
+  mutate(
+    SS_price = awards %>%
+      str_detect("SS") %>%
+      if_else(1, 0) %>%
+      replace_na(0)
+  )
+```
+
+We obtain the ammount of awards won, se calcula como el número de cadenas de texto separadas por el caracter "-".
+
+```{r}
+hitters_panel <- hitters_panel %>%
+  mutate(
+    awards = ifelse(
+      is.na(awards) | awards == "",
+      0,
+      sapply(str_split(awards, "-"), function(x) length(unique(trimws(x))))
+    )
+  )
+```
+
+## Squared Variables
+
+Several studies suggest that **squared terms of performance metrics** may provide significant explanatory power in baseball regression models. These nonlinear terms can capture:
+
+-   **Diminishing returns** of extreme performance values
+
+-   **Threshold effects** where performance impacts change at certain levels
+
+Before applying the squared metric, we need to exclude some columns: `player`, `team`, `year`, `pos`, `awards` and the dummy price columns.
+
+```{r hitters_to_2}
+hitters_panel <- hitters_panel %>%
+  select(player,team,year,everything())
+
+hitter_statistcs <- colnames(hitters_panel)
+hitter_price_columns <- hitters_panel %>% select(ends_with("_price")) %>% colnames()
+hitter_columns_remove <- c("player", "team", "year", "pos", "awards", "leader", hitter_price_columns)
+
+hitter_statistcs <- hitter_statistcs[!hitter_statistcs %in% hitter_columns_remove]
+
+hitters_panel <- hitters_panel %>%
+  mutate(
+    across(
+      .cols = all_of(hitter_statistcs),
+      .fns = ~.x*.x,
+      .names = "{col}_to_2"
+    )
+  ) %>%
+  arrange(year,player)
+```
+
+
+# Pitchers data
+
+The following code processes historical MLB batter statistics, creating a unified panel dataset from 2011-2025. Key transformations include:
+
+```{r etl-hitting, echo = TRUE, results = 'hide'}
+# Inicializar lista
+pitching_list <- list()
+
+for (year in 2011:2025) {
+  # Construir nombre del archivo .txt
+  file_pitching <- file.path(input_data, paste0("Pitchers/pitchers ", year, ".txt"))
+  
+  # Leer archivo (separado por comas, manejo de NA, etc.)
+  df <- read.csv(file_pitching, stringsAsFactors = FALSE) %>%
+    clean_names() %>%
+    # Renombrar columnas que tenian el caracter "+"
+    rename(
+      era_plus = era_2
+    ) %>%
+    select(where(~ !all(is.na(.)))) %>%
+    filter(!is.na(player)) %>%
+    mutate(
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      year = as.character(year),
+      across(
+        where(is.numeric),
+        ~replace_na(.x,0)
+      )
+    ) %>%
+    update_team_names("team")
+  
+  cat("Archivo leído correctamente:", year, "\n")
+  pitching_list[[as.character(year)]] <- df
+}
+
+# Combinar todos los años
+pitchers_panel <- bind_rows(pitching_list) %>%
+  select(-c(rk,age,player_additional)) %>%
+  filter(
+    g > 0
+  )
+
+rm(list = c("df", "pitching_list", "file_pitching"))
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+pitchers_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  ) %>%
+  arrange(player,year,team)
+```
+
+Se agrupan las variables:
+
+```{r}
+pitcher_sum_vars <- c(
+    "war", "w", "l", "g", "gs", "gf", "cg", "sho", "sv", "ip", 
+    "h", "r", "er", "hr", "bb", "ibb", "so", "hbp", "bk", "wp",
+    "bf"
+  )
+pitcher_prom_vars <- c("w_l", "era", "era_plus", "fip", "whip", "h9", "hr9", "bb9", "so9", "so_bb")
+pitcher_prom_vars_weighted <- paste(pitcher_prom_vars, "weighted", sep = "_")
+
+pitchers_panel <- pitchers_panel %>%
+  mutate(
+    across(
+      .cols = all_of(pitcher_prom_vars),
+      .fns = ~.x * g,
+      .names = "{.col}_weighted"
+    )
+  ) %>%
+  group_by(player,year) %>%
+  mutate(
+    total_games = sum(g, na.rm = T)
+  ) %>%
+  ungroup() %>%
+  group_by(player,year) %>%
+  reframe(
+    across(
+      all_of(pitcher_sum_vars),
+      ~sum(.x, na.rm = T)
+    ),
+    across(
+      all_of(pitcher_prom_vars_weighted),
+      ~sum(.x, na.rm = T) / mean(total_games, na.rm = T)
+    ),
+    team = if (any(team == "2TM", na.rm = TRUE)) "2TM" else team[which.max(g)],
+    team = if (any(team == "3TM", na.rm = TRUE)) "3TM" else team[which.max(g)],
+    team = if (any(team == "4TM", na.rm = TRUE)) "4TM" else team[which.max(g)],
+    awards = {
+      vals <- awards[!is.na(awards) & awards != ""]
+      if (length(vals) == 0) NA_character_ else paste(vals, collapse = "-")
+    }
+  ) %>%
+  rename_with(
+    ~ str_remove(.x, "_weighted$"),
+    ends_with("_weighted")
+  )
+```
+
+## Pitchers with multiple teams
+
+There are some player that have signed with two different team in one year. We will construct a panel data that contains the relations between the player and one team. Due to limitations of the model, we have to choose only one team. The team to select is accoding to the team where the player have the most playes gamed in the year. The reason is that the team with most games played is more representative to the variables in the model than the another team.
+
+```{r etl-pitching_ntm, echo = TRUE, results = 'hide'}
+# Inicializar lista
+pitching_ntm_list <- list()
+
+for (year in 2011:2025) {
+  # Construir nombre del archivo .txt
+  file_pitching_ntm <- file.path(input_data, paste0("Pitchers/pitchers ntm ", year, ".txt"))
+  
+  # Leer archivo (separado por comas, manejo de NA, etc.)
+  df <- read.csv(file_pitching_ntm, stringsAsFactors = FALSE) %>%
+    # Limpiar nombres (janitor)
+    clean_names() %>%
+    # Transformar la columna player
+    mutate(
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      team = team %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_upper(),
+      year = as.character(year)
+    ) %>%
+    update_team_names("team")
+  
+  cat("Archivo leído correctamente:", year, "\n")
+  pitching_ntm_list[[as.character(year)]] <- df
+}
+
+# Combinar todos los años
+pitchers_ntm_panel <- bind_rows(pitching_ntm_list) %>%
+  select(-c(rk,age,lg,player_additional))
+
+# Limpiar entorno
+rm(list = c("df", "pitching_ntm_list"))
+```
+
+We filter the name of the players that have two teams, that is, player with value **2TM**, **3TM** or **4TM** in team column.
+
+```{r}
+pitchers_ntm_players <- pitchers_ntm_panel %>%
+  filter(
+    team %in% c("2TM","3TM","4TM")
+  ) %>%
+  distinct(player,year)
+```
+
+Now, we select the player that have two different teams in one year and keep the team with most games played in the yerar.
+
+```{r}
+pitchers_ntm_panel_relation <- pitchers_ntm_panel %>%
+  inner_join(
+    pitchers_ntm_players,
+    by = c("player","year")
+  ) %>%
+  filter(
+    !team %in% c("2TM","3TM","4TM")
+  ) %>%
+  group_by(player,year) %>%
+  reframe(
+    team = team[which.max(g)]
+  )
+```
+
+Now, we substitute the original values of **2TM**, **3TM** and **4TM** team records with the team of highest presence in these cases.
+
+```{r}
+cat(
+  "Ammount of palyers with 'nTM' team",
+  pitchers_panel %>%
+    filter(
+      team %in% c("2TM","3TM","4TM")
+    ) %>%
+    nrow()
+)
+
+pitchers_panel <- pitchers_panel %>%
+  left_join(
+    pitchers_ntm_panel_relation %>%
+      rename(
+        team_subs = team
+      ),
+    by = c("player","year")
+  ) %>%
+  mutate(
+    team = ifelse(
+      team %in% c("2TM","3TM","4TM"),
+      team_subs,
+      team
+    )
+  ) %>%
+  select(-team_subs)
+
+cat(
+  "\n\nAmmount of palyers with 'nTM' team",
+  pitchers_panel %>%
+    filter(
+      team %in% c("2TM","3TM","4TM")
+    ) %>%
+    nrow()
+)
+
+rm(pitchers_ntm_panel_relation,pitchers_ntm_players,pitchers_ntm_panel)
+```
+
+## Awards
+
+In this section, we create some variables realted to the awards a player can win.
+
+**MVP**; Dummy variable that indicates if the player was the **MVP**. https://www.marca.com/en/mlb/2025/11/13/69165f8946163faa238b456c.html https://bolavip.com/en/mlb/MLB-World-Series-MVP-2022-Prize-Money-How-much-does-the-winner-receive-20221027-0011.html
+
+We construct a dummy variable which indicates if the player won the MVP price.
+
+The Most Valuable Player Award (commonly known as the MVP) is an annual award given to one outstanding player in each league of Major League Baseball.
+
+```{r}
+pitchers_panel <- pitchers_panel %>%
+  mutate(
+    MVP_price = awards %>%
+      str_detect("MVP") %>%
+      if_else(1, 0) %>%
+      replace_na(0)
+  )
+```
+
+The Cy Young Award is an honor given annually in baseball to the best pitchers in Major League Baseball, one each for the American and National Leagues.
+
+```{r}
+pitchers_panel <- pitchers_panel %>%
+  mutate(
+    CYA_price = awards %>%
+      str_detect("CYA") %>%
+      if_else(1, 0) %>%
+      replace_na(0)
+  )
+```
+
+Número de premios recibidos, se calcula como el número de cadenas de texto separadas por el caracter "-".
+
+```{r}
+pitchers_panel <- pitchers_panel %>%
+  mutate(
+    awards = ifelse(
+      is.na(awards) | awards == "",
+      0,
+      sapply(str_split(awards, "-"), function(x) length(unique(trimws(x))))
+    )
+  )
+```
+
+## Squared Variables
+
+We generate squared terms of all performance metrics to capture potential nonlinear relationships in subsequent analyses, while maintaining the original dataset structure.
+
+```{r fielders_to_2}
+pitchers_panel <- pitchers_panel %>%
+  select(player,team,year,everything())
+
+# Lista original
+pitcher_statistcs <- colnames(pitchers_panel)
+pitcher_price_columns <- pitchers_panel %>% select(ends_with("_price")) %>% colnames()
+pitcher_columns_remove <- c("player", "team", "year", "pos", "awards", pitcher_price_columns)
+pitcher_statistcs <- pitcher_statistcs[!pitcher_statistcs %in% pitcher_columns_remove]
+
+pitchers_panel <- pitchers_panel %>%
+  mutate(
+    across(
+      .cols = all_of(pitcher_statistcs),
+      .fns = ~.x*.x,
+      .names = "{col}_to_2")
+  ) %>%
+  arrange(year,player)
+```
+
+
+# Fielders data
+
+The following code processes historical MLB batter statistics, creating a unified panel dataset from 2011-2025. Key transformations include:
+
+```{r etl-fielders, echo = TRUE, results = 'hide'}
+# Inicializar lista
+fielders_list <- list()
+
+for (year in 2011:2025) {
+  cat(
+    "Proccessing year:", year
+  )
+  
+  # Construir nombre del archivo .txt
+  fielders_file <- file.path(input_data, paste0("Fielders/fielders ", year, ".txt"))
+  
+  # Leer archivo (separado por comas, manejo de NA, etc.)
+  df <- read.csv(fielders_file, stringsAsFactors = FALSE) %>%
+    clean_names() %>%
+    select(where(~ !all(is.na(.)))) %>%
+    filter(!is.na(player)) %>%
+    mutate(
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      year = as.character(year),
+      across(
+        where(is.numeric),
+        ~replace_na(.x,0)
+      )
+    ) %>%
+    update_team_names("team")
+  
+  cat("Archivo leído correctamente:", year, "\n")
+  fielders_list[[as.character(year)]] <- df
+}
+
+# Combinar todos los años
+fielders_panel <- bind_rows(fielders_list) %>%
+  select(-c(rk,age)) %>%
+  filter(
+    g > 0
+  )
+
+rm(list = c("df", "fielders_list", "fielders_file"))
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+fielders_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  ) %>%
+  arrange(player,year,team)
+```
+
+Se agrupan las variables:
+
+```{r}
+fielders_sum_vars <- c(
+    "war", "w", "l", "g", "gs", "gf", "cg", "sho", "sv", "ip", 
+    "h", "r", "er", "hr", "bb", "ibb", "so", "hbp", "bk", "wp",
+    "bf"
+  )
+pitcher_prom_vars <- c("w_l", "era", "era_plus", "fip", "whip", "h9", "hr9", "bb9", "so9", "so_bb")
+pitcher_prom_vars_weighted <- paste(pitcher_prom_vars, "weighted", sep = "_")
+
+pitchers_panel <- pitchers_panel %>%
+  mutate(
+    across(
+      .cols = all_of(pitcher_prom_vars),
+      .fns = ~.x * g,
+      .names = "{.col}_weighted"
+    )
+  ) %>%
+  group_by(player,year) %>%
+  mutate(
+    total_games = sum(g, na.rm = T)
+  ) %>%
+  ungroup() %>%
+  group_by(player,year) %>%
+  reframe(
+    across(
+      all_of(fielders_sum_vars),
+      ~sum(.x, na.rm = T)
+    ),
+    across(
+      all_of(pitcher_prom_vars_weighted),
+      ~sum(.x, na.rm = T) / mean(total_games, na.rm = T)
+    ),
+    team = if (any(team == "2TM", na.rm = TRUE)) "2TM" else team[which.max(g)],
+    team = if (any(team == "3TM", na.rm = TRUE)) "3TM" else team[which.max(g)],
+    team = if (any(team == "4TM", na.rm = TRUE)) "4TM" else team[which.max(g)],
+    awards = {
+      vals <- awards[!is.na(awards) & awards != ""]
+      if (length(vals) == 0) NA_character_ else paste(vals, collapse = "-")
+    }
+  ) %>%
+  rename_with(
+    ~ str_remove(.x, "_weighted$"),
+    ends_with("_weighted")
+  )
+```
+
+## Pitchers with multiple teams
+
+There are some player that have signed with two different team in one year. We will construct a panel data that contains the relations between the player and one team. Due to limitations of the model, we have to choose only one team. The team to select is accoding to the team where the player have the most playes gamed in the year. The reason is that the team with most games played is more representative to the variables in the model than the another team.
+
+```{r etl-pitching_ntm, echo = TRUE, results = 'hide'}
+# Inicializar lista
+pitching_ntm_list <- list()
+
+for (year in 2011:2025) {
+  # Construir nombre del archivo .txt
+  file_pitching_ntm <- file.path(input_data, paste0("Pitching/pitching ntm ", year, ".txt"))
+  
+  # Leer archivo (separado por comas, manejo de NA, etc.)
+  df <- read.csv(file_pitching_ntm, stringsAsFactors = FALSE) %>%
+    # Limpiar nombres (janitor)
+    clean_names() %>%
+    # Transformar la columna player
+    mutate(
+      player = player %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_title() %>%
+        str_replace_all(" Minor", ""),
+      team = team %>%
+        stri_trans_general("Latin-ASCII") %>%
+        str_replace_all("[^A-Za-z0-9 ]", "") %>%
+        str_trim(side = "both") %>%
+        str_to_upper(),
+      year = as.character(year)
+    ) %>%
+    update_team_names("team")
+  
+  cat("Archivo leído correctamente:", year, "\n")
+  pitching_ntm_list[[as.character(year)]] <- df
+}
+
+# Combinar todos los años
+pitchers_ntm_panel <- bind_rows(pitching_ntm_list) %>%
+  select(-c(rk,age,lg,player_additional))
+
+# Limpiar entorno
+rm(list = c("df", "pitching_ntm_list"))
+```
+
+We filter the name of the players that have two teams, that is, player with value **2TM**, **3TM** or **4TM** in team column.
+
+```{r}
+pitchers_ntm_players <- pitchers_ntm_panel %>%
+  filter(
+    team %in% c("2TM","3TM","4TM")
+  ) %>%
+  distinct(player,year)
+```
+
+Now, we select the player that have two different teams in one year and keep the team with most games played in the yerar.
+
+```{r}
+pitchers_ntm_panel_relation <- pitchers_ntm_panel %>%
+  inner_join(
+    pitchers_ntm_players,
+    by = c("player","year")
+  ) %>%
+  filter(
+    !team %in% c("2TM","3TM","4TM")
+  ) %>%
+  group_by(player,year) %>%
+  reframe(
+    team = team[which.max(g)]
+  )
+```
+
+Now, we substitute the original values of **2TM**, **3TM** and **4TM** team records with the team of highest presence in these cases.
+
+```{r}
+cat(
+  "Ammount of palyers with 'nTM' team",
+  pitchers_panel %>%
+    filter(
+      team %in% c("2TM","3TM","4TM")
+    ) %>%
+    nrow()
+)
+
+pitchers_panel <- pitchers_panel %>%
+  left_join(
+    pitchers_ntm_panel_relation %>%
+      rename(
+        team_subs = team
+      ),
+    by = c("player","year")
+  ) %>%
+  mutate(
+    team = ifelse(
+      team %in% c("2TM","3TM","4TM"),
+      team_subs,
+      team
+    )
+  ) %>%
+  select(-team_subs)
+
+cat(
+  "\n\nAmmount of palyers with 'nTM' team",
+  pitchers_panel %>%
+    filter(
+      team %in% c("2TM","3TM","4TM")
+    ) %>%
+    nrow()
+)
+
+rm(pitchers_ntm_panel_relation,pitchers_ntm_players,pitchers_ntm_panel)
+```
+
+
+# Expansion
+
+## Team change between contracts
+
+Before expand the observations along contract, we impute the NA cases in team from column by using team column from hitters panel.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  left_join(
+    hitters_panel %>%
+      select(
+        player,year,team
+      ) %>%
+      distinct() %>%
+      arrange(player,year) %>%
+      mutate(
+        team_batter = dplyr::lag(team)
+      ) %>%
+      select(-team),
+    by = c("player", "initial_contract_year" = "year")
+  ) %>%
+  mutate(
+    team_from = coalesce(team_from, team_batter)
+  ) %>%
+  distinct()
+```
+
+Se muestra la cantidad de registros que cuentan con alguna edad registrada.
+
+```{r}
+cat(
+  "Número de contratos con valor positivo: ",
+  round(
+    100 *
+    free_agent_panel %>%
+      filter(
+        !is.na(team_from)
+      ) %>%
+      nrow() /
+    free_agent_panel %>%
+      nrow(),
+    2
+  )
+) 
+```
+
+Solo quedaron 74 observaciones sin datos sobre el equipo de procedencia. Se dejan como NA estas observaciones y se procede a construir la variable que indica si el agente libre cambio de equipo entre contratos.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    dummy_team_change = ifelse(
+      team_from != team_to & !is.na(team_from),
+      1,
+      0
+    )
+  )
+```
+
+Se examina el conteo en el cambio de equipos.
+
+```{r}
+free_agent_panel %>%
+  count(
+    dummy_team_change,
+    sort = T,
+    name = "Observations"
+  )
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+free_agent_panel %>%
+  group_by(player,initial_contract_year) %>%
+  filter(
+    n() > 1
+  ) %>%
+  arrange(player,initial_contract_year)
+```
+
+## Expand observatios along contracts
+
+Se crea una columna auxiliar que indica el año en el que termina el contrato.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    reference_end_contract_year = as.character(as.numeric(initial_contract_year) + years_contract - 1)
+  )
+```
+
+Adicionalmente, se eliminan las columnas que ya no se ocupan para el procesamiento.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  select(
+    player,initial_contract_year,reference_end_contract_year,
+    team_from,team_to,dummy_team_change,
+    position_fa,initial_age_fa,
+    years_contract,contract_value,average_annual_contract_value,
+    initial_experience
+  )
+```
+
+Finally, we build and id contract for every different contract for echa player. Every rows is a distinct contract.
+
+```{r}
+free_agent_panel <- free_agent_panel %>%
+  mutate(
+    id_contract = row_number()
+  ) %>%
+  select(id_contract,everything())
+```
+
+The free agent dataset exclusively contains first-year contract details regardless of total contract duration, though it does specify the full term length. To properly analyze multi-year contracts, we expand each record into annual observations—creating one row per contract year—while only allowing the temporal variables (**year**, **age**, and **years_experience**) to increment across years. This expansion may generate observations beyond our study period (pre-2025), necessitating filtration to retain only years within our analytical scope. Finally, we apply an additional filter to exclude any contracts with zero or negative values, ensuring we only analyze meaningful financial commitments.
+
+```{r fa_extended_years}
+free_agent_panel <- free_agent_panel %>%
+  rowwise() %>%
+  mutate(
+    year = if (years_contract != 0) 
+      list(as.numeric(initial_contract_year):(as.numeric(reference_end_contract_year))) 
+    else list(NA)
+  ) %>%
+  unnest(year) %>%
+  mutate(
+    year = as.character(year),
+    age = as.numeric(initial_age_fa) + (as.numeric(year) - as.numeric(initial_contract_year)),
+    years_experience = as.numeric(initial_experience) + (as.numeric(year) - as.numeric(initial_contract_year))
+  ) %>%
+  # Filtrar solo los años dentro del periodo
+  filter(as.numeric(year) <= 2025) %>%
+  arrange(player, year) %>%
+  select(-c(initial_age_fa, initial_experience)) %>%
+  rename(position = position_fa)
+
+free_agent_panel <- free_agent_panel %>%
+  select(
+    player,year,
+    team_from,team_to,dummy_team_change,
+    position,age,
+    years_contract,contract_value,average_annual_contract_value,
+    years_experience,
+    everything()
+  )
+
+if (knitr::is_html_output()) {
+  DT::datatable(free_agent_panel)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(info_nan_types(free_agent_panel), 10))
+}
+```
+
+Se cuenta la cantidad de jugadores con más de un registro por año
+
+```{r}
+free_agent_panel_overlap <- free_agent_panel %>%
+  group_by(player,year) %>%
+  mutate(
+    overlaps = n()
+  ) %>% 
+  filter(
+    overlaps > 1
+  ) %>%
+  arrange(player,year) %>% 
+  ungroup()
+
+free_agent_panel_overlap
+```
+
+Se observa que hay algunas observaciones donde hay traslapes por el algoritmo que expande las observaciones. Asimismo, se detectan casos en el que hay hasta tres traslapes debido a múltiples contratos celebrados en un mismo año por parte de una gente libre.
+
+```{r}
+free_agent_panel_overlap %>% 
+  distinct(player,year,overlaps) %>% 
+  count(
+    overlaps,
+    name = "#Players",
+    sort = T
+  ) %>% 
+  mutate(
+    `Players (%)` = round(100 * `#Players` / sum(`#Players`), 2)
+  )
+rm(free_agent_panel_overlap)
+```
+
+Hay catorce jugadores que tienen más de tres traslapes para un mismo año. Estos casos también se vieron en los datos de corte transversal de las métricas deportivas de los *hitters* y *pitchers*, donde se tomó el equipo en el que el jugador haya jugado más juegos en ese año. Para mantener consistencia con dicho criterio, se toma el contrato asociado al equipo que está presente en la tabla **hitters_panel** o **pitchers_panel**. Esto se realizará cunado se haga el *merging* de las tablas. No obstante, si el traslape ocurre por contratos con el mismo equipo en el mismo año, faltará realizar un paso extra para dejar solo una observación en cada año para cada jugador; esto se detalla más adelante.
+
+### Batters Panel Dataset
+
+We enhance the hitters dataset by merging salary and contract information from a separate panel. This creates a comprehensive player-performance-compensation dataset for analysis.
+
+```{r hitter-salary-merge}
+# Merge salary data with hitter performance records
+hitters_fa_panel <- hitters_panel %>%
+  inner_join(
+    free_agent_panel %>%
+      select(
+        -c(team_from)
+      ),
+    by = c("player", "year", "team"="team_to")
+  ) %>%
+  arrange(player, year)
+
+hitters_fa_panel
+```
+
+Tal y como se mencionó anteriormente, hay jugadores con más de un registro por año cuando el traslape de contratos en un mismo año se debe a que el jugador permaneció en el mismo equipo. A continuación se muestra la cantidad de observaciones donde ocurre esto.
+
+```{r}
+hitters_fa_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  )
+```
+
+Adiionalmente, se verifica que en estos casos, un jugador no puede pertenecer a dos equipos distintos en un mismo año.
+
+```{r}
+hitters_fa_panel %>%
+  group_by(player,year,team) %>%
+  mutate(
+    teams = n_distinct(team)
+  ) %>% 
+  filter(
+    teams > 1
+  )
+```
+
+Se toma solo la observación que tiene el año inicial de contrato más reciente.
+
+```{r}
+hitters_fa_panel <- hitters_fa_panel %>% 
+  group_by(player,year) %>%
+  slice_max(
+    initial_contract_year,
+    n = 1,
+    with_ties = FALSE
+  ) %>%
+  ungroup()
+```
+
+Se comrpueba que ya no hay más de un registro por año por cada jugador en el panel.
+
+```{r}
+hitters_fa_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  )
+```
+
+Se cuenta la cantidad de observaciones donde hay jugadores con dos contratos en el panel, ya que este es el número de observaciones que tendrá el pánel para realizar las estimaciones del cambio en el poder de negociación.
+
+```{r}
+hitters_fa_panel %>%
+  group_by(player,id_contract) %>%
+  filter(
+    n() > 1
+  )
+```
+
+Por último, se creará un identificador único para cada jugador con el fin de facilitar el procesamiento y tratamiento de los datos por jugador. Para esto, primero se verifica que no haya más de un jugador con el mismo nombre, dado el tratamiento, basta verificar que no haya ningún nombre repetido en un mismo año.
+
+```{r}
+hitters_fa_panel %>% 
+  group_by(player,year) %>% 
+  mutate(
+    names = n_distinct(player)
+  ) %>% 
+  filter(
+    n() > 1
+  )
+```
+
+Como cada jugador tiene solo un registro por año, se crea una clave única para cada *hitter*.
+
+```{r}
+hitters_fa_panel <- hitters_fa_panel %>% 
+  group_by(player) %>% 
+  mutate(
+    id_player = as.character(cur_group_id())
+  ) %>% 
+  ungroup() %>% 
+  select(
+    id_player,player,team,
+    everything()
+  )
+
+hitters_fa_panel
+```
+
+
+### Pitchers Panel Dataset
+
+The following merge incorporates contract information, enabling salary-performance analysis while preserving the chronological player-year structure.
+
+```{r fielders-salary-merge}
+pitchers_fa_panel <- pitchers_panel %>%
+  inner_join(
+    free_agent_panel %>%
+      select(
+        -c(team_from)
+      ),
+    by = c("player", "year","team"="team_to")
+  ) %>%
+  arrange(player, year)
+
+pitchers_fa_panel
+```
+
+Se realiza la corrección de traslapes de forma análoga a los *hitters*. Cabe m
+
+```{r}
+pitchers_fa_panel <- pitchers_fa_panel %>% 
+  group_by(player,year) %>%
+  slice_max(
+    initial_contract_year,
+    n = 1,
+    with_ties = FALSE
+  ) %>%
+  ungroup()
+```
+
+Se comrpueba que ya no hay más de un registro por año por cada jugador en el panel.
+
+```{r}
+pitchers_fa_panel %>%
+  group_by(player,year) %>%
+  filter(
+    n() > 1
+  )
+```
+
+Se cuenta la cantidad de observaciones donde hay jugadores con dos contratos en el panel, ya que este es el número de observaciones que tendrá el pánel para realizar las estimaciones
+
+```{r}
+pitchers_fa_panel %>%
+  group_by(player,id_contract) %>%
+  filter(
+    n() > 1
+  )
+```
+
+De manera análoga al caso de los *hitters*, se verifica que solo haya un observación por año para los *pitchers*.
+
+```{r}
+pitchers_fa_panel %>% 
+  group_by(player,year) %>% 
+  mutate(
+    names = n_distinct(player)
+  ) %>% 
+  filter(
+    n() > 1
+  )
+```
+
+Como cada jugador tiene solo un registro por año, se crea una clave única para cada *hitter*.
+
+```{r}
+pitchers_fa_panel <- pitchers_fa_panel %>% 
+  group_by(player) %>% 
+  mutate(
+    id_player = as.character(cur_group_id())
+  ) %>% 
+  ungroup() %>% 
+  select(
+    id_player,player,team,
+    everything()
+  )
+
+pitchers_fa_panel
+```
+
+# Position
+
+## Hitters
+
+Debido a que no hay un estandarización sobre la abreviación de la posición que ocupa un jugador entre las diversas fuentes de información, incluso dentro de **baseball-reference**. Hay casos donde discrepan la posición señalada; por lo tanto, se toma la posición del panel para detectar los bateadores designados. Por lo tanto, no se puede imputar los datos faltantes de las posiciones de los bateadores de tal manera que sea consistente con el resto de fuentes.
+
+Se determina la proporción de registros que corresponden a un bateador. Un jugador se considera bateador si en el valor dentro de la columna `position` contiene la letra **H**.
+
+```{r}
+hitters_fa_panel %>% 
+  mutate(
+    hitter = ifelse(
+      str_detect(position,"H"),
+      T,F
+    )
+  ) %>% 
+  count(
+    hitter, name = "Observations"
+  ) %>% 
+  mutate(
+    Proportion = round(100 * Observations / sum(Observations, na.rm = T), 2)
+  )
+```
+
+Se transforma la variable de posición a una que indique si el jugador es un bateador (o *designed hitter*) o no, ya que al haber una gran variedad de posiciones registradas en esa columna, puede afectar la identificación en el mdoelo econométrico.
+
+https://www.mlb.com/glossary/rules/designated-hitter-rule
+
+```{r}
+hitters_fa_panel <- hitters_fa_panel %>% 
+  mutate(
+    position = if_else(
+      str_detect(position, "H"),
+      "H",
+      "NH"
+    ) %>% 
+    replace_na("NE")
+  )
+```
+
+## Pitchers
+
+Por razones análogas, se asigna el valor **P** cuando se detecta dicha letra en la posición, esto indica si es pitcher. Se indica el **NP** cuando no se cumple la condición.
+
+```{r}
+pitchers_fa_panel <- pitchers_fa_panel %>% 
+  mutate(
+    position = ifelse(
+      str_detect(position, "P"),
+      "P",
+      "NP"
+    ) %>% 
+    replace_na("NE")
+  )
+```
+
+
+# Team data
+
+Se examinan las abreviaciones de los equipos de la tabla de los bateadores, lanzadores y equipos para determinar qué homologaciones se tienen que realizar para poder unir las tablas de jugadores con la información de los equipos.
+
+```{r}
+team_abreviations_df <- team_panel %>% 
+  distinct(team,team_whole_name) %>% 
+  arrange(team, team_whole_name)
+team_abreviations_df
+
+player_abreviations_df <- bind_rows(
+    hitters_fa_panel %>% distinct(team) %>% mutate(origen = "hitter"),
+    pitchers_fa_panel %>% distinct(team) %>% mutate(origen = "pitcher")
+  ) %>%
+  distinct(team) %>%
+  arrange(team)
+
+player_abreviations_df
+```
+
+Se obtienen las siglas que están en las tablas de los jugadores, pero no en la del equipo.
+
+```{r}
+team_abreviations_df %>% 
+  anti_join(
+    player_abreviations_df,
+    by = "team"
+  )
+
+player_abreviations_df %>% 
+  anti_join(
+    team_abreviations_df,
+    by = "team"
+  )
+```
+
+Se homologan las tablas de los jugadores con respecto a la tabla de los equipos. Asimismo, también se actualiza el nombre para la construcción de algunas variables en el script `model.qmd`
+
+```{r}
+replace_teams <- function(df) {
+  df %>%
+    mutate(
+      team = recode(
+        team,
+        "ATH" = "OAK",
+        "KCR" = "KC",
+        "SDP" = "SD",
+        "SFG" = "SF",
+        "TBR" = "TB",
+        "WSN" = "WSH"
+      )
+    )
+  }
+
+hitters_fa_panel <- replace_teams(hitters_fa_panel)
+hitters_panel <- replace_teams(hitters_panel)
+pitchers_fa_panel <- replace_teams(pitchers_fa_panel)
+pitchers_panel <- replace_teams(pitchers_panel)
+```
+
+Se une la información de los agentes libres con las estadísticas deportivas y jugabilísticas de los equipos.
+
+Primero, se une con la información de los bateadores.
+
+```{r}
+hitters_fa_panel <- hitters_fa_panel %>% 
+  left_join(
+    team_panel,
+    by = c("team","year")
+  )
+```
+
+Ahora, con la información de los lanzadores.
+
+```{r}
+pitchers_fa_panel <- pitchers_fa_panel %>% 
+  left_join(
+    team_panel,
+    by = c("team","year")
+  )
+```
+
+# Missing data
+
+Before exporting the data, we rearrange the columns in order to present information in a more comprehensive way.
+
+-   **Hitters**:
+
+```{r}
+hitters_fa_panel <- hitters_fa_panel %>% 
+  select(
+    # Main data
+    id_player,player,position,year,team,team_whole_name,
+    # Player data
+    age,years_experience,
+    # Contract data
+    id_contract,contract_value,average_annual_contract_value,dummy_team_change,
+    years_contract,initial_contract_year,reference_end_contract_year,
+    # Prices
+    awards,ends_with("_price"),
+    # Team data
+    starts_with("team_"),
+    # Sport metrics
+    war,war_to_2,everything()
+  )
+```
+
+Aditionally, we show the number of *NA* values per column:
+
+```{r}
+hitters_fa_panel %>%
+  reframe(
+    across(
+      everything(),
+      ~ sum(is.na(.))
+    )
+  ) %>%
+  pivot_longer(
+    everything(),
+    names_to = "Column",
+    values_to = "NA count"
+  )
+```
+
+-   **Pitchers**:
+
+```{r}
+pitchers_fa_panel <- pitchers_fa_panel %>% 
+  select(
+    # Main data
+    id_player,player,position,year,team,team_whole_name,
+    # Player data
+    age,years_experience,
+    # Contract data
+    id_contract,contract_value,average_annual_contract_value,dummy_team_change,
+    years_contract,initial_contract_year,reference_end_contract_year,
+    # Prices
+    awards,ends_with("_price"),
+    # Team data
+    starts_with("team_"),
+    # Sport metrics
+    war,war_to_2,everything()
+  )
+```
+
+**NA** per column:
+
+```{r}
+pitchers_fa_panel %>% 
+  reframe(
+    across(
+      everything(),
+      ~sum(is.na(.x))
+    )
+  ) %>% 
+  pivot_longer(
+    everything(),
+    names_to = "Column",
+    values_to = "NA count"
+  )
+```
+
+
+# Exportation
+
+The enriched hitter dataset is exported for persistent storage and further analysis. This preserves the merged data while maintaining the original raw data integrity.
+
+```{r hitters_exportation}
+export_hitters_fa_path <- file.path(
+    output_path,
+    "Hitters/hitters_fa_panel.xlsx"
+  )
+write_xlsx(hitters_fa_panel, export_hitters_fa_path)
+
+export_hitters_path <- file.path(
+    output_path,
+    "Hitters/hitters_panel.xlsx"
+  )
+write_xlsx(hitters_panel, export_hitters_path)
+```
+
+The complete fielders dataset is saved with standardized path construction for reproducibility.
+
+```{r fielders_exportation}
+export_fielders_fa_path <- file.path(
+    output_path,
+    "Fielders/fielders_fa_panel.xlsx"
+  )
+write_xlsx(pitchers_fa_panel, export_fielders_fa_path)
+
+export_fielders_path <- file.path(
+    output_path,
+    "Fielders/fielders_panel.xlsx"
+  )
+write_xlsx(pitchers_panel, export_fielders_path)
+```
+
+# Provisional
+
+Premios Silver Slugger: https://sportsmedia.games/2024/11/12/mlb-conoce-a-los-ganadores-del-premio-bate-de-plata-de-las-mayores/ https://www.instagram.com/p/DQ0klbLjdvm/
+
+https://www.baseball-reference.com/register/player.fcgi?id=brooks000aar https://www.mlb.com/glossary/positions https://www.mlb.com/es/player/sergio-santos-435045 https://www.espn.com/mlb/war/leaders/\_/year/2024/type/seasonal/alltime/false/count/1
+
+Contracts: https://dataspace.princeton.edu/handle/88435/dsp012z10wt56n
+
+Statistcs impact on salary: https://scholars.fhsu.edu/sacad/vol2022/iss2022/22/#main https://blogs.fangraphs.com/what-did-teams-pay-per-win-in-free-agency/
+
+WAR impact in salary: https://espndeportes.espn.com/beisbol/nota/*/id/11101772/mlb-cuanto-dinero-vale-el-war-en-agencia-libre-grandes-ligas-judge-turner-correa https://www.mlb.com/es/news/la-influencia-de-war-en-las-gerencias-modernas-c303685676 https://www.instagram.com/reel/DKw1YCCogd0/ https://www.instagram.com/p/DWmEcWUltVJ/?img_index=1 https://www.mlb.com/es/news/agentes-libre-de-mlb-2025-2026 Jugadores por WAR https://www.espn.com.co/beisbol/nota/*/id/16556568/mlb-2026-agencia-libre-ranking-mejor-peor-firma-agente-libre-50-aniversario https://boardroom.tv/mlb-free-agency-2022-war-value/#:\~:text=According%20to%20Spotrac%2C%20that%20list,above%20replacement%20was%20worth%20%245%2C430%2C383.41.

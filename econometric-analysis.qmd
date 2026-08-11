@@ -1,0 +1,1946 @@
+---
+# Metadatos --------------------------
+lang: en
+
+# Tablas de contenidos ---------------
+toc: true                # Genera una tabla de contenidos automática
+toc-title: "Content"  # Título personalizado para la tabla de contenidos
+number-sections: true    # Numera las secciones del documento automáticamente (#, ##, ...)
+number-depth: 3          # Sección hasta la que se enumera (1 = #)
+toc-depth: 2             # Nivel de profundidad mostrado en la tabla de contenidos, hasta qué sección se incluye en la toc
+toc-location: left       # Posición de la tabla de contenidos en HTML (right, left, body)
+toc-expand: true         # Expande todos los niveles en la tabla de contenidos, toc (solo en HTML)
+smooth-scroll: true      # Activa un efecto de desplazamiento animado al hacer clic en enlaces internos (como índices o títulos). (solo en HTML)
+lof: true                # Genera lista de figuras (solo en PDF)
+lot: true                # Genera lista de tablas (solo en PDF)
+
+# Fuentes ----------------------------
+# Fuentes de texto: https://tug.org/FontCatalogue/
+mainfont: Verdana       # Fuente base del documento
+monofont: Calibri       # Fuente de los bloques del código
+mathfont: Arial         # Fuente de las ecuaciones
+fontfamily: baskervald  # Familia tipográfica alternativa a la mainfont en caso de no cargar esta última (solo en PDF)
+fontsize: 12pt          # Tamaño base de la fuente del documento
+
+# Colores ---------------------------
+linkcolor: orange       # Color para enlaces internos (ej: referencias cruzadas)
+filecolor: blue         # Color para nombres de archivos o elementos de sistema (solo en PDF)
+citecolor: green        # Color para citas bibliográficas (solo en PDF)
+urlcolor: cyan          # Color para URLs externas (solo en PDF)
+toccolor: purple        # Color para la tabla de contenidos (solo en PDF)
+
+# Diseño de página -------------------
+geometry:                 # Configuración de márgenes del documento (requiere LaTeX para PDF)
+  #- margin = 1in         # Margen global (comentado, se usan valores personalizados)
+  - top = 24.5mm          # Margen superior (24.5 mm ≈ 0.96 pulgadas)
+  - bottom = 24.5mm       # Margen inferior 
+  - left = 24.5mm         # Margen izquierdo
+  - right = 24.5mm        # Margen derecho (nota: en libros, el derecho puede ser mayor)
+linestretch: 1.0          # Espaciado entre líneas (1.0 = sencillo, 1.5 = interlineado 1.5)
+indent: falase            # Sangría automática en párrafos (típicamente 1.5em en LaTeX)
+classoption: [onecolumn]  # Diseño de una columna (alternativa: 'twocolumn' para 2 columnas)
+papersize: a4             # Tamaño del papel (alternativas: 'letter', 'legal', 'a5')
+
+# Opciones execute -------------------
+execute:
+  warning: false      # Suprime la visualización de advertencias (warnings) en el documento final
+  error: true         # Muestra errores de ejecución en el documento (útil para depuración)
+  #eval: true         # Permite la ejecución de código (si es false, el código no se ejecuta)
+  #output: true       # Muestra los resultados/output del código en el documento
+  #include: true      # Incluye el código fuente en el documento final
+  #cache: false       # Desactiva el caché para la ejecución de código (siempre re-ejecuta)
+
+# Código (formatos) -------------------
+code-fold: true                   # Permite plegar/desplegar bloques de código (solo en HTML)
+code-overflow: wrap               # Ajusta el texto largo al ancho del bloque (solo en HTML)
+code-copy: true                   # Muestra botón para copiar código (solo en HTML)
+code-link: true                   # Genera enlaces permanentes a la documentación de las funciones usadas en el bloque  (solo en HTML)
+code-tools: true                  # Incluir opciones extra para mostrar el código fuente o imprimirlo en otros formatos (solo en HTML)
+code-line-numbers: true           # Muestra números de línea en bloques de código (funciona en HTML/PDF)
+code-block-border-left: true      # Añade borde izquierdo a bloques de código (solo en HTML)
+code-block-bg: "#6a5acd"          # Color de fondo para bloques de código (solo en HTML)
+code-summary: "Mostrar código"    # Texto para botón de plegado (solo en HTML)
+highlight-style: dracula          # Estilo de resaltado de sintaxis
+
+
+# Figuras y tablas --------------------
+fig-pos: "tb"               # Posición preferida de figuras en LaTeX (t=top, b=bottom, h=here 'considerando los demás elementos', H=here 'forzando su posición ignorando los demás elementos') (solo en PDF)
+fig-format: jpeg            # Formato de exportación para figuras (ej: jpeg, png, svg)
+fig-align: center           # Alineación de figuras (center|left|right)
+fig-cap-location: bottom    # Posición del pie de figura (top|bottom)
+tbl-cap-location: top       # Posición del título de tablas (top|bottom) (valor por defecto)
+fig-responsive: true        # Hace las figuras responsivas (ajustan tamaño automáticamente) (solo en HTML)
+
+# Referencias  ------------------------
+biblio-title: "Bibliografía"   # Título personalizado para la sección de referencias
+link-citations: true           # Convierte las citas en enlaces clicables (funciona en HTML/PDF)
+link-bibliography: true        # Convierte los ítems bibliográficos en enlaces (funciona en HTML/PDF)
+#bibliography: references.bib   # Archivo que contiene las referencias bibliográficas
+
+crossref:
+  fig-title: "Figurita"            # Título personalizado para las leyendas de figuras (default: "Figura")
+  fig-prefix: "Fig."               # Prefijo usado en referencias cruzadas a figuras
+  fig-labels: roman                # Tipo de numeración para figuras
+  lof-title: "Lista de figuritas"  # Título personalizado para el listado de figuras (solo en PDF, requiere lof: true)
+  eq-prefix: "Eq."                 # Prefijo para referencias a ecuaciones
+  sec-prefix: "Sec."               # Prefijo para referencias a secciones
+  tbl-prefix: "Tablita"            # Título personalizado para leyendas de tablas
+
+# Formato  ----------------------------
+# Opciones de formato: https://texblog.org/2013/02/13/latex-documentclass-options-illustrated/
+prefer-html: true          # Forces HTML as default output format when multiple formats are specified
+editor: visual             # Preferred editor for document development (doesn't affect compilation)
+
+# PDF Output Configuration (LaTeX-based) -----------
+format:
+  pdf: 
+    documentclass: scrartcl
+    classoption:
+      - DIV=11
+      - numbers=noendperiod
+    papersize: letter
+    header-includes: |
+      \usepackage{microtype}
+      \usepackage{hyphenat}
+      \usepackage{fvextra}
+      \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines, breakanywhere, commandchars=\\\{\}}
+      \fvset{fontsize=\small}
+      % Configuración CRUCIAL para el output de chunks
+      \renewenvironment{Shaded}{\begin{snugshade}\footnotesize\fvset{breaklines=true, breakanywhere=true}}{\end{snugshade}}
+      % Asegura que los entornos de código y output usen la misma configuración
+      \fvset{breaklines=true, breakanywhere=true}
+    code-block-extra:
+      break-lines: true
+      break-anywhere: true
+      fontsize: \small
+    geometry:
+      - margin=1in
+      - left=2cm
+      - right=2cm
+    execute:
+      echo: true
+      eval: true
+      freeze: auto
+    html-to-pdf:
+      screenshot: false
+      
+  html: 
+    theme: lux
+    mermaid:
+      theme: dark
+    title-block-banner: '#D50032'      # Color de fondo del banner de título (azul marino oscuro) en formato HEX
+    title-block-banner-color: '#002D72'# Color del texto en el banner de título (verde-azul claro/agua) en formato HEX       # Uses Bootswatch Lux theme (clean, elegant design) (solo HTML)
+    format-links: true                 # Converts URLs to styled buttons (solo HTML)
+    execute:
+      echo: true                       # Shows code execution messages in HTML output
+    fig-height: 6                      # Default figure height in inches (solo HTML)
+    fig-width: 8                       # Default figure width in inches (solo HTML)
+    citations-hover: true              # Enables citation preview tooltips on hover (solo HTML)
+
+  docx: default            # Uses standard Word template (customize with reference-doc)
+---
+
+# Configuration
+
+## Libraries
+
+```{r setup, include=FALSE}
+# Configuración global de opciones
+knitr::opts_chunk$set(
+  echo = TRUE,            # Muestra el código en el documento (TRUE) o lo oculta (FALSE)
+  warning = FALSE,        # Desactiva la impresión de warnings
+  message = FALSE         # Desactiva la impresión de mensajes adicionales
+)
+# Evitar la notación científica en toda la sesión de R
+options(scipen = 999)
+
+# Borrar variables y gráficos
+rm(list = ls())
+graphics.off()
+gc()
+
+# Instalar pacman si no está instalado
+if (!require("pacman")) install.packages("pacman")
+
+# Cargar todas las librerías con p_load
+pacman::p_load(
+  # Modelado base y análisis econométrico
+  stargazer, car, lmtest, sandwich, AER, systemfit, plm, gmm,
+  
+  # Distribuciones, normalidad y test de residuos
+  tseries, nortest, MASS,
+  
+  # Dependencia espacial
+  spdep, sf, fs, spatialreg, sp,
+  
+  # Análisis de robustez
+  segmented, modelsummary, stats,
+  
+  # Clustering y distancia de Gower
+  cluster, FactoMineR, factoextra,
+  
+  # Bonferroni para outliers
+  outliers, influence.ME,
+  
+  # Instrumentos y pruebas de endogeneidad
+  dplyr, broom, openxlsx,
+  
+  # Graficar y visualización
+  shiny, ggplot2, readxl, vcd, corrplot, quantreg, tidyverse
+)
+
+# Resolver conflictos
+select <- dplyr::select
+filter <- dplyr::filter
+```
+
+## Ruta
+
+```{r}
+# Ruta absoluta al directorio donde se encuentra la carpeta del proyecto
+# 1. Obtener la carpeta de usuario
+usuario_local <- Sys.getenv("USERPROFILE") 
+ 
+# 2. Construir la ruta base al proyecto
+data_path <- file.path(
+  usuario_local,
+  "OneDrive - Comisión Federal de Competencia Económica",
+  "Documentos",
+  "R scripts",
+  "Sport-Article---Bargaining-Power"
+)
+
+# 3. Definir subcarpetas de datos
+input_path <- file.path(data_path, "Output-data") # Were panel were storaged
+output_path <- file.path(data_path, "Output-data","Econometrics")
+ 
+# 4. Mostrar rutas
+cat("Base directory:", data_path, "\n\n")
+cat("Input directory:", input_path, "\n\n")
+cat("Output directory:", output_path, "\n\n")
+
+# Importar funciones propias para la exploración de datos
+function_path <- paste(data_path,"Functions/functions_etl.R",sep = "/")
+source(function_path)
+
+# Borrar ruta de las funciones
+rm(function_path)
+```
+
+## Functions
+
+### Within data
+
+```{r}
+#' Transformación Within con dplyr
+#' 
+#' Calcula la desviación de cada observación respecto a la media del jugador
+#' para las variables especificadas.
+#'
+#' @param data Dataframe a transformar
+#' @param id Columna de identificación del jugador (ej. "player_id")
+#' @param player_col Nombre de la columna que identifica al jugador 
+#'                   (si es la misma que id, se puede omitir)
+#' @param vars Vector de nombres de columnas a transformar
+#' @param suffix Sufijo para las nuevas columnas transformadas (por defecto "_within")
+#' @param keep_original Si TRUE mantiene las columnas originales (por defecto TRUE)
+#'
+#' @return Dataframe con las columnas transformadas
+#' @export
+#'
+#' @examples
+#' funtcion_within_transformation(hitters_panel, "player", "year", c("salary", "war"))
+funtcion_within_transformation <- function(data, id, player_col, vars, 
+                                     suffix = "_within", 
+                                     keep_original = TRUE) {
+  
+  library(dplyr)
+  
+  # Validar que las columnas existen
+  vars_existentes <- vars[vars %in% names(data)]
+  if (length(vars_existentes) == 0) {
+    stop("Ninguna de las columnas especificadas existe en los datos")
+  }
+  
+  # Validar que las columnas de identificación existen
+  if (!all(c(id, player_col) %in% names(data))) {
+    stop("Las columnas de identificación no existen en los datos")
+  }
+  
+  # Agrupar por jugador y año (o la combinación id + player_col)
+  # y calcular medias
+  medias <- data %>%
+    group_by(across(all_of(c(id, player_col)))) %>%
+    summarise(
+      across(all_of(vars_existentes), 
+             ~ mean(.x, na.rm = TRUE), 
+             .names = "media_{.col}"),
+      .groups = "drop"
+    )
+  
+  # Unir con los datos originales
+  resultado <- data %>%
+    left_join(medias, by = c(id, player_col))
+  
+  # Calcular variables transformadas (within transformation)
+  for (var in vars_existentes) {
+    col_media <- paste0("media_", var)
+    nuevo_nombre <- paste0(var, suffix)
+    
+    # Calcular desviación de la media del jugador
+    resultado[[nuevo_nombre]] <- resultado[[var]] - resultado[[col_media]]
+    
+    # Eliminar columna de media
+    resultado[[col_media]] <- NULL
+    
+    # Si no se mantienen originales, reemplazar la columna original
+    if (!keep_original) {
+      resultado[[var]] <- resultado[[nuevo_nombre]]
+      resultado[[nuevo_nombre]] <- NULL
+    }
+  }
+  
+  return(resultado)
+}
+```
+
+### VIF
+
+```{r}
+function_vif_calculation <- function(datos, vars) {
+  
+  library(dplyr)
+  library(car)
+  
+  # Asegurar que vars sea un vector de nombres de columnas
+  if (is.data.frame(vars)) {
+    vars <- names(vars)
+  }
+  
+  # Verificar que las variables existen en los datos
+  vars_existentes <- vars[vars %in% names(datos)]
+  if (length(vars_existentes) == 0) {
+    stop("Ninguna de las variables especificadas existe en los datos")
+  }
+  
+  # Verificar que las variables sean numéricas
+  vars_numericas <- vars_existentes[sapply(datos[, vars_existentes], is.numeric)]
+  vars_no_numericas <- setdiff(vars_existentes, vars_numericas)
+  
+  if (length(vars_no_numericas) > 0) {
+    warning("Las siguientes variables no son numéricas y serán excluidas: ", 
+            paste(vars_no_numericas, collapse = ", "))
+  }
+  
+  if (length(vars_numericas) < 2) {
+    stop("Se necesitan al menos 2 variables numéricas para calcular VIF")
+  }
+  
+  # Eliminar variables con varianza cero
+  vars_con_varianza <- vars_numericas[
+    sapply(datos[, vars_numericas], function(x) 
+      sd(x, na.rm = TRUE) > 0 & !all(is.na(x)))
+  ]
+  
+  vars_sin_varianza <- setdiff(vars_numericas, vars_con_varianza)
+  if (length(vars_sin_varianza) > 0) {
+    warning("Eliminando variables con varianza cero: ", 
+            paste(vars_sin_varianza, collapse = ", "))
+  }
+  
+  if (length(vars_con_varianza) < 2) {
+    stop("No hay suficientes variables con varianza para calcular VIF")
+  }
+  
+  # Crear un nombre de variable dependiente (la primera)
+  var_dependiente <- vars_con_varianza[1]
+  vars_independientes <- vars_con_varianza[-1]
+  
+  # Crear fórmula
+  formula_vars <- paste(vars_independientes, collapse = " + ")
+  formula_completa <- as.formula(paste(var_dependiente, "~", formula_vars))
+  
+  cat("Variables incluidas:", length(vars_con_varianza), "\n")
+  cat("Variable dependiente:", var_dependiente, "\n")
+  cat("Variables independientes:", length(vars_independientes), "\n")
+  
+  # Intentar calcular VIF
+  tryCatch({
+    # Modelo lineal
+    modelo_temp <- lm(formula_completa, data = datos)
+    
+    # Calcular VIF
+    vif_result <- car::vif(modelo_temp)
+    
+    # Convertir a dataframe
+    vif_df <- data.frame(
+      Variable = names(vif_result),
+      VIF = as.numeric(vif_result)
+    ) %>%
+      mutate(
+        Nivel = case_when(
+          VIF < 5 ~ "Bajo",
+          VIF >= 5 & VIF < 10 ~ "Moderado",
+          VIF >= 10 ~ "Alto (multicolinealidad)"
+        )
+      ) %>%
+      arrange(desc(VIF))
+    
+    return(vif_df)
+    
+  }, error = function(e) {
+    warning("Error con vif(): ", e$message)
+    
+    # Método alternativo: VIF paso a paso
+    cat("\nIntentando método alternativo...\n")
+    
+    vif_resultados <- data.frame()
+    
+    for (var_actual in vars_con_varianza) {
+      otras_vars <- setdiff(vars_con_varianza, var_actual)
+      
+      if (length(otras_vars) >= 1) {
+        tryCatch({
+          # Crear modelo con esta variable como dependiente
+          form_vars <- paste(otras_vars, collapse = " + ")
+          form <- as.formula(paste(var_actual, "~", form_vars))
+          
+          modelo <- lm(form, data = datos)
+          r2 <- summary(modelo)$r.squared
+          vif_calc <- 1 / (1 - r2)
+          
+          vif_resultados <- rbind(vif_resultados,
+                                  data.frame(Variable = var_actual,
+                                             VIF = vif_calc,
+                                             R2 = r2))
+        }, error = function(e2) {
+          vif_resultados <- rbind(vif_resultados,
+                                  data.frame(Variable = var_actual,
+                                             VIF = Inf,
+                                             R2 = NA))
+        })
+      }
+    }
+    
+    if (nrow(vif_resultados) > 0) {
+      vif_resultados <- vif_resultados %>%
+        mutate(
+          Nivel = case_when(
+            VIF < 5 ~ "Bajo",
+            VIF >= 5 & VIF < 10 ~ "Moderado",
+            VIF >= 10 | is.infinite(VIF) ~ "Alto (multicolinealidad)"
+          )
+        ) %>%
+        arrange(desc(VIF))
+      
+      return(vif_resultados)
+    } else {
+      stop("No se pudo calcular VIF con ningún método")
+    }
+  })
+}
+```
+
+
+### Multicolineality
+
+```{r}
+# Función para encontrar combinaciones de variables altamente correlacionadas
+function_multicolineality_identification <- function(datos, vars, umbral = 0.7) {
+  
+  # Matriz de correlación
+  cor_matrix <- cor(datos[, vars], use = "pairwise.complete.obs")
+  
+  # Encontrar pares con correlación > umbral
+  pares_altos <- which(abs(cor_matrix) > umbral & upper.tri(cor_matrix), arr.ind = TRUE)
+  
+  if (nrow(pares_altos) == 0) {
+    cat("No se encontraron correlaciones mayores a", umbral, "\n")
+    return(NULL)
+  }
+  
+  # Crear dataframe con los pares
+  pares_df <- data.frame(
+    Var1 = vars[pares_altos[, 1]],
+    Var2 = vars[pares_altos[, 2]],
+    Correlacion = cor_matrix[pares_altos]
+  ) %>%
+    arrange(desc(abs(Correlacion)))
+  
+  # Identificar variables con múltiples correlaciones altas
+  vars_problematicas <- c(pares_df$Var1, pares_df$Var2) %>%
+    table() %>%
+    as.data.frame() %>%
+    filter(Freq > 1) %>%
+    pull(.)
+  
+  cat("Umbral de correlación:", umbral, "\n")
+  cat("Número de pares con alta correlación:", nrow(pares_df), "\n")
+  cat("\nVariables con múltiples correlaciones altas:", 
+      paste(vars_problematicas, collapse = ", "), "\n")
+  
+  return(list(
+    pares = pares_df,
+    variables_problematicas = vars_problematicas,
+    matriz_cor = cor_matrix
+  ))
+}
+```
+
+
+# Load of data
+
+Fisrt of all, we import all necessary data from the previous processing such as free agent and no free agent panel of hitters and fielders.
+
+```{r}
+file_hitters <- file.path(
+    input_path,
+    "Hitters/hitters_econometric_panel.xlsx"
+  )
+file_fielders <- file.path(
+    input_path,
+    "Fielders/fielders_econometric_panel.xlsx"
+  )
+
+hitters_panel <- read_xlsx(file_hitters)
+fielders_panel <- read_xlsx(file_fielders)
+```
+
+# Introduction
+
+What we want to do in this script is to search what varaibles explains changes in bargaining power along decils for free agents. To achieve that goal, we use a quantile regression with instrumental variables.
+
+# Efectos fijos
+
+Si bien, se aplicará un modelo de regresión cuantil, es de interés eliminar en nuestra estimación la heterogeneidad no observada constante en el tiempo. Como no hay un método automatizado para transformar los datos de tal forma que se pueda obtener el estimador *within*, se construyó una función para realiar esta tarea, `funtcion_within_transformation()`. Se crearán listas que contengan las métricas y variables de control por separado para simplificar el manjeo de las variables en el resto del script.
+
+Primero, se definen las variables que se transformarán. Por un lado, se tienen las variables relacionadas con el desempeño deportivo del agente libre:
+
+```{r}
+hitter_Xt_vars <- hitters_panel %>%
+  dplyr::select(starts_with("Xt")) %>%
+  colnames() %>%
+  sort()
+
+fielder_Xt_vars <- fielders_panel %>%
+  dplyr::select(starts_with("Xt")) %>%
+  colnames() %>%
+  sort()
+```
+
+Por otro lado, se tienen las variables de control relacionadas:
+
+```{r}
+hitter_control_vars <- hitters_panel %>% 
+  select(where(is.numeric)) %>% 
+  colnames() %>% 
+  setdiff(hitter_Xt_vars) %>% 
+  sort()
+
+fielder_control_vars <- fielders_panel %>% 
+  select(where(is.numeric)) %>% 
+  colnames() %>% 
+  setdiff(fielder_Xt_vars) %>% 
+  sort()
+```
+
+Por último, se crea una lista que contenga todas las variables por tipo de jugador.
+
+```{r}
+hitter_within_vars <- unique(union(hitter_Xt_vars,hitter_control_vars))
+fielder_within_vars <- unique(union(fielder_Xt_vars,fielder_control_vars))
+```
+
+Se crea el pánel que remueve los efectos fijos en el tiempo para cada tipo de jugador.
+
+```{r}
+hitters_panel_within <- funtcion_within_transformation(
+  data = hitters_panel,
+  id = "id_player",
+  player_col = "player",
+  vars = hitter_within_vars,
+  suffix = "_within",
+  keep_original = F
+)
+
+fielders_panel_within <- funtcion_within_transformation(
+  data = fielders_panel,
+  id = "id_player",
+  player_col = "player",
+  vars = fielder_within_vars,
+  suffix = "_within",
+  keep_original = F
+)
+```
+
+# WAR
+
+El primer paso es mostrar que la variable WAR es estadísticamente significativa para explicar la diferencia en los salarios entre contratos ofrecidos a los agentes libres. Cabe mencionar que el WAR que se está tomando es el que define **Baseball-reference.com**.
+
+Para determinar qupe variables de control se quedan en la especificación final del modelo se conservan solo aquellos controles que hayan sido estadísticamente significativos en, al menos, alguna de las estimaciones para cualquier decil. Asimismo, se clarisifican las variables de controls en dos grupos principales: teórica o empíricamente fundamentadas y aquellas que posiblemente impacten el cambio de salario en los agentes libres. Las variables de control son las siguientes:
+
+- **Equipo**: Equipos con mayores ingresos (mercados grandes, NY, LA, Boston) pueden pagar más. Equipos en ciudades grandes tienen más ingresos por taquilla, derechos de TV y mercancía, lo que se traduce en mayores presupuestos para salarios. Hay evidencia de la disparidad en nóminas de acuerdo con el equipo al que pertenece el jugador.
+  - **Fuente**: [marginal_value_team](https://www.researchgate.net/publication/247739008_Market_Size_Pay_and_Performance_A_General_Model_and_Application_to_Major_League_Baseball "marginal_value_team"),[nominal_disparity](https://www.mlb.com/news/mlb-payroll-disparity "nominal_disparity")
+
+-   **Premios**: Los premios son señales públicas de alto desempeño y reconocimiento de la industria. Jugadores premiados tienen mayor valor comercial (mercancía, boletos, patrocinios) que los equipos pueden capitalizar. Hay evidencia de que los premios como MVP, Cy Young o Silver Slugger tienen un impacto positivo en las ganancias de un jugador, así como en el monto otorgado en sus contratos.
+    -   **Fuente**: [price_link_1](https://worldbaseball.com/shane-bazs-68-million-5-year-contract-with-orioles-would-escalate-for-cy-young-wins "price_link_1"), [price_link_2](https://www.si.com/mlb/pirates/onsi/news/cy-young-award-nets-pittsburgh-pirates-paul-skenes-sweet-incentive "price_link_2"), [price_link_3](https://www.marca.com/en/mlb/2025/11/13/69165f8946163faa238b456c.html "change in contract money")
+    -   **Variables**: `total_awards, total_MVP_price, total_CYA_price, total_SS_price, last_MVPprice, last_CYA_price, last_SS_price`.
+
+## Multicolinealidad
+
+Se tiene que definir primero un conjunto de controles base. Puesto que no se han identificado las métricas deportivas de desempeño que expliquen las diferencias en el poder de negociación, se determinarán solo qué variables, que no reflejan indicadores deportivos, afectan a $T_{t}$. En este sentido, se toman los siguientes controles:
+
+```{r}
+remove_control_vars <- c(
+  "last_leader_to_2","last_team_ab","last_team_ba","last_team_era", "last_team_g",
+  "last_team_games_over_500", "last_team_h", "last_team_hr", "last_team_r", "last_team_ra",
+  "last_team_w",
+  "Yt_contract_annual", "Yt_contract_total"
+)
+
+hitter_control_vars_simple <- setdiff(hitter_control_vars,remove_control_vars)
+fielder_control_vars_simple <- setdiff(fielder_control_vars,remove_control_vars)
+```
+
+Se seleccionan las variables de interés
+
+```{r}
+hitters_control_vars_panel_within <- hitters_panel_within %>%
+  select(all_of(hitter_control_vars_simple)) %>%
+  na.omit()
+
+fielders_control_vars_panel_within <- fielders_panel_within %>%
+  select(all_of(fielder_control_vars_simple)) %>%
+  na.omit()
+```
+
+### Correlation matrix
+
+Se calcula la matriz de correlación
+
+#### Hitters
+
+```{r}
+# Matriz de correlación
+hitter_matriz_cor <- cor(
+    hitters_control_vars_panel_within,
+    use = "pairwise.complete.obs"
+  )
+
+# Visualizar correlaciones altas (> 0.7 o < -0.7)
+hitter_high_cor <- hitter_matriz_cor %>%
+  as.data.frame() %>%
+  rownames_to_column("var1") %>%
+  pivot_longer(
+    cols = -var1,
+    names_to = "var2",
+    values_to = "correlation"
+  ) %>%
+  filter(
+    var1 < var2,
+    abs(correlation) >= 0.7
+  ) %>%
+  arrange(desc(abs(correlation)))
+
+# Mostrar correlaciones altas
+hitter_high_cor
+```
+
+Dado los resultados, se decide quitar primero las variables que son un promedio, ya que hay evidencia de que se preiorizan los resultados más recientes, es decir, `last`. Entre la edad y la expereicnia, se deja la experiencia porque refleja mejor el impacto en el desempeño.
+
+La excepción, son las variables de los premios, se deja el total, mientras que entre team divs y playoffs, se deja la de los playoffs porque tiene mayor variabilidad, ya que hay ocho equipos quienes tienen variación por año en esta variable. Se deja MVP porque es la que tiene evidencia de impactar en el salario.
+
+```{r}
+hitter_remove_control_high_corr <- c(
+  "mean_years_experience", "mean_age", "last_age",
+  "total_awards", "last_team_divs"
+)
+
+hitters_control_vars_panel_within <- hitters_control_vars_panel_within %>% 
+  select(-all_of(hitter_remove_control_high_corr))
+
+hitter_control_vars_simple <- hitters_control_vars_panel_within %>% 
+  colnames()
+```
+
+#### Pitchers
+
+```{r}
+# Matriz de correlación
+fielder_matriz_cor <- cor(
+    fielders_control_vars_panel_within,
+    use = "pairwise.complete.obs"
+  )
+
+# Visualizar correlaciones altas (> 0.7 o < -0.7)
+fielder_high_cor <- fielder_matriz_cor %>%
+  as.data.frame() %>%
+  rownames_to_column("var1") %>%
+  pivot_longer(
+    cols = -var1,
+    names_to = "var2",
+    values_to = "correlation"
+  ) %>%
+  filter(
+    var1 < var2,
+    abs(correlation) >= 0.7
+  ) %>%
+  arrange(desc(abs(correlation)))
+
+# Mostrar correlaciones altas
+fielder_high_cor
+```
+
+Dado los resultados, se decide quitar primero las variables que son un promedio, ya que hay evidencia de que se preiorizan los resultados más recientes, es decir, `last`. Entre la edad y la expereicnia, se deja la experiencia porque refleja mejor el impacto en el desempeño.
+
+La excepción, son las variables de los premios, se deja el total, mientras que entre team divs y playoffs, se deja la de los playoffs porque tiene mayor variabilidad, ya que hay ocho equipos quienes tienen variación por año en esta variable. Se deja MVP porque es la que tiene evidencia de impactar en el salario.
+
+```{r}
+fielder_remove_control_high_corr <- c(
+  "mean_years_experience", "mean_age", "last_age",
+  "total_awards", "last_team_divs"
+)
+
+fielders_control_vars_panel_within <- fielders_control_vars_panel_within %>% 
+  select(-all_of(fielder_remove_control_high_corr))
+
+fielder_control_vars_simple <- fielders_control_vars_panel_within %>% 
+  colnames()
+```
+
+### VIF
+
+#### Hitters
+
+Se calcula el fator de inflación
+
+```{r}
+# Calcular VIF para las variables
+hitter_vif_results <- function_vif_calculation(
+    hitters_control_vars_panel_within,
+    hitter_control_vars_simple
+  )
+
+# Mostrar resultados
+hitter_vif_results
+```
+
+No se quita ninguna variable, ya que la prueba VIF no sale alta para ninguna variable.
+
+#### Pitchers
+
+```{r}
+# Calcular VIF para las variables
+fielder_vif_results <- function_vif_calculation(
+    fielders_control_vars_panel_within,
+    fielder_control_vars_simple
+  )
+
+# Mostrar resultados
+fielder_vif_results
+```
+
+No se quita ninguna variable, ya que la prueba VIF no sale alta para ninguna variable.
+
+### Redundant variables
+
+Se determinará qué variables son redundantes mediante pruebas de multicolinealidad.
+
+#### Hitters
+
+```{r}
+# Aplicar la función
+hitter_multicol_results <- function_multicolineality_identification(
+    hitters_control_vars_panel_within,
+    hitter_control_vars_simple,
+    umbral = 0.5
+  )
+
+# Mostrar pares problemáticos
+hitter_multicol_results$pares
+```
+
+Dado que el número de veces en las que el agente libre fue lider de bateo, `total_leader`, está correlacionado con las variables de premios, se quita la variable de lider, ya que no hay literatura directa que sustente su uso. Adicionalmente, se deja la variable que indica el número de mundiales ganados, ya que se puede asociar más fácilmente a un mayor prestigio.
+
+```{r}
+hitter_remove_control_redundant <- c(
+  "last_team_pnnts", "total_leader"
+)
+
+hitters_control_vars_panel_within <- hitters_control_vars_panel_within %>% 
+  select(-all_of(hitter_remove_control_redundant))
+
+hitter_control_vars_simple <- hitters_control_vars_panel_within %>% 
+  colnames()
+```
+
+
+#### Pitchers
+
+```{r}
+# Aplicar la función
+fielder_multicol_results <- function_multicolineality_identification(
+    fielders_control_vars_panel_within,
+    fielder_control_vars_simple,
+    umbral = 0.5
+  )
+
+# Mostrar pares problemáticos
+fielder_multicol_results$pares
+```
+
+Se deja MVP sobre CYA porque MVP está respaldado por la literatura. Se deja last team loses porque los playoffs ganados se captura por otrs variables similares como la series ganadas, además de que los partidos perdidos están respaldados por la literatura. Adicionalmente, se deja la variable que indica el número de mundiales ganados, ya que se puede asociar más fácilmente a un mayor prestigio.
+
+```{r}
+fielder_remove_control_redundant <- c(
+  "last_team_pnnts", "total_CYA_price", "last_team_playoffs"
+)
+
+fielders_control_vars_panel_within <- fielders_control_vars_panel_within %>% 
+  select(-all_of(fielder_remove_control_redundant))
+
+fielder_control_vars_simple <- fielders_control_vars_panel_within %>% 
+  colnames()
+```
+
+### Constant variables
+
+#### Hitters
+
+Se evalua qué variables tiene varianza cercana a cero, ya que indicarían poca variabilidad.
+
+```{r}
+# Identificar variables con varianza cercana a cero
+hitter_variance <- apply(
+    hitters_control_vars_panel_within[, hitter_control_vars_simple],
+    2, 
+    function(x) var(x, na.rm = TRUE)
+  )
+
+hitter_constant_vars <- names(
+    hitter_variance[hitter_variance < 1e-10 | is.na(hitter_variance)]
+  )
+
+hitter_constant_vars
+```
+
+Se aprecia que no hay varaibles con varianza cero.
+
+#### Pitchers
+
+Se evalua qué variables tiene varianza cercana a cero, ya que indicarían poca variabilidad.
+
+```{r}
+# Identificar variables con varianza cercana a cero
+fielder_variance <- apply(
+    fielders_control_vars_panel_within[, fielder_control_vars_simple],
+    2, 
+    function(x) var(x, na.rm = TRUE)
+  )
+
+fielder_constant_vars <- names(
+    fielder_variance[fielder_variance < 1e-10 | is.na(fielder_variance)]
+  )
+
+fielder_constant_vars
+```
+
+Se aprecia que no hay varaibles con varianza cero.
+
+# Quantile regresion
+
+First, we define the quantile to evaluate and sport metric to evaluate. Usamos diez deciles para ver mejor la distribución
+
+```{r}
+# Quantiles
+tau_quantile <- seq(0.1, 0.9, by = 0.1)
+```
+
+We collpase de control variables
+
+```{r}
+hitter_control_vars_simple_formula <- paste(
+    hitter_control_vars_simple,
+    collapse = " + "
+  )
+fielder_control_vars_simple_formula <- paste(
+    fielder_control_vars_simple, 
+    collapse = " + "
+  )
+```
+
+We build de whole formula.
+
+```{r}
+hitter_vars_simple_formula <- paste(
+  "Yt_contract_total", "~",
+  hitter_Xt_vars, "+",
+  hitter_control_vars_simple_formula, "- 1",
+  sep = " "
+)
+
+fielder_vars_simple_formula <- paste(
+  "Yt_contract_total", "~",
+  fielder_Xt_vars, "+",
+  fielder_control_vars_simple_formula, "- 1",
+  sep = " "
+)
+```
+
+## Simple quiantile regression
+
+First, we stimate every specification for every decile
+
+### Hitters
+
+#### Fixed effects
+
+```{r}
+# Inicializar dataframe vacío
+hitter_simple_results_fe <- data.frame()
+# Inicializar lista vacía para modelos
+hitter_model_results_fe <- list()
+
+# Iterar sobre cada fórmula
+for (i in seq_along(hitter_vars_simple_formula)){
+  
+  formula_string <- hitter_vars_simple_formula[i]
+  
+  cat(
+    round(100 * i / length(hitter_vars_simple_formula)), "%\n",
+    "Se está estimando la fórmula:\n",
+    formula_string,
+    "\n"
+  )
+  
+  # Iterar sobre cada tau
+  for (tau in tau_quantile) {
+    # Convertir string a fórmula
+    form <- as.formula(formula_string)
+    
+    # Intentar estimar con tryCatch
+    resultado <- tryCatch(
+      {
+        # Estimar regresión cuantílica
+        quant_diff <- rq(
+          formula = form,
+          tau = tau,
+          data = hitters_panel_within
+        )
+        
+        # --- Guardar el modelo en la lista con clave única ---
+        model_key <- paste(formula_string, "tau", tau, sep = "_")
+        hitter_model_results_fe[[model_key]] <- quant_diff
+        
+        # Resumen con bootstrapping
+        summary_boot <- summary(quant_diff, se = "boot")
+        coef_boot <- summary_boot$coefficients
+        
+        # Crear dataframe temporal
+        data.frame(
+          Formula = formula_string,
+          Tau = tau,
+          Variable = rownames(coef_boot),
+          Coeficiente = coef_boot[, "Value"],
+          Estadistico_t = coef_boot[, "t value"],
+          p_value = coef_boot[, "Pr(>|t|)"]
+        )
+      },
+      error = function(e) {
+        # Mensaje de error
+        cat("  ERROR en Tau =", tau, ":", e$message, "\n")
+        # Devolver NULL para no añadir nada
+        return(NULL)
+      }
+    )
+    
+    # Si resultado no es NULL, agregarlo al dataframe global
+    if (!is.null(resultado)) {
+      hitter_simple_results_fe <- rbind(hitter_simple_results_fe, resultado)
+    }
+  }
+}
+
+# Luego agregar significancia
+hitter_simple_results_fe <- hitter_simple_results_fe %>%
+  mutate(
+    significative_level = case_when(
+      p_value <= 0.0001 ~ "***",
+      p_value <= 0.001  ~ "**",
+      p_value <= 0.05   ~ "*",
+      p_value <= 0.1    ~ ".",
+      TRUE              ~ ""
+    )
+  )
+```
+
+A list that contains all significaticas variables:
+
+```{r}
+hitter_significative_variables <- hitter_simple_results %>%
+  filter(
+    str_detect(Variable, "Xt_")
+  ) %>%
+  distinct(Variable) %>%
+  pull()
+```
+
+Se grafica por variable el poder de negociacion en funcion del decil que se grafica (Tau).
+
+```{r}
+# Crear carpeta para guardar los gráficos (si no existe)
+graficos_dir <- file.path(output_path, "Plots/Bargaining-Power")
+if (!dir.exists(graficos_dir)) dir.create(graficos_dir)
+
+# Preparar datos: filtrar variables de interés y crear factor de significancia
+hitter_plot_vars_simple_df <- hitter_simple_results %>%
+  filter(Variable %in% hitter_significative_variables) %>%
+  mutate(
+    Significance = factor(
+      significative_level,
+      levels = c("", ".", "*", "**", "***"),
+      labels = c("Not significant", "p < 0.1", "p < 0.05", "p < 0.01", "p < 0.001"),
+      ordered = TRUE
+    )
+  )
+
+# Lista para almacenar gráficos
+hitter_plot_vars_simple <- list()
+
+# Generar un gráfico por cada variable significativa
+for (var in hitter_significative_variables) {
+  
+  df_var <- hitter_plot_vars_simple_df %>% filter(Variable == var)
+  if (nrow(df_var) == 0) {
+    warning("No hay datos para la variable: ", var)
+    next
+  }
+
+  var_limpia <- var %>%
+    gsub("^Xt_last_", "") %>%
+    gsub("_to_2", "^2") %>%
+    gsub("_", " ") %>%
+    str_to_sentence()
+  
+  p <- ggplot(df_var, aes(x = Tau, y = Coeficiente)) +
+    geom_line(aes(group = Formula), color = "red", alpha = 0.6, size = 0.8) +
+    # stroke = 2 to give the cross (not significant) a thickness of 2
+    geom_point(
+      aes(size = Significance, shape = Significance), 
+      alpha = 0.9, stroke = 2
+    ) +
+    scale_size_manual(
+      values = c(
+        "Not significant" = 2, "p < 0.1" = 2, "p < 0.05" = 3,
+        "p < 0.01" = 4, "p < 0.001" = 5),
+      name = "Significance"
+    ) +
+    scale_shape_manual(
+      values = c("Not significant" = 4, 
+                 "p < 0.1" = 16, 
+                 "p < 0.05" = 16, 
+                 "p < 0.01" = 16, 
+                 "p < 0.001" = 16),
+      name = "Significance"
+    ) +
+    scale_x_continuous(breaks = seq(0.1, 0.9, by = 0.1)) +   # All deciles
+    labs(
+      title = paste("Variable:", var_limpia),
+      x = "Decile (τ)",
+      y = "Estimated bargaining power"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "top",
+      legend.box = "vertical",
+      plot.title = element_text(face = "bold", hjust = 0.5),   # Centered title
+      axis.text.x = element_text(angle = 0, hjust = 0.5),
+      panel.grid = element_blank()                             # No grid
+    )
+  
+  hitter_plot_vars_simple[[var]] <- p
+  cat("Gráfico generado para", var, "\n")
+}
+
+# Guardar cada gráfico como PNG (opcional)
+for (var in names(hitter_plot_vars_simple)) {
+  nombre_archivo <- gsub("[^A-Za-z0-9]", "_", var)
+  archivo_salida <- file.path(graficos_dir, paste0("hitter_coef_", nombre_archivo, ".png"))
+  ggsave(archivo_salida, plot = hitter_plot_vars_simple[[var]], width = 10, height = 7, dpi = 150)
+}
+```
+
+Se muestran los resultados:
+
+```{r}
+hitter_plot_vars_simple[["Xt_last_war_to_2"]]
+```
+
+#### Linear
+
+```{r}
+# Inicializar dataframe vacío
+hitter_simple_results_lm <- data.frame()
+# Inicializar lista vacía para modelos
+hitter_model_results_lm <- list()
+
+# Iterar sobre cada fórmula
+for (i in seq_along(hitter_vars_simple_formula)){
+  
+  formula_string <- hitter_vars_simple_formula[i]
+  
+  cat(
+    round(100 * i / length(hitter_vars_simple_formula)), "%\n",
+    "Se está estimando la fórmula:\n",
+    formula_string,
+    "\n"
+  )
+  
+  # Iterar sobre cada tau
+  for (tau in tau_quantile) {
+    # Convertir string a fórmula
+    form <- as.formula(formula_string)
+    
+    # Intentar estimar con tryCatch
+    resultado <- tryCatch(
+      {
+        # Estimar regresión cuantílica
+        quant_diff <- rq(
+          formula = form,
+          tau = tau,
+          data = hitters_panel
+        )
+        
+        # --- Guardar el modelo en la lista con clave única ---
+        model_key <- paste(formula_string, "tau", tau, sep = "_")
+        hitter_model_results_lm[[model_key]] <- quant_diff
+        
+        # Resumen con bootstrapping
+        summary_boot <- summary(quant_diff, se = "boot")
+        coef_boot <- summary_boot$coefficients
+        
+        # Crear dataframe temporal
+        data.frame(
+          Formula = formula_string,
+          Tau = tau,
+          Variable = rownames(coef_boot),
+          Coeficiente = coef_boot[, "Value"],
+          Estadistico_t = coef_boot[, "t value"],
+          p_value = coef_boot[, "Pr(>|t|)"]
+        )
+      },
+      error = function(e) {
+        # Mensaje de error
+        cat("  ERROR en Tau =", tau, ":", e$message, "\n")
+        # Devolver NULL para no añadir nada
+        return(NULL)
+      }
+    )
+    
+    # Si resultado no es NULL, agregarlo al dataframe global
+    if (!is.null(resultado)) {
+      hitter_simple_results_lm <- rbind(hitter_simple_results_lm, resultado)
+    }
+  }
+}
+
+# Luego agregar significancia
+hitter_simple_results_lm <- hitter_simple_results_lm %>%
+  mutate(
+    significative_level = case_when(
+      p_value <= 0.0001 ~ "***",
+      p_value <= 0.001  ~ "**",
+      p_value <= 0.05   ~ "*",
+      p_value <= 0.1    ~ ".",
+      TRUE              ~ ""
+    )
+  )
+```
+
+### Pitchers
+
+```{r}
+# Inicializar dataframe vacío
+fielder_simple_results <- data.frame()
+# Inicializar lista vacía para modelos
+fielder_model_results <- list()
+
+# Iterar sobre cada fórmula
+for (i in seq_along(fielder_vars_simple_formula)){
+  
+  formula_string <- fielder_vars_simple_formula[i]
+  
+  cat(
+    round(100 * i / length(fielder_vars_simple_formula)), "%\n",
+    "Se está estimando la fórmula:\n",
+    formula_string,
+    "\n"
+  )
+  
+  # Iterar sobre cada tau
+  for (tau in tau_quantile) {
+    # Convertir string a fórmula
+    form <- as.formula(formula_string)
+    
+    # Intentar estimar con tryCatch
+    resultado <- tryCatch(
+      {
+        # Estimar regresión cuantílica
+        quant_diff <- rq(
+          formula = form,
+          tau = tau,
+          data = fielders_panel_within
+        )
+        
+        # --- Guardar el modelo en la lista con clave única ---
+        model_key <- paste(formula_string, "tau", tau, sep = "_")
+        fielder_model_results[[model_key]] <- quant_diff
+        
+        # Resumen con bootstrapping
+        summary_boot <- summary(quant_diff, se = "boot")
+        coef_boot <- summary_boot$coefficients
+        
+        # Crear dataframe temporal
+        data.frame(
+          Formula = formula_string,
+          Tau = tau,
+          Variable = rownames(coef_boot),
+          Coeficiente = coef_boot[, "Value"],
+          Estadistico_t = coef_boot[, "t value"],
+          p_value = coef_boot[, "Pr(>|t|)"]
+        )
+      },
+      error = function(e) {
+        # Mensaje de error
+        cat("  ERROR en Tau =", tau, ":", e$message, "\n")
+        # Devolver NULL para no añadir nada
+        return(NULL)
+      }
+    )
+    
+    # Si resultado no es NULL, agregarlo al dataframe global
+    if (!is.null(resultado)) {
+      fielder_simple_results <- rbind(fielder_simple_results, resultado)
+    }
+  }
+}
+
+# Luego agregar significancia
+fielder_simple_results <- fielder_simple_results %>%
+  mutate(
+    significative_level = case_when(
+      p_value <= 0.0001 ~ "***",
+      p_value <= 0.001  ~ "**",
+      p_value <= 0.05   ~ "*",
+      p_value <= 0.1    ~ ".",
+      TRUE              ~ ""
+    )
+  )
+```
+
+
+
+
+
+
+
+
+
+
+
+## Matriz de correlación
+
+Se crea una matriz de correlación para determinar qué variables cumplen la condición de ser isntrumentos y cuáles simplemente están correlacioandas con la variable **WAR**. Primero, se crea una lista con las variables a evaluar.
+
+```{r}
+library(corrplot)
+library(ggplot2)
+library(reshape2)
+
+# Seleccionar las variables de interés
+vars_interes <- c("Xt_last_war", hitter_Xt_vars)
+
+# Verificar que todas las variables existen en el dataframe
+vars_existentes <- vars_interes[vars_interes %in% names(hitters_panel_within)]
+if (length(vars_existentes) < length(vars_interes)) {
+  warning("Las siguientes variables no existen: ", 
+          paste(vars_interes[!vars_interes %in% names(hitters_panel_within)], collapse = ", "))
+}
+
+# Crear subset con las variables de interés
+datos_correlacion <- hitters_panel_within %>%
+  select(all_of(vars_existentes)) %>%
+  na.omit()  # Eliminar filas con NA para correlación
+```
+
+```{r}
+# Matriz de correlación
+matriz_cor <- cor(datos_correlacion, use = "pairwise.complete.obs")
+
+# Extraer solo correlaciones con Xt_last_war
+correlaciones_war <- matriz_cor["Xt_last_war", , drop = FALSE] %>%
+  as.data.frame() %>%
+  rownames_to_column("variable") %>%
+  pivot_longer(cols = -variable, names_to = "variable2", values_to = "correlacion") %>%
+  filter(variable == "Xt_last_war" | variable2 == "Xt_last_war") %>%
+  mutate(
+    variable_original = ifelse(variable == "Xt_last_war", variable2, variable),
+    correlacion = ifelse(variable == "Xt_last_war" & variable2 == "Xt_last_war", NA, correlacion)
+  ) %>%
+  filter(!is.na(correlacion)) %>%
+  arrange(desc(abs(correlacion)))
+
+print(correlaciones_war)
+```
+
+Para instrumentos:
+
+-   **Edad/Experiencia**: Al dividir a los jugadores en quintiles de talento, se observa que los mejores jugadores (las estrellas) alcanzan su rendimiento pico aproximadamente dos años más tarde en comparación con los jugadores marginales.. los salarios de los jugadores jóvenes se encuentran reprimidos en montos similares independientemente del nivel, lo que refleja las restricciones contractuales y de negociación colectiva ligadas a los años de experiencia en la liga más que a su productividad pura a edades tempranas. Se confirma que la capacidad de bateo/rendimiento sigue típicamente una trayectoria en forma de "U" invertida con respecto a la edad: crece hasta alcanzar su punto máximo (alrededor de los 27 años) y disminuye gradualmente a partir de ahí. Sin embargo, las trayectorias individuales varían considerablemente según el quintil de talento. El impacto de la edad y la experiencia difiere drásticamente dependiendo de si se trata de una estrella o de un jugador marginal (las curvas de depreciación y desarrollo cambian). Un control global asumiría un efecto uniforme que sesgaría los coeficientes.En el béisbol profesional, el salario está determinado de forma institucional por los años de servicio (el convenio colectivo restringe fuertemente los salarios de los novatos y jugadores bajo arbitraje, y libera a los agentes libres). Por lo tanto, la experiencia no mide solo "madurez productiva", sino poder de negociación. Introducir la experiencia como un simple control de productividad está mal especificado porque captura restricciones legales/contractuales, no solo valor económico.
+    -   **Fuente**: [age_impact](https://mpra.ub.uni-muenchen.de/4326/1/MPRA_paper_4326.pdf "age_link_1"), [service_years](https://registrationz.mlbpa.org/pdf/MLB%20Basic%20Agreement%202022-26.pdf "Art. VI‑E y Art. XX‑B")
+
+# Significant variables
+
+In this section we look for all sport metrics that are statistically significative in the simplest model form for every quantile stimation.
+
+$$
+Y_{t} = X_{t}
+$$
+
+where $Y_{t}$ is the change of the squared root of contigous salaries and $X_{t}$ is the transformation of the sport metric. The purpose of these process is to find all possible good candidates for identification problems for linear and quantile regressions. So, the first part is to filter all the transformations, $X_{t}$ that are statistically significant at the 10% level.
+
+```{r}
+hitter_Xt_vars <- hitters_panel %>%
+  dplyr::select(starts_with("Xt")) %>%
+  colnames() %>%
+  sort()
+
+fielder_Xt_vars <- fielders_panel %>%
+  dplyr::select(starts_with("Xt")) %>%
+  colnames() %>%
+  sort()
+```
+
+Sin embargo, se tiene que definir primero un conjunto de controles base. Puesto que no se han identificado las métricas deportivas de desempeño que expliquen las diferencias en el poder de negociación, se determinarán solo qué variables, que no reflejan indicadores deportivos, afectan a $T_{t}$. En este sentido, se toman los siguientes controles:
+
+```{r}
+control_variables_hitter <- c("years_contract","dummy_team_change","awards")
+control_variables_fielder <- c("years_contract","last_age","position","team","mean_years_experience","awards")
+```
+
+First, we define the quantile to evaluate and sport metric to evaluate
+
+```{r}
+# Quantiles
+tau_quantile <- seq(0.1, 0.9, by = 0.1)
+
+# Sport metrics
+hitter_metrics <- hitters_panel %>%
+  dplyr::select(starts_with("Xt")) %>%
+  colnames()
+fielder_metrics <- fielders_panel %>%
+  dplyr::select(starts_with("Xt")) %>%
+  colnames()
+```
+
+We build every formula for stimations:
+
+```{r}
+control_variables_hitter_formula <- paste(control_variables_hitter, collapse = " + ")
+control_variables_fielder_formula <- paste(control_variables_fielder, collapse = " + ")
+
+hitter_formula_total <- paste(
+  "Yt_contract_total", "~",
+  hitter_metrics, "+",
+  control_variables_hitter_formula,
+  sep = " "
+)
+
+fielder_formula_total <- paste(
+  "Yt_contract_total", "~",
+  fielder_metrics, "+",
+  control_variables_fielder_formula,
+  sep = " "
+)
+```
+
+## Hitters
+
+```{r}
+# Inicializar dataframe vacío
+hitter_simple_results <- data.frame()
+# Inicializar lista vacía para modelos
+hitter_model_results <- list()
+
+# Iterar sobre cada fórmula
+for (i in seq_along(hitter_formula_total)) {
+  formula_string <- hitter_formula_total[i]
+  
+  cat(
+    round(100 * i / length(hitter_formula_total)), "%\n",
+    "Se está estimando la fórmula:\n",
+    formula_string,
+    "\n"
+  )
+  
+  # Iterar sobre cada tau
+  for (tau in tau_quantile) {
+    # Convertir string a fórmula
+    form <- as.formula(formula_string)
+    
+    # Intentar estimar con tryCatch
+    resultado <- tryCatch(
+      {
+        # Estimar regresión cuantílica
+        quant_diff <- rq(
+          formula = form,
+          tau = tau,
+          data = hitters_panel
+        )
+        
+        # --- Guardar el modelo en la lista con clave única ---
+        model_key <- paste(formula_string, "tau", tau, sep = "_")
+        hitter_model_results[[model_key]] <- quant_diff
+        
+        # Resumen con bootstrapping
+        summary_boot <- summary(quant_diff, se = "boot")
+        coef_boot <- summary_boot$coefficients
+        
+        # Crear dataframe temporal
+        data.frame(
+          Formula = formula_string,
+          Tau = tau,
+          Variable = rownames(coef_boot),
+          Coeficiente = coef_boot[, "Value"],
+          Estadistico_t = coef_boot[, "t value"],
+          p_value = coef_boot[, "Pr(>|t|)"]
+        )
+      },
+      error = function(e) {
+        # Mensaje de error
+        cat("  ERROR en Tau =", tau, ":", e$message, "\n")
+        # Devolver NULL para no añadir nada
+        return(NULL)
+      }
+    )
+    
+    # Si resultado no es NULL, agregarlo al dataframe global
+    if (!is.null(resultado)) {
+      hitter_simple_results <- rbind(hitter_simple_results, resultado)
+    }
+  }
+}
+
+# Luego agregar significancia
+hitter_simple_results <- hitter_simple_results %>%
+  mutate(
+    Significatve_Level = case_when(
+      p_value <= 0.0001 ~ "***",
+      p_value <= 0.001  ~ "**",
+      p_value <= 0.05   ~ "*",
+      p_value <= 0.1    ~ ".",
+      TRUE              ~ ""
+    )
+  )
+```
+
+Se obtienen las variables que en ninguna observación son estadísticamente significativas.
+
+```{r}
+no_significatives_hitter <- hitter_simple_results %>%
+  group_by(Variable) %>%
+  summarise(todas_no_signif = all(Significatve_Level == "")) %>%
+  filter(todas_no_signif) %>%
+  pull(Variable)
+
+print(no_significatives_hitter)
+```
+
+Se filtran solo las variables que son estadísticamente significativas para al menos una ocasión.
+
+```{r}
+hitter_simple_results <- hitter_simple_results %>%
+  filter(
+    !Variable %in% no_significatives_hitter
+  )
+```
+
+Especificaciones sin ninguna variable estadísticamente significativa.
+
+```{r}
+formulas_sin_significancia <- hitter_simple_results %>%
+  filter(Variable != "(Intercept)") %>%
+  group_by(Formula) %>%
+  summarise(todas_no_signif = all(Significatve_Level == "")) %>%
+  filter(todas_no_signif) %>%
+  pull(Formula)
+
+print(formulas_sin_significancia)
+
+cat("Número de fórmulas sin ninguna variable significativa:", length(formulas_sin_significancia))
+```
+
+### Relevancia de las variables por decil
+
+Resumen de variables significativas.
+
+```{r}
+conteo_significancia_hitter <- hitter_simple_results %>%
+  filter(Variable != "(Intercept)") %>%
+  group_by(Variable) %>%
+  reframe(
+    total_apariciones = n(),
+    significativas = sum(Significatve_Level != ""),
+    proporcion_significativas = significativas / total_apariciones,
+    avg_bargaining_power = mean(Coeficiente, na.rm = T)
+  ) %>%
+  mutate(
+    # Case format
+    Variable = if_else(
+      str_detect(Variable, "Xt_last"),
+      str_to_upper(Variable),
+      str_to_sentence(Variable)
+    ),
+    # Preseción general
+    Variable = Variable %>%
+      str_replace("XT_LAST_", "") %>%
+      str_replace("_TO_2", "^2") %>%
+      str_replace_all("_", " ")
+  ) %>%
+  dplyr::select(-total_apariciones) %>%
+  arrange(desc(significativas),Variable)
+
+conteo_significancia_hitter
+```
+
+### Relevancia de los deciles
+
+Se resume la relevancia de cada decil de acuerdo con las ocasiones donde alguna de las variables fue estadísticamente significativa para dicho decil.
+
+```{r}
+conteo_significancia_decil_hitter <- hitter_simple_results %>%
+  filter(
+    str_detect(Variable, "Xt_")
+  ) %>%
+  group_by(Tau) %>%
+  reframe(
+    total_apariciones = n(),
+    significativas = sum(Significatve_Level != ""),
+    proporcion_significativas = significativas / total_apariciones
+  ) %>%
+  mutate(
+    proporcion_significativas = 100 * round(proporcion_significativas, 2)
+  ) %>%
+  arrange(Tau)
+
+conteo_significancia_decil_hitter
+```
+
+### Plot of stimator against
+
+A list that contains all significaticas variables:
+
+```{r}
+hitter_significative_variables <- hitter_simple_results %>%
+  filter(
+    str_detect(Variable, "Xt_")
+  ) %>%
+  distinct(Variable) %>%
+  pull()
+```
+
+Se grafica por variable el poder de negociacion en funcion del decil que se grafica (Tau).
+
+```{r}
+# Crear carpeta para guardar los gráficos (si no existe)
+graficos_dir <- file.path(output_path, "Plots/Bargaining-Power")
+if (!dir.exists(graficos_dir)) dir.create(graficos_dir)
+
+# Preparar datos: filtrar variables de interés y crear factor de significancia
+df_plot <- hitter_simple_results %>%
+  filter(Variable %in% hitter_significative_variables) %>%
+  mutate(
+    Significance = factor(
+      Significatve_Level,
+      levels = c("", ".", "*", "**", "***"),
+      labels = c("Not significant", "p < 0.1", "p < 0.05", "p < 0.01", "p < 0.001"),
+      ordered = TRUE
+    )
+  )
+
+# Lista para almacenar gráficos
+graficos_por_variable <- list()
+
+# Generar un gráfico por cada variable significativa
+for (var in hitter_significative_variables) {
+  
+  df_var <- df_plot %>% filter(Variable == var)
+  if (nrow(df_var) == 0) {
+    warning("No hay datos para la variable: ", var)
+    next
+  }
+
+  var_limpia <- var %>%
+    gsub("^Xt_last_", "") %>%
+    gsub("_to_2", "^2") %>%
+    gsub("_", " ") %>%
+    str_to_sentence()
+  
+  p <- ggplot(df_var, aes(x = Tau, y = Coeficiente)) +
+    geom_line(aes(group = Formula), color = "red", alpha = 0.6, size = 0.8) +
+    # stroke = 2 to give the cross (not significant) a thickness of 2
+    geom_point(
+      aes(size = Significance, shape = Significance), 
+      alpha = 0.9, stroke = 2
+    ) +
+    scale_size_manual(
+      values = c(
+        "Not significant" = 2, "p < 0.1" = 2, "p < 0.05" = 3,
+        "p < 0.01" = 4, "p < 0.001" = 5),
+      name = "Significance"
+    ) +
+    scale_shape_manual(
+      values = c("Not significant" = 4, 
+                 "p < 0.1" = 16, 
+                 "p < 0.05" = 16, 
+                 "p < 0.01" = 16, 
+                 "p < 0.001" = 16),
+      name = "Significance"
+    ) +
+    scale_x_continuous(breaks = seq(0.1, 0.9, by = 0.1)) +   # All deciles
+    labs(
+      title = paste("Variable:", var_limpia),
+      x = "Decile (τ)",
+      y = "Estimated bargaining power"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "top",
+      legend.box = "vertical",
+      plot.title = element_text(face = "bold", hjust = 0.5),   # Centered title
+      axis.text.x = element_text(angle = 0, hjust = 0.5),
+      panel.grid = element_blank()                             # No grid
+    )
+  
+  graficos_por_variable[[var]] <- p
+  cat("Gráfico generado para", var, "\n")
+}
+
+# Guardar cada gráfico como PNG (opcional)
+for (var in names(graficos_por_variable)) {
+  nombre_archivo <- gsub("[^A-Za-z0-9]", "_", var)
+  archivo_salida <- file.path(graficos_dir, paste0("hitter_coef_", nombre_archivo, ".png"))
+  ggsave(archivo_salida, plot = graficos_por_variable[[var]], width = 10, height = 7, dpi = 150)
+}
+```
+
+Se muestran los resultados:
+
+```{r}
+graficos_por_variable[["Xt_last_war_to_2"]]
+```
+
+### Export results
+
+Se exportan los resultados.
+
+```{r}
+path_hitter_econometric <- file.path(
+  output_path,
+  "Hitter econometric results.xlsx"
+)
+path_hitter_econometric_resume <- file.path(
+  output_path,
+  "Hitter econometric resumen.xlsx"
+)
+
+write.xlsx(hitter_simple_results,path_hitter_econometric)
+write.xlsx(conteo_significancia_hitter,path_hitter_econometric_resume)
+```
+
+## Fielders
+
+```{r}
+# Inicializar dataframe vacío
+fielder_simple_results <- data.frame()
+# Inicializar lista vacía para modelos
+fielder_model_results <- list()
+
+# Iterar sobre cada fórmula
+for (i in seq_along(fielder_formula_total)) {
+  formula_string <- fielder_formula_total[i]
+  
+  cat(
+    round(100 * i / length(fielder_formula_total)), "%\n",
+    "Se está estimando la fórmula:\n",
+    formula_string,
+    "\n"
+  )
+  
+  # Iterar sobre cada tau
+  for (tau in tau_quantile) {
+    # Convertir string a fórmula
+    form <- as.formula(formula_string)
+    
+    # Intentar estimar con tryCatch
+    resultado <- tryCatch(
+      {
+        # Estimar regresión cuantílica
+        quant_diff <- rq(
+          formula = form,
+          tau = tau,
+          data = fielders_panel,
+          method = "fn"  
+        )
+        
+        # --- Guardar el modelo en la lista con clave única ---
+        model_key <- paste(formula_string, "tau", tau, sep = "_")
+        fielder_model_results[[model_key]] <- quant_diff
+        
+        # Resumen con bootstrapping
+        summary_boot <- summary(quant_diff, se = "boot")
+        coef_boot <- summary_boot$coefficients
+        
+        # Crear dataframe temporal
+        data.frame(
+          Formula = formula_string,
+          Tau = tau,
+          Variable = rownames(coef_boot),
+          Coeficiente = coef_boot[, "Value"],
+          Estadistico_t = coef_boot[, "t value"],
+          p_value = coef_boot[, "Pr(>|t|)"]
+        )
+      },
+      error = function(e) {
+        # Mensaje de error
+        cat("  ERROR en Tau =", tau, ":", e$message, "\n")
+        # Devolver NULL para no añadir nada
+        return(NULL)
+      }
+    )
+    
+    # Si resultado no es NULL, agregarlo al dataframe global
+    if (!is.null(resultado)) {
+      fielder_simple_results <- rbind(fielder_simple_results, resultado)
+    }
+  }
+}
+
+# Luego agregar significancia
+fielder_simple_results <- fielder_simple_results %>%
+  mutate(
+    Significatve_Level = case_when(
+      p_value <= 0.0001 ~ "***",
+      p_value <= 0.001  ~ "**",
+      p_value <= 0.05   ~ "*",
+      p_value <= 0.1    ~ ".",
+      TRUE              ~ ""
+    )
+  )
+```
+
+Se obtienen las variables que en ninguna observación son estadísticamente significativas.
+
+```{r}
+no_significatives_fielder <- fielder_simple_results %>%
+  group_by(Variable) %>%
+  summarise(todas_no_signif = all(Significatve_Level == "")) %>%
+  filter(todas_no_signif) %>%
+  pull(Variable)
+
+print(no_significatives_fielder)
+```
+
+Se filtran solo las variables que son estadísticamente significativas para al menos una ocasión.
+
+```{r}
+fielder_simple_results <- fielder_simple_results %>%
+  filter(
+    !Variable %in% no_significatives_fielder
+  )
+```
+
+### Relevancia de las variables por decil
+
+Se resume la relevancia estadística de las variables.
+
+```{r}
+conteo_significancia_fielder <- fielder_simple_results %>%
+  filter(Variable != "(Intercept)") %>%
+  group_by(Variable) %>%
+  summarise(
+    total_apariciones = n(),
+    significativas = sum(Significatve_Level != ""),
+    proporcion_significativas = significativas / total_apariciones,
+    avg_bargaining_power = mean(Coeficiente, na.rm = T)
+  ) %>%
+  mutate(
+    # Case format
+    Variable = if_else(
+      str_detect(Variable, "Xt_last"),
+      str_to_upper(Variable),
+      str_to_sentence(Variable)
+    ),
+    # Preseción general
+    Variable = Variable %>%
+      str_replace("XT_LAST_", "") %>%
+      str_replace("_TO_2", "^2") %>%
+      str_replace_all("_", " "),
+    # Formato de dummy de equipos
+    Variable = Variable %>%
+      str_replace("Team", "Team "),
+    Variable = if_else(
+      str_starts(Variable, "Team "),
+      paste("Team", toupper(str_extract(Variable, "(?<=Team ).+"))),
+      Variable
+    ),
+    # Formato de dummy de posición
+    Variable = Variable %>%
+      str_replace("Position", "Position "),
+    Variable = if_else(
+      str_starts(Variable, "Position "),
+      paste("Position", toupper(str_extract(Variable, "(?<=Position ).+"))),
+      Variable
+    )
+  ) %>%
+  dplyr::select(-total_apariciones) %>%
+  arrange(desc(significativas),Variable)
+
+conteo_significancia_fielder
+```
+
+### Relevancia de los deciles
+
+Se resume la relevancia de cada decil de acuerdo con las ocasiones donde alguna de las variables fue estadísticamente significativa para dicho decil.
+
+```{r}
+conteo_significancia_decil_fielder <- fielder_simple_results %>%
+  filter(
+    str_detect(Variable, "Xt_")
+  ) %>%
+  group_by(Tau) %>%
+  reframe(
+    total_apariciones = n(),
+    significativas = sum(Significatve_Level != ""),
+    proporcion_significativas = significativas / total_apariciones
+  ) %>%
+  mutate(
+    proporcion_significativas = 100 * round(proporcion_significativas, 2)
+  ) %>%
+  arrange(Tau)
+
+conteo_significancia_decil_fielder
+```
+
+### Plot significative variables
+
+```{r}
+fielder_significative_variables <- fielder_simple_results %>%
+  filter(str_detect(Variable, "Xt_")) %>%
+  distinct(Variable) %>%
+  pull()
+```
+
+Plot
+
+```{r}
+# 2. Crear carpeta de salida (puedes cambiarla si deseas)
+graficos_dir_fielders <- file.path(output_path, "Plots/Bargaining-Power")
+if (!dir.exists(graficos_dir_fielders)) dir.create(graficos_dir_fielders)
+
+# 3. Preparar datos: filtrar y crear factor de significancia
+df_plot_fielders <- fielder_simple_results %>%
+  filter(Variable %in% fielder_significative_variables) %>%
+  mutate(
+    Significance = factor(
+      Significatve_Level,
+      levels = c("", ".", "*", "**", "***"),
+      labels = c("Not significant", "p < 0.1", "p < 0.05", "p < 0.01", "p < 0.001"),
+      ordered = TRUE
+    )
+  )
+
+# 4. Lista para almacenar los gráficos
+graficos_por_variable_fielders <- list()
+
+# 5. Bucle para generar un gráfico por cada variable significativa de fielders
+for (var in fielder_significative_variables) {
+  
+  df_var <- df_plot_fielders %>% filter(Variable == var)
+  if (nrow(df_var) == 0) {
+    warning("No hay datos para la variable: ", var)
+    next
+  }
+
+  var_limpia <- gsub("^Xt_last_", "", var)
+  var_limpia <- gsub("_to_2", "^2", var_limpia)
+  var_limpia <- gsub("_", " ", var_limpia)
+  
+  p <- ggplot(df_var, aes(x = Tau, y = Coeficiente)) +
+    geom_line(aes(group = Formula), color = "red", alpha = 0.6, size = 0.8) +
+    # stroke = 2 to give the cross (not significant) a thickness of 2
+    geom_point(
+      aes(size = Significance, shape = Significance), 
+      alpha = 0.9, stroke = 2
+    ) +
+    scale_size_manual(
+      values = c(
+        "Not significant" = 2, "p < 0.1" = 2, "p < 0.05" = 3,
+        "p < 0.01" = 4, "p < 0.001" = 5),
+      name = "Significance"
+    ) +
+    scale_shape_manual(
+      values = c("Not significant" = 4, 
+                 "p < 0.1" = 16, 
+                 "p < 0.05" = 16, 
+                 "p < 0.01" = 16, 
+                 "p < 0.001" = 16),
+      name = "Significance"
+    ) +
+    scale_x_continuous(breaks = seq(0.1, 0.9, by = 0.1)) +   # All deciles
+    labs(
+      title = paste("Variable:", var_limpia),
+      x = "Decile (τ)",
+      y = "Estimated bargaining power"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "top",
+      legend.box = "vertical",
+      plot.title = element_text(face = "bold", hjust = 0.5),   # Centered title
+      axis.text.x = element_text(angle = 0, hjust = 0.5),
+      panel.grid = element_blank()                             # No grid
+    )
+  
+  graficos_por_variable_fielders[[var]] <- p
+  cat("Gráfico generado para fielder:", var, "\n")
+}
+
+# 6. (Opcional) Guardar cada gráfico como PNG en la carpeta creada
+for (var in names(graficos_por_variable_fielders)) {
+  nombre_archivo <- gsub("[^A-Za-z0-9]", "_", var)
+  archivo_salida <- file.path(graficos_dir_fielders, paste0("fielders_coef_", nombre_archivo, ".png"))
+  ggsave(archivo_salida, plot = graficos_por_variable_fielders[[var]], width = 10, height = 7, dpi = 150)
+}
+```
+
+Se exportan los resultados.
+
+```{r}
+path_fielder_econometric <- file.path(
+  output_path,
+  "Fielder econometric results.xlsx"
+)
+path_fielder_econometric_resume <- file.path(
+  output_path,
+  "Fielder econometric resumen.xlsx"
+)
+
+write.xlsx(fielder_simple_results,path_fielder_econometric)
+write.xlsx(conteo_significancia_fielder,path_fielder_econometric_resume)
+```
+
+# Bibliography
+
+[Video of quantile regression with instrumental variables](https://www.youtube.com/watch?v=AIw15sR7IFc)
+
+[WAR explaination](https://www.baseball-reference.com/about/war_explained.shtml "Baseball reference")

@@ -1,0 +1,951 @@
+---
+# Metadatos --------------------------
+lang: en
+
+# Tablas de contenidos ---------------
+toc: true                # Genera una tabla de contenidos automática
+toc-title: "Content"  # Título personalizado para la tabla de contenidos
+number-sections: true    # Numera las secciones del documento automáticamente (#, ##, ...)
+number-depth: 3          # Sección hasta la que se enumera (1 = #)
+toc-depth: 2             # Nivel de profundidad mostrado en la tabla de contenidos, hasta qué sección se incluye en la toc
+toc-location: left       # Posición de la tabla de contenidos en HTML (right, left, body)
+toc-expand: true         # Expande todos los niveles en la tabla de contenidos, toc (solo en HTML)
+smooth-scroll: true      # Activa un efecto de desplazamiento animado al hacer clic en enlaces internos (como índices o títulos). (solo en HTML)
+lof: true                # Genera lista de figuras (solo en PDF)
+lot: true                # Genera lista de tablas (solo en PDF)
+
+# Fuentes ----------------------------
+# Fuentes de texto: https://tug.org/FontCatalogue/
+mainfont: Verdana       # Fuente base del documento
+monofont: Calibri       # Fuente de los bloques del código
+mathfont: Arial         # Fuente de las ecuaciones
+fontfamily: baskervald  # Familia tipográfica alternativa a la mainfont en caso de no cargar esta última (solo en PDF)
+fontsize: 12pt          # Tamaño base de la fuente del documento
+
+# Colores ---------------------------
+linkcolor: orange       # Color para enlaces internos (ej: referencias cruzadas)
+filecolor: blue         # Color para nombres de archivos o elementos de sistema (solo en PDF)
+citecolor: green        # Color para citas bibliográficas (solo en PDF)
+urlcolor: cyan          # Color para URLs externas (solo en PDF)
+toccolor: purple        # Color para la tabla de contenidos (solo en PDF)
+
+# Diseño de página -------------------
+geometry:                 # Configuración de márgenes del documento (requiere LaTeX para PDF)
+  #- margin = 1in         # Margen global (comentado, se usan valores personalizados)
+  - top = 24.5mm          # Margen superior (24.5 mm ≈ 0.96 pulgadas)
+  - bottom = 24.5mm       # Margen inferior 
+  - left = 24.5mm         # Margen izquierdo
+  - right = 24.5mm        # Margen derecho (nota: en libros, el derecho puede ser mayor)
+linestretch: 1.0          # Espaciado entre líneas (1.0 = sencillo, 1.5 = interlineado 1.5)
+indent: falase            # Sangría automática en párrafos (típicamente 1.5em en LaTeX)
+classoption: [onecolumn]  # Diseño de una columna (alternativa: 'twocolumn' para 2 columnas)
+papersize: a4             # Tamaño del papel (alternativas: 'letter', 'legal', 'a5')
+
+# Opciones execute -------------------
+execute:
+  warning: false      # Suprime la visualización de advertencias (warnings) en el documento final
+  error: true         # Muestra errores de ejecución en el documento (útil para depuración)
+  #eval: true         # Permite la ejecución de código (si es false, el código no se ejecuta)
+  #output: true       # Muestra los resultados/output del código en el documento
+  #include: true      # Incluye el código fuente en el documento final
+  #cache: false       # Desactiva el caché para la ejecución de código (siempre re-ejecuta)
+
+# Código (formatos) -------------------
+code-fold: true                   # Permite plegar/desplegar bloques de código (solo en HTML)
+code-overflow: wrap               # Ajusta el texto largo al ancho del bloque (solo en HTML)
+code-copy: true                   # Muestra botón para copiar código (solo en HTML)
+code-link: true                   # Genera enlaces permanentes a la documentación de las funciones usadas en el bloque  (solo en HTML)
+code-tools: true                  # Incluir opciones extra para mostrar el código fuente o imprimirlo en otros formatos (solo en HTML)
+code-line-numbers: true           # Muestra números de línea en bloques de código (funciona en HTML/PDF)
+code-block-border-left: true      # Añade borde izquierdo a bloques de código (solo en HTML)
+code-block-bg: "#6a5acd"          # Color de fondo para bloques de código (solo en HTML)
+code-summary: "Mostrar código"    # Texto para botón de plegado (solo en HTML)
+highlight-style: dracula          # Estilo de resaltado de sintaxis
+
+
+# Figuras y tablas --------------------
+fig-pos: "tb"               # Posición preferida de figuras en LaTeX (t=top, b=bottom, h=here 'considerando los demás elementos', H=here 'forzando su posición ignorando los demás elementos') (solo en PDF)
+fig-format: jpeg            # Formato de exportación para figuras (ej: jpeg, png, svg)
+fig-align: center           # Alineación de figuras (center|left|right)
+fig-cap-location: bottom    # Posición del pie de figura (top|bottom)
+tbl-cap-location: top       # Posición del título de tablas (top|bottom) (valor por defecto)
+fig-responsive: true        # Hace las figuras responsivas (ajustan tamaño automáticamente) (solo en HTML)
+
+# Referencias  ------------------------
+biblio-title: "Bibliografía"   # Título personalizado para la sección de referencias
+link-citations: true           # Convierte las citas en enlaces clicables (funciona en HTML/PDF)
+link-bibliography: true        # Convierte los ítems bibliográficos en enlaces (funciona en HTML/PDF)
+#bibliography: references.bib   # Archivo que contiene las referencias bibliográficas
+
+crossref:
+  fig-title: "Figurita"            # Título personalizado para las leyendas de figuras (default: "Figura")
+  fig-prefix: "Fig."               # Prefijo usado en referencias cruzadas a figuras
+  fig-labels: roman                # Tipo de numeración para figuras
+  lof-title: "Lista de figuritas"  # Título personalizado para el listado de figuras (solo en PDF, requiere lof: true)
+  eq-prefix: "Eq."                 # Prefijo para referencias a ecuaciones
+  sec-prefix: "Sec."               # Prefijo para referencias a secciones
+  tbl-prefix: "Tablita"            # Título personalizado para leyendas de tablas
+
+# Formato  ----------------------------
+# Opciones de formato: https://texblog.org/2013/02/13/latex-documentclass-options-illustrated/
+prefer-html: true          # Forces HTML as default output format when multiple formats are specified
+editor: visual             # Preferred editor for document development (doesn't affect compilation)
+
+# PDF Output Configuration (LaTeX-based) -----------
+format:
+  pdf: 
+    documentclass: scrartcl
+    classoption:
+      - DIV=11
+      - numbers=noendperiod
+    papersize: letter
+    header-includes: |
+      \usepackage{microtype}
+      \usepackage{hyphenat}
+      \usepackage{fvextra}
+      \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines, breakanywhere, commandchars=\\\{\}}
+      \fvset{fontsize=\small}
+      % Configuración CRUCIAL para el output de chunks
+      \renewenvironment{Shaded}{\begin{snugshade}\footnotesize\fvset{breaklines=true, breakanywhere=true}}{\end{snugshade}}
+      % Asegura que los entornos de código y output usen la misma configuración
+      \fvset{breaklines=true, breakanywhere=true}
+    code-block-extra:
+      break-lines: true
+      break-anywhere: true
+      fontsize: \small
+    geometry:
+      - margin=1in
+      - left=2cm
+      - right=2cm
+    execute:
+      echo: true
+      eval: true
+      freeze: auto
+    html-to-pdf:
+      screenshot: false
+      
+  html: 
+    theme: lux
+    mermaid:
+      theme: dark
+    title-block-banner: '#D50032'      # Color de fondo del banner de título (azul marino oscuro) en formato HEX
+    title-block-banner-color: '#002D72'# Color del texto en el banner de título (verde-azul claro/agua) en formato HEX       # Uses Bootswatch Lux theme (clean, elegant design) (solo HTML)
+    format-links: true                 # Converts URLs to styled buttons (solo HTML)
+    execute:
+      echo: true                       # Shows code execution messages in HTML output
+    fig-height: 6                      # Default figure height in inches (solo HTML)
+    fig-width: 8                       # Default figure width in inches (solo HTML)
+    citations-hover: true              # Enables citation preview tooltips on hover (solo HTML)
+
+  docx: default            # Uses standard Word template (customize with reference-doc)
+---
+
+```{r setup, include=FALSE}
+# Configuración global de opciones
+knitr::opts_chunk$set(
+  echo = TRUE,            # Muestra el código en el documento (TRUE) o lo oculta (FALSE)
+  warning = FALSE,        # Desactiva la impresión de warnings
+  message = FALSE         # Desactiva la impresión de mensajes adicionales
+)
+# Evitar la notación científica en toda la sesión de R
+options(scipen = 999)
+
+# Borrar variables y gráficos
+rm(list = ls())
+graphics.off()
+gc()
+
+# Cargar las librerías
+library(janitor)            # Limpieza de datos y nombres de columnas
+library(readxl)             # Lectura de archivos Excel
+library(readr)              # Lectura de archivos de texto y CSV
+library(tidyverse)          # Conjunto de paquetes para ciencia de datos, incluye ggplot2, dplyr, tidyr, etc.
+library(ggplot2)            # Creación de gráficos
+library(ggrepel)            # Mejoras en las etiquetas de ggplot2
+library(purrr)              # Programación funcional
+library(dplyr)              # Manipulación de datos
+library(tidyr)              # Transformación y limpieza de datos
+library(stringi)            # Manipulación de cadenas de texto
+library(sp)                 # Manejo de datos espaciales
+library(geosphere)          # Cálculos geoespaciales
+library(sf)                 # Manejo de datos espaciales con Simple Features
+library(leaflet)            # Creación de mapas interactivos
+library(writexl)            # Escritura de archivos Excel
+library(data.table)         # Manipulación eficiente de datos
+library(stringr)            # Manipulación de cadenas de texto (parte del tidyverse)
+library(rnaturalearth)      # Datos geoespaciales naturales
+library(rnaturalearthdata)  # Datos geoespaciales naturales
+library(viridis)            # Usar escala de colores
+library(fastDummies)        # Dummificar columnas
+library(plm)                # Estimar modelos panel
+library(sandwich)           # Para la función vcovHC
+library(lmtest)             # Para la función coeftest
+library(haven)              # Exportar a formato stata
+library(foreign)            # Exportar en distintos formatos
+library(stargazer)          # Dar formato a resultados
+library(openxlsx)           # Manejar archivos excel
+library(quantreg)           # For quantile regression
+library(DT)                 # Crear tablas interactivas
+library(scales)
+library(fs)
+
+# Ruta absoluta al directorio donde se encuentra la carpeta del proyecto
+# 1. Obtener la carpeta de usuario
+path <- path_home()   # p.ej. C:\Users\username
+ 
+# 2. Construir la ruta base al proyecto
+data_path = (
+    path
+    / "OneDrive - Comisión Federal de Competencia Económica"
+    / "Documentos"
+    / "R scripts"
+    / "Sport-Article---Bargaining-Power"
+)
+# 3. Definir subcarpetas de datos
+input_data = data_path / "Input-data"
+output_path = data_path / "Output-data"
+
+# Importar funciones propias para la exploración de datos
+function_path <- paste(data_path,"Functions/functions_etl.R",sep = "/")
+source(function_path)
+
+# Borrar ruta de las funciones
+rm(function_path)
+```
+
+# Descriptive Statistics
+
+In this section, we generate visualizations for descriptive statistics about all sport variables regarding free agent player or not. Moreless, we plot the distribution of relevants variables for the econometric model such as contract values, proportions of free agents who changed team
+
+Fisrt of all, we import all necessary data from the previous processing such as free agent and no free agent panel of hitters and fielders-
+
+```{r}
+file_free_agent <- file.path(output_path, "Free Agent/fa_panel.csv")
+file_hitters <- file.path(output_path, "Hitters/hitters_panel.csv")
+file_hitters_fa <- file.path(output_path, "Hitters/hitters_fa_panel.csv")
+file_hitters_nofa <- file.path(output_path, "Hitters/hitters_no_fa_panel.csv")
+file_fielders <- file.path(output_path, "Fielders/fielders_panel.csv")
+file_fielders_fa <- file.path(output_path, "Fielders/fielders_fa_panel.csv")
+file_fielders_nofa <- file.path(output_path, "Fielders/fielders_no_fa_panel.csv")
+
+free_agent_panel <- read.csv(file_free_agent)
+hitters_panel <- read.csv(file_hitters)
+hitters_fa_panel <- read.csv(file_hitters_fa)
+hitters_no_fa_panel <- read.csv(file_hitters_nofa)
+fielders_panel <- read.csv(file_fielders)
+fielders_fa_panel <- read.csv(file_fielders_fa)
+fielders_no_fa_panel <- read.csv(file_fielders_nofa)
+```
+
+
+We create a version of dataframes to plot which is a concatanation of free agents and no free agents players data, this for hitters and fielders.
+
+```{r combine-fa-function}
+combine_with_free_agent <- function(no_fa_df, fa_df, free_agent_value_no = 0, free_agent_value_fa = 1) {
+  bind_rows(
+    no_fa_df %>% mutate(free_agent = free_agent_value_no),
+    fa_df %>% mutate(free_agent = free_agent_value_fa)
+  ) %>%
+    select(any_of(c(colnames(no_fa_df), "free_agent")))
+}
+
+hitters_plot_panel <- combine_with_free_agent(hitters_no_fa_panel, hitters_fa_panel)
+fielders_plot_panel <- combine_with_free_agent(fielders_no_fa_panel, fielders_fa_panel)
+```
+
+We verify if the dimensions after binding data is the same.
+
+```{r dimension-verification}
+print(nrow(bind_rows(hitters_fa_panel,hitters_no_fa_panel)))
+print(nrow(hitters_panel))
+```
+
+Functiosn for comparison between free agents and players who are not.
+
+```{r density-plot-function}
+function_density_fa <- function(data, x_var, zoom = FALSE, group, use_fill = TRUE) {
+  tryCatch({
+    if (!x_var %in% names(data)) {
+      stop(paste("La columna", x_var, "no existe en el dataframe."))
+    }
+
+    x_var_title <- gsub("_", " ", x_var)
+    x_var_title <- tools::toTitleCase(x_var_title)
+    
+    if (zoom) {
+      x_values <- data[[x_var]]
+      q1 <- quantile(x_values, 0.25, na.rm = TRUE)
+      q3 <- quantile(x_values, 0.75, na.rm = TRUE)
+      iqr <- q3 - q1
+      lower_bound <- max(q1 - 1.5 * iqr, min(x_values, na.rm = TRUE))
+      upper_bound <- min(q3 + 1.5 * iqr, max(x_values, na.rm = TRUE))
+    }
+
+    p <- ggplot(data, aes(x = .data[[x_var]])) +
+      geom_density(alpha = 0.5, aes(fill = if (use_fill) factor(free_agent) else NULL)) +
+      labs(
+        x = x_var_title,
+        y = "Density"
+      ) +
+      theme_minimal(base_size = 12) +
+      theme(
+        axis.title.x = element_text(face = "bold", size = 14),
+        axis.title.y = element_text(face = "bold", size = 14),
+        axis.text.x = element_text(face = "bold", size = 14),
+        axis.text.y = element_text(face = "bold", size = 14),
+        legend.title = element_text(face = "bold", size = 14),
+        legend.text = element_text(face = "bold", size = 14),
+        axis.ticks = element_line(size = 0.8),
+        axis.line = element_line(color = "#000", size = 1),
+        panel.grid = element_blank()
+      )
+
+    if (use_fill) {
+      p <- p + 
+        scale_fill_manual(
+          values = c("0" = "#002D72", "1" = "#D50032"),
+          labels = c("No", "Yes"),
+          name = "Free Agent"
+        )
+    }
+
+    if (zoom) {
+      p <- p + coord_cartesian(xlim = c(lower_bound, upper_bound))
+    }
+
+    return(list(
+      plot = p,
+      type = "density",
+      variable = x_var,
+      group = group,
+      zoom = zoom,
+      used_fill = use_fill
+    ))
+
+  }, error = function(e) {
+    message("Error: ", e$message)
+    return(NULL)
+  })
+}
+```
+
+```{r boxplot-function}
+function_boxplot_fa <- function(data, x_var, group, use_fill = TRUE) {
+  tryCatch({
+    if (!x_var %in% names(data)) {
+      stop(paste("The column", x_var, "doesn't belong to the dataframe."))
+    }
+    
+    x_var_title <- gsub("_", " ", x_var)
+    x_var_title <- tools::toTitleCase(x_var_title)
+
+    # Crear el gráfico base
+    p <- ggplot(data, aes(x = factor(free_agent), y = .data[[x_var]])) +
+      geom_boxplot(
+        alpha = 0.7,
+        outlier.shape = 19,
+        aes(fill = if (use_fill) factor(free_agent) else NULL)
+      ) +
+      labs(
+        x = "Free Agent",
+        y = x_var_title
+      ) +
+      scale_x_discrete(labels = c("0" = "No", "1" = "Yes")) +
+      theme_minimal(base_size = 12) +
+      theme(
+        axis.title.x = element_text(face = "bold", size = 14),
+        axis.title.y = element_text(face = "bold", size = 14),
+        axis.text.x = element_text(face = "bold", size = 14),
+        axis.text.y = element_text(face = "bold", size = 14),
+        legend.title = element_text(face = "bold", size = 14),
+        legend.text = element_text(face = "bold", size = 14),
+        axis.ticks = element_line(size = 0.8),
+        axis.line = element_line(color = "#000", size = 1),
+        panel.grid = element_blank()
+      )
+
+    # Añadir configuración de fill si es necesario
+    if (use_fill) {
+      p <- p + 
+        scale_fill_manual(
+          values = c("0" = "#002D72", "1" = "#D50032"),
+          labels = c("No", "Yes"),
+          guide = "none"
+        )
+    }
+
+    return(list(
+      plot = p,
+      type = "boxplot",
+      variable = x_var,
+      group = group,
+      used_fill = use_fill
+    ))
+
+  }, error = function(e) {
+    message("Error: ", e$message)
+    return(NULL)
+  })
+}
+```
+
+Generate the plots
+
+```{r plot-list-generation-function}
+# Generar todos los gráficos con estructura organizada
+generate_plot_list <- function(data, vars_to_plot, group_name = "hitters") {
+  plots_list <- list()
+  
+  for (var in vars_to_plot) {
+    # Density plots
+    density_normal <- function_density_fa(data, var, zoom = FALSE, group = group_name)
+    density_zoom <- function_density_fa(data, var, zoom = TRUE, group = group_name)
+    
+    # Boxplot
+    boxplot <- function_boxplot_fa(data, var, group = group_name)
+    
+    # Asignar nombres descriptivos
+    if (!is.null(density_normal)) {
+      plots_list[[paste0("density-", group_name, "-", var)]] <- density_normal
+    }
+    if (!is.null(density_zoom)) {
+      plots_list[[paste0("density-zoom-", group_name, "-", var)]] <- density_zoom
+    }
+    if (!is.null(boxplot)) {
+      plots_list[[paste0("boxplot-", group_name, "-", var)]] <- boxplot
+    }
+  }
+  
+  return(plots_list)
+}
+```
+
+We code a function for saving every plot from the previous list
+
+```{r save-plots-function}
+save_plots <- function(plot_list, base_path) {
+  # Crear directorio si no existe
+  dir.create(base_path, recursive = TRUE, showWarnings = FALSE)
+  
+  for (plot_name in names(plot_list)) {
+    plot_data <- plot_list[[plot_name]]
+    
+    # Construir nombre del archivo
+    file_name <- paste0(
+      plot_data$type, 
+      if (plot_data$type == "density" && plot_data$zoom) "-zoom",
+      "-", plot_data$group, 
+      "-", plot_data$variable,
+      ".jpg"
+    )
+    
+    # Ruta completa
+    file_path <- file.path(base_path, file_name)
+    
+    # Guardar el gráfico
+    ggsave(
+      filename = file_path,
+      plot = plot_data$plot,
+      device = "jpeg",
+      width = 6,
+      height = 5,
+      units = "in",
+      dpi = 300
+    )
+    
+    message("Saved: ", file_path)
+  }
+}
+```
+
+We obtain the boxplot and density plots for those contracts whose value is greater than zero.
+
+```{r plot-generations, echo=FALSE}
+# Definir la ruta base
+visualization_path <- file.path(data_path, "Visualizations", "Descriptive Statistics")
+vars_not_plot <- c("player","team","year","free_agent","sign age")
+hitters_vars_to_plot <- setdiff(colnames(hitters_plot_panel),vars_not_plot)
+fielders_vars_to_plot <- setdiff(colnames(fielders_plot_panel),vars_not_plot)
+
+# Generar y guardar los gráficos
+hitters_distribution <- generate_plot_list(
+  data = hitters_plot_panel %>% filter(contract_value != 0),
+  vars_to_plot = hitters_vars_to_plot,
+  group_name = "hitters"
+)
+
+fielders_distribution <- generate_plot_list(
+  data = fielders_plot_panel %>% filter(contract_value != 0),
+  vars_to_plot = fielders_vars_to_plot,
+  group_name = "fielders"
+)
+
+# Combinar y guardar todos los gráficos
+all_plots <- c(hitters_distribution, fielders_distribution)
+save_plots(all_plots, visualization_path)
+```
+
+For specific purposes, we calculate some general statistcs for a certain variables.
+
+```{r}
+contract_value_summary <- bind_rows(
+  hitters_plot_panel %>%
+  group_by(free_agent) %>%
+  summarise(
+    mean_value = mean(contract_value, na.rm = TRUE)/1000000,
+    max_value = max(contract_value, na.rm = TRUE)/1000000,
+    min_value = min(contract_value, na.rm = TRUE)/1000000,
+    position = "hitter",
+    statistic = "Contract value"
+  ),
+  fielders_plot_panel %>%
+  group_by(free_agent) %>%
+  summarise(
+    mean_value = mean(contract_value, na.rm = TRUE)/1000000,
+    max_value = max(contract_value, na.rm = TRUE)/1000000,
+    min_value = min(contract_value, na.rm = TRUE)/1000000,
+    position = "fielder",
+    statistic = "Contract value"
+  )
+)
+war_summary <- bind_rows(
+  hitters_plot_panel %>%
+  group_by(free_agent) %>%
+  summarise(
+    mean_value = mean(war, na.rm = TRUE),
+    max_value = max(war, na.rm = TRUE),
+    min_value = min(war, na.rm = TRUE),
+    position = "hitter",
+    statistic = "WAR"
+  ),
+  fielders_plot_panel %>%
+  group_by(free_agent) %>%
+  summarise(
+    mean_value = mean(war, na.rm = TRUE),
+    max_value = max(war, na.rm = TRUE),
+    min_value = min(war, na.rm = TRUE),
+    position = "fielder",
+    statistic = "WAR"
+  )
+)
+years_contract_summary <- bind_rows(
+  hitters_plot_panel %>%
+  group_by(free_agent) %>%
+  summarise(
+    mean_value = mean(years_contract, na.rm = TRUE),
+    max_value = max(years_contract, na.rm = TRUE),
+    min_value = min(years_contract, na.rm = TRUE),
+    position = "hitter",
+    statistic = "Contract years"
+  ),
+  fielders_plot_panel %>%
+  group_by(free_agent) %>%
+  summarise(
+    mean_value = mean(years_contract, na.rm = TRUE),
+    max_value = max(years_contract, na.rm = TRUE),
+    min_value = min(years_contract, na.rm = TRUE),
+    position = "fielder",
+    statistic = "Contract years"
+  )
+)
+
+summary_data <- bind_rows(contract_value_summary, war_summary, years_contract_summary)
+
+if (knitr::is_html_output()) {
+  DT::datatable(datatable(summary_data))
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(head(summary_data,10))
+}
+
+if (knitr::is_html_output()) {
+  DT::datatable(summary_data %>% filter(statistic == "Contract years"))
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(summary_data %>% filter(statistic == "Contract years"))
+}
+```
+
+We want to know the proportion of free agent who changes the team between the contract he sign.
+
+```{r}
+free_agent_plot <- free_agent_panel %>%
+  filter(contract_id == 1 & contract_value != 0)%>%
+  mutate(log_salary = log(average_annual_contract_value))
+
+years_contract_summary <- free_agent_plot %>%
+  group_by(dummy_team_change) %>%
+  summarise(
+    mean_value = mean(contract_value, na.rm = TRUE),
+    max_value = max(contract_value, na.rm = TRUE),
+    min_value = min(contract_value, na.rm = TRUE),
+    statistic = "Contract value"
+  )
+
+if (knitr::is_html_output()) {
+  DT::datatable(years_contract_summary)
+}else if (knitr::is_latex_output()) {
+  flextable::flextable(years_contract_summary)
+}
+```
+
+We create a particular dataframe for free agents who changed team along his professional careers between 2011 and 2023.
+
+```{r}
+team_change_fa <- free_agent_panel %>%
+  group_by(player) %>%
+  summarise(
+    dummy_team_change = max(dummy_team_change)
+  )
+```
+
+Now, we plot the result.
+
+```{r}
+hist_team_change <- ggplot(team_change_fa, aes(x = factor(dummy_team_change), fill = factor(dummy_team_change))) +
+  geom_bar(
+    aes(y = after_stat(count / sum(count))),
+    color = "#000",
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_text(
+    stat = "count",
+    aes(
+      label = paste0(round((..count..) / sum(..count..) * 100, 1), "%"),
+      y = (..count..) / sum(..count..)
+    ),
+    vjust = 1.6,
+    size = 5,
+    fontface = "bold",
+    color = "#fff"
+  ) +
+  scale_fill_manual(
+    values = c("0" = "#002D72", "1" = "#D50032"),
+    labels = c("No", "Yes"),
+    guide = "none"
+  ) +
+  scale_x_discrete(labels = c("0" = "No", "1" = "Yes")) +  # <- Aquí cambias los ticks
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  labs(
+    x = "Team changed",
+    y = "Percentage of free agents"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(face = "bold", size = 14),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank()
+  )
+
+ggsave(
+  filename = paste(visualization_path, "histogram_team_change_labeled.jpeg", sep = "/"),
+  plot = hist_team_change,
+  device = "jpeg",
+  width = 6,
+  height = 5,
+  units = "in",
+  dpi = 300
+)
+
+hist_team_change
+```
+
+Now, we study brevely if there is a relation between changing the team and salary.
+
+```{r}
+boxplot_team_change <- ggplot(free_agent_plot, aes(x = factor(dummy_team_change), y = contract_value/1000000, fill = factor(dummy_team_change))) +
+  geom_boxplot(
+    color = "black",
+    size = 1,
+    alpha = 0.7,
+    outlier.shape = 21,
+    outlier.fill = "white",
+    outlier.color = "black"
+  ) +
+  scale_fill_manual(
+    values = c("0" = "#002D72", "1" = "#D50032"),
+    labels = c("No", "Yes"),
+    guide = "none"
+  ) +
+  scale_x_discrete(labels = c("0" = "No", "1" = "Yes")) +
+  #scale_y_continuous(labels = dollar_format(prefix = "$", suffix = "", accuracy = 100000)) +
+  labs(
+    x = "Team changed",
+    y = "Contract value"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(face = "bold", size = 14),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank()
+  )
+
+# Save plot
+ggsave(
+  filename = paste(visualization_path, "boxplot_team_change_contraact_value.jpeg", sep = "/"),
+  plot = boxplot_team_change,
+  device = "jpeg",
+  width = 6,
+  height = 5,
+  units = "in",
+  dpi = 300
+)
+
+# Mostrar gráfico
+boxplot_team_change
+```
+
+In addition to the previous plots, we have to plot de proportion of free agents who chamge of team at the time he sign, and plot the salary against the lenght of the contract. We have to take only the first year of observations of the contract to make comparisons.
+
+```{r}
+sal_vs_yrs_plot <- ggplot(free_agent_plot, aes(x = years_contract, y = log_salary)) +
+  geom_point(
+    shape = 21,fill = "#D50032",color = "#002D72",size = 3,stroke = 1,alpha = 0.3
+  ) +
+  labs(
+    x = "Years of contract",
+    y = "Log(Annual salary)"
+  ) +
+  scale_y_continuous(breaks = pretty,labels = number_format(accuracy = 0.1)) +
+  scale_x_continuous(breaks = pretty,labels = number_format(accuracy = 0.1)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(face = "bold", size = 14),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank()
+  )
+
+# Save the plot
+ggsave(
+  filename = paste(visualization_path, "salary_vs_contract_years.jpeg", sep="/"),
+  plot = sal_vs_yrs_plot,device = "jpeg",width = 8,height = 6,units = "in",dpi = 300
+)
+
+sal_vs_yrs_plot
+```
+
+We can appreciate that the relation between the logarithm of annual salary and the years tha cover the cotnract is positive. Moreover, the function is concave and seem to converge to a point around 18, maybe because of the salary cap. As an aditional analysis, we can stimate a function that adjust to this behavour according to the minimum cuadratic errors (MCE).
+
+```{r}
+# Ajuste de modelos
+model_list <- list(
+  loglog = lm(log_salary ~ log(years_contract), data = free_agent_plot),
+  quadratic = lm(log_salary ~ years_contract + I(years_contract^2), data = free_agent_plot),
+  michaelis_menten = nls(log_salary ~ (a * years_contract) / (b + years_contract), data = free_agent_plot, start = list(a = 10, b = 1)),
+  gompertz = nls(log_salary ~ gamma * exp(-delta * exp(-theta * years_contract)), data = free_agent_plot, start = list(gamma = 10, delta = 2, theta = 0.5))
+)
+
+# Calcular ECM por modelo
+ecm_summary <- lapply(model_list, function(mod) {
+  pred <- predict(mod, newdata = free_agent_plot)
+  mean((free_agent_plot$log_salary - pred)^2, na.rm = TRUE)
+}) %>%
+  unlist() %>%
+  tibble::enframe(name = "model", value = "ECM") %>%
+  arrange(ECM)
+
+# 📊 Gráfico 1: ECM por modelo
+ggplot(ecm_summary, aes(x = reorder(model, ECM), y = ECM, fill = model)) +
+  geom_col(width = 0.6, color = "#000", size = 1) +
+  geom_label(
+    aes(label = round(ECM, 4)),
+    fill = "#000",   
+    color = "#fff",      
+    size = 4,
+    vjust = 1.2,
+    label.size = NA
+  ) +
+  labs(
+    title = "Miminum cuadratic error (MCE) by model",
+    x = "Model",
+    y = "ECM"
+  ) +
+  scale_fill_manual(values = c(
+    loglog = "#D50032",
+    quadratic = "#002D72",
+    michaelis_menten = "darkgreen",
+    gompertz = "purple"
+  )) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank(),
+    legend.position = "none",
+    axis.text.x = element_text(angle = 90, hjust = 1)
+  )
+```
+
+It can be aprreciatte visually.
+
+```{r}
+# Generar predicciones para gráfico
+prediction_data <- free_agent_plot %>%
+  select(years_contract) %>%
+  distinct() %>%
+  arrange(years_contract)
+
+for (name in names(model_list)) {
+  prediction_data[[name]] <- predict(model_list[[name]], newdata = prediction_data)
+}
+
+prediction_long <- prediction_data %>%
+  pivot_longer(cols = -years_contract, names_to = "model", values_to = "fitted")
+
+# 📈 Gráfico 2: Ajustes de modelos
+plot_model_sal_vs_yrs <- ggplot(free_agent_plot, aes(x = years_contract, y = log_salary)) +
+  geom_point(
+    shape = 21,fill = "#D50032",color = "#002D72",size = 2,stroke = 1,alpha = 0.3
+  ) +
+  geom_line(data = prediction_long, aes(x = years_contract, y = fitted, color = model), size = 1.5) +
+  scale_color_manual(values = c(
+    loglog = "#D50032",
+    quadratic = "#002D72",
+    michaelis_menten = "darkgreen",
+    gompertz = "purple"
+  )) +
+  labs(
+    x = "Years of contract",
+    y = "Log(Salary)",
+    color = "Model"
+  ) +
+  scale_y_continuous(breaks = pretty,labels = number_format(accuracy = 0.1)) +
+  scale_x_continuous(breaks = pretty,labels = number_format(accuracy = 0.1)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank()
+  )
+
+# Save the plot
+ggsave(
+  filename = paste(visualization_path, "model_comparison_salary_vs_contract_years.jpeg", sep="/"),
+  plot = plot_model_sal_vs_yrs,device = "jpeg",width = 8,height = 6,units = "in",dpi = 300
+)
+
+plot_model_sal_vs_yrs
+```
+
+The value of the stimators of gompertz can be showed directly.
+
+```{r}
+nls_model_gompertz <- nls(
+  log_salary ~ gamma * exp(-delta * exp(-theta * years_contract)),
+  data = free_agent_plot,
+  start = list(gamma = 10, delta = 2, theta = 0.5)
+)
+
+gamma_hat <- round(coef(nls_model_gompertz)["gamma"], 3)
+delta_hat <- round(coef(nls_model_gompertz)["delta"], 3)
+theta_hat <- round(coef(nls_model_gompertz)["theta"], 3)
+
+summary(nls_model_gompertz)
+```
+
+All stimators resulted statistically meaningfull. So, the explicit functional form of the gompertz function is the following one:
+
+$$
+\log(\text{salary}) = {r gamma_hat} \cdot \exp\left(-{r delta_hat} \cdot \exp\left(-{r theta_hat} \cdot x\right)\right)
+$$
+
+On the other hand, before model specification, we confirm temporal boundaries (2011–2023) and data completeness:
+
+```{r min-max-dates}
+cat("Batters - Earliest date is: ", min(hitters_fa_panel$year), ", and the most recent date is: ", max(hitters_fa_panel$year), ".\n")
+cat("Fielders - Earliest date is: ", min(fielders_fa_panel$year), ", and the most recent date is: ", max(fielders_fa_panel$year), ".")
+```
+
+Visualize record density by year to identify sampling biases:
+
+```{r hitters-counts-date}
+hitters_fa_panel$year <- as.numeric(hitters_fa_panel$year)
+
+plot_hitter_hist_obs <- ggplot(hitters_fa_panel, aes(x = year)) +
+  geom_histogram(
+    binwidth = 1,
+    fill = "#D50032",
+    color = "#002D72",
+    size = 1
+  ) +
+  labs(
+    x = "Year",
+    y = "Number of observations"
+  ) +
+  scale_x_continuous(
+    breaks = seq(2012, 2023, by = 2),
+    labels = scales::number_format(accuracy = 1)
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(face = "bold", size = 14),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank()
+  )
+
+# Save the plot
+ggsave(
+  filename = paste(visualization_path, "histogram_hitter_observations.jpeg", sep="/"),
+  plot = plot_hitter_hist_obs,device = "jpeg",width = 8,height = 6,units = "in",dpi = 300
+)
+
+plot_hitter_hist_obs
+```
+
+```{r fielders-counts-date}
+fielders_fa_panel$year <- as.numeric(fielders_fa_panel$year)
+
+plot_fielder_hist_obs <- ggplot(fielders_fa_panel, aes(x = year)) +
+  geom_histogram(
+    binwidth = 1,
+    fill = "#D50032",
+    color = "#002D72",
+    size = 1
+  ) +
+  labs(
+    x = "Year",
+    y = "Number of observations"
+  ) +
+  scale_x_continuous(
+    breaks = seq(2012, 2023, by = 2),
+    labels = scales::number_format(accuracy = 1)
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(face = "bold", size = 14),
+    axis.ticks = element_line(size = 0.8),
+    axis.line = element_line(color = "#000", size = 1),
+    panel.grid = element_blank()
+  )
+
+# Save the plot
+ggsave(
+  filename = paste(visualization_path, "histogram_fielder_observations.jpeg", sep="/"),
+  plot = plot_fielder_hist_obs,device = "jpeg",width = 8,height = 6,units = "in",dpi = 300
+)
+
+plot_fielder_hist_obs
+```

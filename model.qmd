@@ -1,0 +1,593 @@
+---
+# Metadatos --------------------------
+lang: en
+
+# Tablas de contenidos ---------------
+toc: true                # Genera una tabla de contenidos automática
+toc-title: "Content"  # Título personalizado para la tabla de contenidos
+number-sections: true    # Numera las secciones del documento automáticamente (#, ##, ...)
+number-depth: 3          # Sección hasta la que se enumera (1 = #)
+toc-depth: 2             # Nivel de profundidad mostrado en la tabla de contenidos, hasta qué sección se incluye en la toc
+toc-location: left       # Posición de la tabla de contenidos en HTML (right, left, body)
+toc-expand: true         # Expande todos los niveles en la tabla de contenidos, toc (solo en HTML)
+smooth-scroll: true      # Activa un efecto de desplazamiento animado al hacer clic en enlaces internos (como índices o títulos). (solo en HTML)
+lof: true                # Genera lista de figuras (solo en PDF)
+lot: true                # Genera lista de tablas (solo en PDF)
+
+# Fuentes ----------------------------
+# Fuentes de texto: https://tug.org/FontCatalogue/
+mainfont: Verdana       # Fuente base del documento
+monofont: Calibri       # Fuente de los bloques del código
+mathfont: Arial         # Fuente de las ecuaciones
+fontfamily: baskervald  # Familia tipográfica alternativa a la mainfont en caso de no cargar esta última (solo en PDF)
+fontsize: 12pt          # Tamaño base de la fuente del documento
+
+# Colores ---------------------------
+linkcolor: orange       # Color para enlaces internos (ej: referencias cruzadas)
+filecolor: blue         # Color para nombres de archivos o elementos de sistema (solo en PDF)
+citecolor: green        # Color para citas bibliográficas (solo en PDF)
+urlcolor: cyan          # Color para URLs externas (solo en PDF)
+toccolor: purple        # Color para la tabla de contenidos (solo en PDF)
+
+# Diseño de página -------------------
+geometry:                 # Configuración de márgenes del documento (requiere LaTeX para PDF)
+  #- margin = 1in         # Margen global (comentado, se usan valores personalizados)
+  - top = 24.5mm          # Margen superior (24.5 mm ≈ 0.96 pulgadas)
+  - bottom = 24.5mm       # Margen inferior 
+  - left = 24.5mm         # Margen izquierdo
+  - right = 24.5mm        # Margen derecho (nota: en libros, el derecho puede ser mayor)
+linestretch: 1.0          # Espaciado entre líneas (1.0 = sencillo, 1.5 = interlineado 1.5)
+indent: falase            # Sangría automática en párrafos (típicamente 1.5em en LaTeX)
+classoption: [onecolumn]  # Diseño de una columna (alternativa: 'twocolumn' para 2 columnas)
+papersize: a4             # Tamaño del papel (alternativas: 'letter', 'legal', 'a5')
+
+# Opciones execute -------------------
+execute:
+  warning: false      # Suprime la visualización de advertencias (warnings) en el documento final
+  error: true         # Muestra errores de ejecución en el documento (útil para depuración)
+  #eval: true         # Permite la ejecución de código (si es false, el código no se ejecuta)
+  #output: true       # Muestra los resultados/output del código en el documento
+  #include: true      # Incluye el código fuente en el documento final
+  #cache: false       # Desactiva el caché para la ejecución de código (siempre re-ejecuta)
+
+# Código (formatos) -------------------
+code-fold: true                   # Permite plegar/desplegar bloques de código (solo en HTML)
+code-overflow: wrap               # Ajusta el texto largo al ancho del bloque (solo en HTML)
+code-copy: true                   # Muestra botón para copiar código (solo en HTML)
+code-link: true                   # Genera enlaces permanentes a la documentación de las funciones usadas en el bloque  (solo en HTML)
+code-tools: true                  # Incluir opciones extra para mostrar el código fuente o imprimirlo en otros formatos (solo en HTML)
+code-line-numbers: true           # Muestra números de línea en bloques de código (funciona en HTML/PDF)
+code-block-border-left: true      # Añade borde izquierdo a bloques de código (solo en HTML)
+code-block-bg: "#6a5acd"          # Color de fondo para bloques de código (solo en HTML)
+code-summary: "Mostrar código"    # Texto para botón de plegado (solo en HTML)
+highlight-style: dracula          # Estilo de resaltado de sintaxis
+
+
+# Figuras y tablas --------------------
+fig-pos: "tb"               # Posición preferida de figuras en LaTeX (t=top, b=bottom, h=here 'considerando los demás elementos', H=here 'forzando su posición ignorando los demás elementos') (solo en PDF)
+fig-format: jpeg            # Formato de exportación para figuras (ej: jpeg, png, svg)
+fig-align: center           # Alineación de figuras (center|left|right)
+fig-cap-location: bottom    # Posición del pie de figura (top|bottom)
+tbl-cap-location: top       # Posición del título de tablas (top|bottom) (valor por defecto)
+fig-responsive: true        # Hace las figuras responsivas (ajustan tamaño automáticamente) (solo en HTML)
+
+# Referencias  ------------------------
+biblio-title: "Bibliografía"   # Título personalizado para la sección de referencias
+link-citations: true           # Convierte las citas en enlaces clicables (funciona en HTML/PDF)
+link-bibliography: true        # Convierte los ítems bibliográficos en enlaces (funciona en HTML/PDF)
+#bibliography: references.bib   # Archivo que contiene las referencias bibliográficas
+
+crossref:
+  fig-title: "Figurita"            # Título personalizado para las leyendas de figuras (default: "Figura")
+  fig-prefix: "Fig."               # Prefijo usado en referencias cruzadas a figuras
+  fig-labels: roman                # Tipo de numeración para figuras
+  lof-title: "Lista de figuritas"  # Título personalizado para el listado de figuras (solo en PDF, requiere lof: true)
+  eq-prefix: "Eq."                 # Prefijo para referencias a ecuaciones
+  sec-prefix: "Sec."               # Prefijo para referencias a secciones
+  tbl-prefix: "Tablita"            # Título personalizado para leyendas de tablas
+
+# Formato  ----------------------------
+# Opciones de formato: https://texblog.org/2013/02/13/latex-documentclass-options-illustrated/
+prefer-html: true          # Forces HTML as default output format when multiple formats are specified
+editor: visual             # Preferred editor for document development (doesn't affect compilation)
+
+# PDF Output Configuration (LaTeX-based) -----------
+format:
+  pdf: 
+    documentclass: scrartcl
+    classoption:
+      - DIV=11
+      - numbers=noendperiod
+    papersize: letter
+    header-includes: |
+      \usepackage{microtype}
+      \usepackage{hyphenat}
+      \usepackage{fvextra}
+      \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines, breakanywhere, commandchars=\\\{\}}
+      \fvset{fontsize=\small}
+      % Configuración CRUCIAL para el output de chunks
+      \renewenvironment{Shaded}{\begin{snugshade}\footnotesize\fvset{breaklines=true, breakanywhere=true}}{\end{snugshade}}
+      % Asegura que los entornos de código y output usen la misma configuración
+      \fvset{breaklines=true, breakanywhere=true}
+    code-block-extra:
+      break-lines: true
+      break-anywhere: true
+      fontsize: \small
+    geometry:
+      - margin=1in
+      - left=2cm
+      - right=2cm
+    execute:
+      echo: true
+      eval: true
+      freeze: auto
+    html-to-pdf:
+      screenshot: false
+      
+  html: 
+    theme: lux
+    mermaid:
+      theme: dark
+    title-block-banner: '#D50032'      # Color de fondo del banner de título (azul marino oscuro) en formato HEX
+    title-block-banner-color: '#002D72'# Color del texto en el banner de título (verde-azul claro/agua) en formato HEX       # Uses Bootswatch Lux theme (clean, elegant design) (solo HTML)
+    format-links: true                 # Converts URLs to styled buttons (solo HTML)
+    execute:
+      echo: true                       # Shows code execution messages in HTML output
+    fig-height: 6                      # Default figure height in inches (solo HTML)
+    fig-width: 8                       # Default figure width in inches (solo HTML)
+    citations-hover: true              # Enables citation preview tooltips on hover (solo HTML)
+
+  docx: default            # Uses standard Word template (customize with reference-doc)
+---
+
+# Configuration
+
+## Libraries
+
+```{r setup, include=FALSE}
+# Configuración global de opciones
+knitr::opts_chunk$set(
+  echo = TRUE,            # Muestra el código en el documento (TRUE) o lo oculta (FALSE)
+  warning = FALSE,        # Desactiva la impresión de warnings
+  message = FALSE         # Desactiva la impresión de mensajes adicionales
+)
+# Evitar la notación científica en toda la sesión de R
+options(scipen = 999)
+
+# Borrar variables y gráficos
+rm(list = ls())
+graphics.off()
+gc()
+
+# Cargar las librerías
+if (!require("pacman")) install.packages("pacman")
+
+# Cargar todas las librerías con p_load
+pacman::p_load(
+  janitor, readxl, readr, tidyverse, ggplot2, ggrepel, purrr, 
+  stringi, sp, geosphere, sf, leaflet, writexl, data.table, 
+  stringr, rnaturalearth, rnaturalearthdata, viridis, fastDummies, 
+  plm, sandwich, lmtest, haven, foreign, stargazer, openxlsx, 
+  quantreg, DT, scales, dplyr, tidyr, fs
+)
+
+# Ruta absoluta al directorio donde se encuentra la carpeta del proyecto
+# 1. Obtener la carpeta de usuario
+path <- path_home()   # p.ej. C:\Users\username
+ 
+# 2. Construir la ruta base al proyecto
+data_path = (
+    path
+    / "OneDrive - Comisión Federal de Competencia Económica"
+    / "Documentos"
+    / "R scripts"
+    / "Sport-Article---Bargaining-Power"
+)
+# 3. Definir subcarpetas de datos
+input_data = data_path / "Input-data"
+output_path = data_path / "Output-data"
+
+# Importar funciones propias para la exploración de datos
+function_path <- paste(data_path,"Functions/functions_etl.R",sep = "/")
+source(function_path)
+
+# Borrar ruta de las funciones
+rm(function_path)
+```
+
+# Model Specification
+
+Fisrt of all, we import all necessary data from the previous processing such as free agent and no free agent panel of hitters and fielders-
+
+```{r}
+file_hitters <- file.path(output_path, "Hitters/hitters_panel.xlsx")
+file_hitters_fa <- file.path(output_path, "Hitters/hitters_fa_panel.xlsx")
+file_fielders <- file.path(output_path, "Fielders/fielders_panel.xlsx")
+file_fielders_fa <- file.path(output_path, "Fielders/fielders_fa_panel.xlsx")
+
+hitters_panel <- read_xlsx(file_hitters) %>% 
+  select(-pos)
+hitters_fa_panel <- read_xlsx(file_hitters_fa)
+fielders_panel <- read_xlsx(file_fielders)
+fielders_fa_panel <- read_xlsx(file_fielders_fa)
+```
+
+The model measures changes in free agents' bargaining power between contracts by aggregating player performance statistics per contract period. Following sports economics literature, we weight recent performance more heavily, using both:
+
+-   **Final-year metrics** (primary weighting)
+
+-   **Career averages** (secondary reference)
+
+For salary data, we account for inflation effects by including:
+
+-   **Final real salary** (inflation-adjusted)
+
+-   **Average real salary** across contract years
+
+We implement this through a processing function that:
+
+1.  Retains only free agents with \>1 year of observations
+2.  Truncates contract end years at 2023 for analysis consistency
+3.  Calculates performance/salary metrics per player-contract
+
+```{r function-varibles-summarise}
+funcion_procesar_contratos <- function(df, list_variables) {
+  last_seasson <- 2025
+  
+  resultado <- df %>%
+    arrange(id_player,player,desc(initial_contract_year)) %>%
+    group_by(
+      id_player,player, position, team, team_whole_name, initial_contract_year, reference_end_contract_year
+    ) %>%
+    reframe(
+      across(
+        # Take the last value of the contract period
+        # Average contract value gives result no as significant as the contract value of the year in instance
+        c(contract_value,average_annual_contract_value),
+        ~last(.x, na_rm = TRUE),
+        .names = "last_{.col}"
+      ),
+      # Mean values
+      across(
+        c(age,years_experience),
+        ~mean(.x, na.rm = TRUE),
+        .names = "mean_{.col}"
+      ),
+      # We take the max value of this variables since its the same value as the mean and we are interested in
+      # knowing if a player change the team regardless of the number of times it ocurred
+      across(
+        c(dummy_team_change,years_contract),
+        ~max(.x, na.rm = TRUE)
+      ),
+      # We obtain the max value in order to compare the result with mean values
+      across(
+        c(age,years_experience),
+        ~max(.x, na.rm = TRUE),
+        .names = "last_{.col}"
+      ),
+      # To get the nomber of times a player get a price
+      across(
+        c(awards, ends_with("_price"), any_of("leader")),
+        ~sum(.x, na.rm = T),
+        .names = "total_{.col}"
+      ),
+      # The last value of sport metric since it appears to be more significant.
+      across(
+        all_of(list_variables), 
+        ~last(.x, na_rm = TRUE),
+        .names = "last_{.col}")
+    ) %>%
+    group_by(player) %>%
+    filter(
+      n() > 2
+    ) %>%
+    ungroup() %>%
+    rename(
+      last_fa_contract_total = last_contract_value,
+      last_fa_contract_annual = last_average_annual_contract_value
+    )
+  
+  return(resultado)
+}
+```
+
+Apliquemos la función anterior a las bases de los agentes libres por posición.
+
+```{r fa-summarise-variable}
+# Bateadores:
+hitter_fa_statistcs <- hitters_fa_panel %>% colnames()
+hitter_fa_columns_remove <- c(
+  "id_player", "player", "team", "year",
+  "age", "position","awards", "leader",
+  "bats_throws", "years_contract","team_whole_name",
+  "initial_contract_year", "reference_end_contract_year",
+  "contract_value", "dummy_team_change", "id_contract",
+  "years_experience", "contract_id", "average_annual_contract_value"
+)
+hitter_fa_statistcs <- setdiff(hitter_fa_statistcs,hitter_fa_columns_remove)
+hitters_fa_panel <- funcion_procesar_contratos(hitters_fa_panel, hitter_fa_statistcs)
+
+# Jardineros:
+fielder_fa_statistcs <- fielders_fa_panel %>% colnames()
+fielder_fa_columns_remove <- c(
+  "id_player", "player", "team", "year",
+  "age", "position","awards", "leader",
+  "bats_throws", "years_contract","team_whole_name",
+  "initial_contract_year", "reference_end_contract_year",
+  "contract_value", "dummy_team_change", "id_contract",
+  "years_experience", "contract_id", "average_annual_contract_value"
+)
+fielder_fa_statistcs <- setdiff(fielder_fa_statistcs,fielder_fa_columns_remove)
+fielders_fa_panel <- funcion_procesar_contratos(fielders_fa_panel, fielder_fa_statistcs)
+```
+
+
+## Dependent Variable
+
+We implement a function to generate the dependent variable $Y_{t}$, defined as:
+
+$$
+Y_{t} = \sqrt{\omega_{t + 1}} - \sqrt{\omega_{t}}
+$$
+
+where $\omega$ represents free agents' salary. The implementation includes:
+
+```{r function_y}
+function_y <- function(df) {
+  # Obtener los nombres de las columnas que comienzan con "mean_" o "last_"
+  salary_cols <- names(df)[grepl("^(last_fa_contract_total|last_fa_contract_annual)", names(df))]
+  
+  # Iterar sobre cada columna de salario
+  for (salary in salary_cols) {
+    # Extraer el prefijo (mean o last)
+    suffix <- sub("^last_fa_", "", salary)
+    
+    # Calcular Y_t para la columna actual
+    df <- df %>%
+      arrange(id_player,player, reference_end_contract_year) %>%
+      group_by(id_player,player) %>%
+      mutate(
+        sqrt_fa_salary = sqrt(!!sym(salary)),
+        !!paste0("Yt_", suffix) := c(diff(sqrt_fa_salary), NA)
+      ) %>%
+      ungroup() %>%
+      mutate(
+        !!paste0("Yt_", suffix) := normalize_0_1(!!sym(paste0("Yt_", suffix)))
+      ) %>%
+      dplyr::select(-sqrt_fa_salary)
+  }
+  
+  return(df)
+}
+```
+
+Therefore, we apply the function.
+
+```{r}
+last_contractual_variables <- c("last_fa_contract_total","last_fa_contract_annual")
+
+# Bateadores
+hitters_fa_panel <- function_y(hitters_fa_panel) %>%
+  filter(
+    if_all(starts_with("Yt_"), ~ !is.na(.x))
+  ) %>%
+  dplyr::select(
+    id_player, player, position,
+    last_fa_contract_total, last_fa_contract_annual,
+    starts_with("Yt"), everything()
+  ) %>%
+  arrange(player, desc(initial_contract_year))
+hitters_fa_panel <- hitters_fa_panel %>%
+  dplyr::select(-all_of(last_contractual_variables))
+
+# Jardineros
+fielders_fa_panel <- function_y(fielders_fa_panel) %>%
+  filter(
+    if_all(starts_with("Yt_"), ~ !is.na(.x))
+  ) %>%
+  dplyr::select(
+    id_player, player, position,
+    last_fa_contract_total, last_fa_contract_annual,
+    starts_with("Yt"), everything()
+  ) %>%
+  arrange(player, desc(initial_contract_year))
+fielders_fa_panel <- fielders_fa_panel %>%
+  dplyr::select(-all_of(last_contractual_variables))
+```
+
+On the other hand, we are able to appreciate there are no empty
+
+```{r}
+hitters_fa_panel %>%
+  filter(if_any(
+    starts_with("Yt_"),
+    ~is.na(.x)
+  ))
+```
+
+In the same way
+
+```{r}
+fielders_fa_panel %>%
+  filter(if_any(
+    starts_with("Yt_"),
+    ~is.na(.x)
+  ))
+```
+
+## Independent Variable
+
+where $\omega$ represents free agents' salary. The implementation handles both mean and last salary measures:
+
+$$
+I_{t} = \begin{cases}
+        0 & \text{ dist}|y_{t},y_{\max}| > \frac{1}{2}|y_{\max} - y_{\min}| \\
+        1 & \text{ en otro caso}
+        \end{cases}
+$$
+
+First, we calculate the maximum ($y_{h}$) and minimum ($y_{l}$) values for each free agent's performance metrics by team from 2011 to 2023.In this case, we consider the whole panel of players in order to get the benchmark-levels; free agents don't make the greatest sport statistic or mi The custom function `calculate_ylh()` computes these extrema across all seasons for the specified performance variables:
+
+```{r function_ylh}
+functions_y <- list(
+  Yh = ~max(.x, na.rm = T),
+  Yl = ~min(.x, na.rm = T)
+)
+
+funcion_ylh <- function(df,variables){
+  df <- df %>%
+    group_by(team) %>%
+    reframe(across(
+      all_of(variables),
+        .fns = functions_y, 
+        .names = "{.fn}_{.col}"
+    ))
+  
+  return(df)
+}
+
+# Listas de medidas de desempeño:
+physical_variables <- c("fa_year","sign_age")
+
+team_variables <- union(
+  hitters_fa_panel %>%
+    select(contains("revenue"), contains("team_")) %>%
+    colnames(),
+  fielders_fa_panel %>%
+    select(contains("revenue"), contains("team_")) %>%
+    colnames()
+)
+
+exclude_variables <- unique(c(physical_variables, team_variables))
+
+hitter_statistcs <- intersect(
+  setdiff(
+    hitter_fa_statistcs,exclude_variables
+  ),
+  hitters_panel %>%
+    select(-contains("revenue"), -contains("team_")) %>%
+    colnames()
+  )
+fielder_statistcs <- intersect(
+  setdiff(
+    fielder_fa_statistcs,exclude_variables
+  ),
+  fielders_panel %>%
+    select(-contains("revenue"), -contains("team_")) %>%
+    colnames()
+  )
+
+# Calculo de las variables
+hitters_panel_ylh <- funcion_ylh(hitters_panel,hitter_statistcs)
+fielders_panel_ylh <- funcion_ylh(fielders_panel,fielder_statistcs) %>%
+  mutate(
+    team = str_to_upper(team)
+  )
+```
+
+Now, we integrate this information into our main panels of free agent players
+
+```{r}
+hitters_fa_panel <- hitters_fa_panel %>%
+  left_join(
+    hitters_panel_ylh,
+    by = "team"
+  )
+fielders_fa_panel <- fielders_fa_panel %>%
+  left_join(
+    fielders_panel_ylh,
+    by = "team"
+  )
+
+rm(hitters_panel_ylh,fielders_panel_ylh)
+```
+
+Next, we compute the standardized performance metric $X_{t}$ for all measures. This variable represents the normalized position of a player's current-year performance between their team's historical minimum ($y_{l}$) and maximum ($y_{h}$) values:
+
+```{r}
+calculate_It <- function(df, col){
+  col_name <- deparse(substitute(col))
+  print(head(df[[col_name]]))
+}
+
+calculate_It(hitters_fa_panel, last_war)
+```
+
+```{r}
+calculate_xt <- function(df, base_stats, prefix = "last_") {
+  # Construir nombres de columnas con prefijo (ej. last_OBP)
+  last_stats <- paste0(prefix, base_stats)
+  
+  # Step 1: Calculate It
+  df <- df %>%
+    mutate(
+      across(
+        all_of(last_stats),
+        .fns = function(x) {
+          col_name <- sub(paste0("^", prefix), "", cur_column())
+          yl_col <- get(paste0("Yl_", col_name))
+          yh_col <- get(paste0("Yh_", col_name))
+          
+          ifelse(
+            abs(x - yl_col) > 0.5 * abs(yh_col - yl_col),
+            0,
+            1
+          )
+        },
+        .names = "It_{.col}"
+      )
+    )
+  
+  # Paso 2: calcular Xt_{.col}
+  df <- df %>%
+    mutate(
+      across(
+        all_of(last_stats),
+        .fns = function(x) {
+          base_col <- sub(paste0("^", prefix), "", cur_column())
+          yh_col <- get(paste0("Yh_", base_col))
+          it_col <- get(paste0("It_", cur_column()))
+          
+          (-1)^it_col * (x / sqrt(yh_col))
+        },
+        .names = "Xt_{.col}"
+      )
+    )
+  
+  return(df)
+}
+```
+
+To finish the model variables construction, we apply the functions in order to get the main independant variables. Despite of the fact that *WAR* is our main variable of interest to explain differences in bargaining power, we also construct the $X_{t}$ variable for all the ramining sport measures.
+
+```{r}
+last_hitter_statistcs <- paste("last", hitter_statistcs, sep = "_")
+last_fielder_statistcs <- paste("last", fielder_statistcs, sep = "_")
+
+hitters_fa_panel <- calculate_xt(hitters_fa_panel, hitter_statistcs) %>%
+  select(
+    -starts_with(c("Yl_", "Yh_", "It_")),
+    -all_of(last_hitter_statistcs)
+  )
+fielders_fa_panel <- calculate_xt(fielders_fa_panel, fielder_statistcs) %>%
+  select(
+    -starts_with(c("Yl_", "Yh_", "It_")),
+    -tidyselect::all_of(last_fielder_statistcs)
+  )
+```
+
+The processed datasets are now exported for downstream analysis.
+
+```{r exportation}
+export_hitters_path <- file.path(
+    output_path,
+    "Hitters/hitters_econometric_panel.xlsx"
+  )
+export_fielders_path <- file.path(
+    output_path, 
+    "Fielders/fielders_econometric_panel.xlsx"
+  )
+
+write_xlsx(hitters_fa_panel, export_hitters_path)
+write_xlsx(fielders_fa_panel, export_fielders_path)
+```
