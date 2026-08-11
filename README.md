@@ -1,7 +1,5 @@
 # Bargaining-Power-Along-Contract-Wage
 
-# Bargaining Power Along Contract Wage
-
 **An Empirical Analysis of Wage Determinants and Bargaining Dynamics**
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/PhysTony/Bargaining-Power-Along-Contract-Wage)
