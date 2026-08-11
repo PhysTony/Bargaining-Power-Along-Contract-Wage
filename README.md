@@ -1,0 +1,1 @@
+# Bargaining-Power-Along-Contract-Wage
