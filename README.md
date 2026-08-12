@@ -3,35 +3,28 @@
 **An Empirical Analysis of Wage Determinants and Bargaining Dynamics**
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/PhysTony/Bargaining-Power-Along-Contract-Wage)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Quarto](https://img.shields.io/badge/Made%20with-Quarto-1D4ED8?logo=quarto)](https://quarto.org/)
 [![R](https://img.shields.io/badge/Analysis-R-276DC3?logo=r)](https://www.r-project.org/)
 
 ## 📌 Overview
 
-This project investigates the determinants of wages and the role of bargaining power in labor contracts. By combining rich **free-agent data** with econometric modeling, we explore how individual characteristics, market conditions, and negotiation leverage shape wage outcomes.
+This project represents the **first empirical attempt** to measure changes in bargaining power across the deciles of MLB free agents. Using a novel econometric approach, we estimate how negotiation leverage varies across the wage distribution, providing new insights into labor market dynamics in professional baseball.
+
+The analysis combines **quantile regression with instrumental variables** and a **within-estimator (fixed effects)** framework to identify causal effects while accounting for endogeneity. The project is structured as a fully reproducible research pipeline using **Quarto** documents.
 
 The analysis is structured as a reproducible research pipeline using **Quarto** documents, ensuring transparency and clarity in every step—from data processing to final econometric estimation.
 
 ## 📊 Project Structure
 
 ```
-├── Input-data/               # Raw and processed datasets
-│   └── Free agents data      # Player/contract information
-├── Output-data/              # Generated results and tables
-├── data-processing.qmd       # Data cleaning and transformation
-├── descriptive-statistics.qmd # Summary statistics and visualization
-├── econometric-analysis.qmd  # Main regression models
-├── model.qmd                 # Theoretical framework and model specification
-└── README.md                 # Project overview (this file)
+├── Input-data/ # Raw and processed datasets
+│ └── Free agents data # Player/contract information (hitters, pitchers, fielders)
+├── Output-data/ # Generated results and tables
+├── data-processing.qmd # Data cleaning, integration, and panel construction
+├── model.qmd # Variable construction and model specification
+├── econometric-analysis.qmd # Quantile IV fixed effects estimation and diagnostics
+└── README.md # Project overview (this file)
 ```
-
-## 🔍 Key Features
-
-*   **Comprehensive Data Pipeline**: From raw free-agent data to cleaned, analysis-ready datasets.
-*   **Reproducible Workflow**: All code is written in R and executed within Quarto markdown files.
-*   **Theoretical Grounding**: The `model.qmd` document outlines the economic theory behind wage bargaining.
-*   **Visual & Statistical Insight**: Descriptive statistics and econometric models are fully documented with outputs.
 
 ## 🚀 Getting Started
 
@@ -81,10 +74,6 @@ The `Input-data` folder contains the raw data on free agents. Due to the nature 
 
 Contributions are welcome! If you have suggestions for improvements or find any issues, please open an issue or submit a pull request.
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 📧 Contact
 
 **PhysTony** - [GitHub Profile](https://github.com/PhysTony)
@@ -92,5 +81,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Project Link: [https://github.com/PhysTony/Bargaining-Power-Along-Contract-Wage](https://github.com/PhysTony/Bargaining-Power-Along-Contract-Wage)
 
 ---
-
-*Built with ❤️ and R*
